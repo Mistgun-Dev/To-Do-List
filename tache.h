@@ -4,9 +4,24 @@
 #include <QDateTime>
 #include <QObject>
 
+/**
+ * @enum Priority
+ * @brief Définition des priorités pour les tâches.
+ *
+ * Les tâches peuvent avoir trois niveaux de priorité :
+ * - HIGH : Priorité haute
+ * - MEDIUM : Priorité moyenne
+ * - LOW : Priorité basse
+ */
+enum class Priority { HIGH, MEDIUM, LOW };
 
-enum class Priority { HIGH, MEDIUM, LOW};
-
+/**
+ * @class Tache
+ * @brief Classe représentant une tâche avec un titre, une note, une date, un état d'accomplissement et une priorité.
+ *
+ * Cette classe encapsule les informations d'une tâche et fournit des méthodes pour accéder
+ * et modifier ces informations.
+ */
 class Tache : public QObject
 {
     Q_OBJECT
@@ -21,56 +36,162 @@ class Tache : public QObject
 
 public:
 
-    //Constructeur par défaut, et constructeur avec paramètre pour créer une tache
+    /**
+     * @brief Constructeur par défaut de la classe Tache.
+     * Initialise une tâche avec des valeurs par défaut.
+     */
     Tache();
+
+    /**
+     * @brief Constructeur avec paramètres pour créer une tâche.
+     *
+     * @param id Identifiant unique de la tâche.
+     * @param titre Titre de la tâche.
+     * @param note Note associée à la tâche.
+     * @param dateHeure Date et heure associées à la tâche.
+     * @param priority Niveau de priorité de la tâche.
+     */
     Tache(int id, const QString& titre, const QString& note, const QDateTime& dateHeure, Priority priority);
+
+    /**
+     * @brief Destructeur de la classe Tache.
+     */
     ~Tache();
 
-    // Accesseurs pour l'id
+    /**
+     * @brief Modifie l'identifiant de la tâche.
+     * @param id Référence à l'identifiant de la tâche.
+     */
     void setId(const int& id);
+
+    /**
+     * @brief Récupère l'identifiant de la tâche.
+     * @return Identifiant unique de la tâche.
+     */
     int getId();
 
-    // Accesseurs pour le titre
+    /**
+     * @brief Modifie le titre de la tâche.
+     * @param titre Référence au titre de la tâche.
+     */
     void setTitre(const QString& titre);
+
+    /**
+     * @brief Récupère le titre de la tâche.
+     * @return Titre de la tâche sous forme de QString.
+     */
     QString getTitre();
 
-    // Accesseurs pour les notes
+    /**
+     * @brief Modifie la note de la tâche.
+     * @param note Référence à la note de la tâche.
+     */
     void setNote(const QString& note);
+
+    /**
+     * @brief Récupère la note de la tâche.
+     * @return Note associée à la tâche.
+     */
     QString getNote();
 
-    // Accesseurs setters pour la date et l'heure
+    /**
+     * @brief Modifie la date et l'heure de la tâche.
+     * @param dateTime Référence à la nouvelle date et heure.
+     */
     void setDateHeure(const QDateTime& dateTime);
+
+    /**
+     * @brief Modifie la date et l'heure de la tâche à l'heure actuelle.
+     */
     void setDateHeureActuelle();
 
-    // Accesseurs getters pour la date et l'heure
+    /**
+     * @brief Récupère la date et l'heure de la tâche.
+     * @return Date et heure de la tâche sous forme de QDateTime.
+     */
     QDateTime getDateHeure();
+
+    /**
+     * @brief Récupère la date et l'heure sous forme de chaine de caractère.
+     * @return Date et heure sous forme de QString au format "dd/MM/yyyy HH:mm:ss".
+     */
     QString getDateHeureAsString();
+
+    /**
+     * @brief Récupère la date sous forme de chaine de caractère.
+     * @return Date sous forme de QString au format "dd/MM/yyyy".
+     */
     QString getDateAsString();
+
+    /**
+     * @brief Récupère l'heure sous forme de chaine de caractère.
+     * @return Heure sous forme de QString au format "HH:mm:ss".
+     */
     QString getHeureAsString();
 
-    // Accesseurs pour le booleen d'accomplissement de la tâche
+    /**
+     * @brief Modifie l'état d'accomplissement de la tâche.
+     * @param val Booléen indiquant si la tâche est accomplie.
+     */
     void setCompleted(bool val);
+
+    /**
+     * @brief Récupère l'état d'accomplissement de la tâche.
+     * @return Booléen indiquant si la tâche est accomplie.
+     */
     bool getCompleted();
 
-    // Accesseurs pour la priorité de la tache
+    /**
+     * @brief Modifie la priorité de la tâche.
+     * @param priority Nouvelle priorité de la tâche.
+     */
     void setPriority(Priority priority);
+
+    /**
+     * @brief Récupère la priorité de la tâche.
+     * @return Priorité de la tâche.
+     */
     Priority getPriority();
 
 signals:
+
+    /**
+     * @brief Signal émis lorsque l'identifiant de la tâche est modifié.
+     */
     void idChanged();
+
+    /**
+     * @brief Signal émis lorsque le titre de la tâche est modifié.
+     */
     void titreChanged();
+
+    /**
+     * @brief Signal émis lorsque la note de la tâche est modifiée.
+     */
     void noteChanged();
+
+    /**
+     * @brief Signal émis lorsque la date et l'heure de la tâche sont modifiées.
+     */
     void dateHeureChanged();
+
+    /**
+     * @brief Signal émis lorsque l'état d'accomplissement de la tâche est modifié.
+     */
     void isCompletedChanged();
+
+    /**
+     * @brief Signal émis lorsque la priorité de la tâche est modifiée.
+     */
     void priorityChanged();
 
 private:
-    int m_id;               // Id unique de la tache
-    QString m_titre;        // Titre de la tache
-    QString m_note;         // Note attrivuée à la tache
-    QDateTime m_dateHeure;  // Date et heure de la tache au format QDatetime
-    bool m_isCompleted;     // Tache validée ou non
-    Priority m_priority;    // Degré d'importance de la tache
+    int m_id;               // Identifiant unique de la tâche.
+    QString m_titre;        // Titre de la tâche.
+    QString m_note;         // Note associée à la tâche.
+    QDateTime m_dateHeure;  // Date et heure de la tâche au format QDateTime.
+    bool m_isCompleted;     // Indique si la tâche est accomplie.
+    Priority m_priority;    // Priorité de la tâche (élevée, moyenne ou basse).
 };
 
 #endif // TACHE_H
