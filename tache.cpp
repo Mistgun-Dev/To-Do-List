@@ -1,9 +1,27 @@
 #include "tache.h"
 
 
-Tache::Tache(): m_titre(""), m_note(""), m_dateHeure(QDateTime::currentDateTime()), m_isCompleted(false), m_priority(Priority::MEDIUM)
+Tache::Tache(): m_id(0), m_titre(""), m_note(""), m_dateHeure(QDateTime::currentDateTime()), m_isCompleted(false), m_priority(Priority::MEDIUM)
 {}
 
+Tache::Tache(int id, QString titre, QString note, QDateTime dateHeure, Priority priority)
+{
+
+}
+
+
+void Tache::setId(const int& id)
+{
+    if(m_id != id){
+        m_id = id;
+        emit idChanged();
+    }
+}
+
+int Tache::getId()
+{
+    return m_id;
+}
 
 void Tache::setTitre(const QString& titre)
 {
