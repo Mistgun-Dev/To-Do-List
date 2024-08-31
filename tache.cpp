@@ -4,10 +4,9 @@
 Tache::Tache(): m_id(0), m_titre(""), m_note(""), m_dateHeure(QDateTime::currentDateTime()), m_isCompleted(false), m_priority(Priority::MEDIUM)
 {}
 
-Tache::Tache(int id, QString titre, QString note, QDateTime dateHeure, Priority priority)
-{
-
-}
+Tache::Tache(int id, const QString& titre, const QString& note, const QDateTime& dateHeure, Priority priority)
+    : m_id(id), m_titre(titre), m_note(note), m_dateHeure(dateHeure), m_isCompleted(false), m_priority(priority)
+{}
 
 
 void Tache::setId(const int& id)
