@@ -1,7 +1,7 @@
 # To-Do List Application
 
 ## Introduction
-Cette application est une application de bureau multiplateforme développée en utilisant Qt et QML. Elle est conçue pour aider les utilisateurs à gérer leurs tâches quotidiennes de manière simple, intuitive et efficace. L'application offre une interface utilisateur fluide avec des options de personnalisation comme le mode clair et sombre.
+Cette application est une application de bureau multiplateforme développée en utilisant Qt et QML. Elle est conçue pour aider les utilisateurs à gérer leurs tâches quotidiennes de manière simple, intuitive et efficace.
 
 ## Fonctionnalités Principales
 
