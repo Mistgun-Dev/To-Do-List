@@ -12,6 +12,7 @@ class Tache : public QObject
     Q_OBJECT
     QML_ELEMENT
 
+    Q_PROPERTY(int id READ getId WRITE setId NOTIFY idChanged)
     Q_PROPERTY(QString titre READ getTitre WRITE setTitre NOTIFY titreChanged)
     Q_PROPERTY(QString note READ getNote WRITE setNote NOTIFY noteChanged)
     Q_PROPERTY(QDateTime dateHeure READ getDateHeure WRITE setDateHeure NOTIFY dateHeureChanged)
@@ -20,8 +21,14 @@ class Tache : public QObject
 
 public:
 
+    //Constructeur par défaut, et constructeur avec paramètre pour créer une tache
     Tache();
+    Tache(int id, const QString& titre, const QString& note, const QDateTime& dateHeure, Priority priority);
     ~Tache();
+
+    // Accesseurs pour l'id
+    void setId(const int& id);
+    int getId();
 
     // Accesseurs pour le titre
     void setTitre(const QString& titre);
@@ -50,6 +57,7 @@ public:
     Priority getPriority();
 
 signals:
+    void idChanged();
     void titreChanged();
     void noteChanged();
     void dateHeureChanged();
@@ -57,12 +65,12 @@ signals:
     void priorityChanged();
 
 private:
-    int id;
-    QString m_titre;
-    QString m_note;
-    QDateTime m_dateHeure;
-    bool m_isCompleted;
-    Priority m_priority;
+    int m_id;               // Id unique de la tache
+    QString m_titre;        // Titre de la tache
+    QString m_note;         // Note attrivuée à la tache
+    QDateTime m_dateHeure;  // Date et heure de la tache au format QDatetime
+    bool m_isCompleted;     // Tache validée ou non
+    Priority m_priority;    // Degré d'importance de la tache
 };
 
 #endif // TACHE_H
