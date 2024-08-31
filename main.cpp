@@ -1,12 +1,19 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "GestionTaches.h"
+
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+    GestionTaches gestionTaches;
+
+    engine.rootContext()->setContextProperty("gestionTaches", &gestionTaches);
+
     const QUrl url(QStringLiteral("qrc:/To-Do-List/Main.qml"));
+
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,
