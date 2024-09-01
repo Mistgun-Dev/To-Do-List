@@ -14,6 +14,8 @@ class GestionTaches : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QList<Tache> listeTaches READ getListeTaches NOTIFY tacheAjoutee)
+
 public:
 
     /**
