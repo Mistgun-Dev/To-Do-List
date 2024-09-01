@@ -3,6 +3,7 @@
 
 #include "tache.h"
 #include <QSharedPointer>
+#include <QList>
 
 /**
  * @class GestionTaches
@@ -15,7 +16,9 @@ class GestionTaches : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QSharedPointer<Tache>> listeTaches READ getListeTaches NOTIFY tacheAjoutee)
+    //Q_PROPERTY(QList<QSharedPointer<Tache>> listeTaches READ getListeTaches NOTIFY tacheAjoutee)
+    Q_PROPERTY(QVariantList listeTaches READ getTachesAsVariantList NOTIFY tacheUpdate)
+
 
 public:
 
@@ -73,26 +76,18 @@ public:
 
     /**
      * @brief Récupère la liste complète des tâches.
-     * @return QList Liste contenant toutes les tâches.
+     * @return QList Liste contenant toutes les pointeur sur les tâches.
      */
     QList<QSharedPointer<Tache>> getListeTaches() const;
+
+    QVariantList getTachesAsVariantList() const;
 
 signals:
 
     /**
-     * @brief Signal émis lorsqu'une nouvelle tâche est ajoutée.
+     * @brief Signal émis lorsque une tache est ajoutée, supprimée, ou modifiée
      */
-    void tacheAjoutee();
-
-    /**
-     * @brief Signal émis lorsqu'une tâche est modifiée.
-     */
-    void tacheModifiee();
-
-    /**
-     * @brief Signal émis lorsqu'une tâche est supprimée.
-     */
-    void tacheSuprimee();
+    void tacheUpdate();
 
 private:
 
