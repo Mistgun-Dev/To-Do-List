@@ -14,14 +14,14 @@ GestionTaches::~GestionTaches()
 
 }
 
-void GestionTaches::ajouterTache(Tache &tache)
+void GestionTaches::ajouterTache(QSharedPointer<Tache>& tache)
 {
 
 }
 
 void GestionTaches::ajouterTache(int id, const QString &titre, const QString &note, const QDateTime &dateHeure, Priority priority)
 {
-    Tache newTache(id, titre, note, dateHeure, priority);
+    QSharedPointer<Tache> newTache = QSharedPointer<Tache>::create(id, titre, note, dateHeure, priority);
     listeTaches.append(newTache);
 
     emit tacheAjoutee();
@@ -37,17 +37,17 @@ void GestionTaches::supprimerTache(int id)
 
 }
 
-void GestionTaches::modifierTache(int id, const Tache &nouvelleTache)
+void GestionTaches::modifierTache(int id, const QSharedPointer<Tache>& nouvelleTache)
 {
 
 }
 
-Tache GestionTaches::getTache(int id) const
+QSharedPointer<Tache> GestionTaches::getTache(int id) const
 {
 
 }
 
-QList<Tache> GestionTaches::getListeTaches() const
+QList<QSharedPointer<Tache>> GestionTaches::getListeTaches() const
 {
 
 }
