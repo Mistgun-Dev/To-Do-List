@@ -75,7 +75,7 @@ public:
      * @brief Récupère la liste complète des tâches.
      * @return QList Liste contenant toutes les pointeur sur les tâches.
      */
-    QList<Tache*> getListeTaches() const;
+    QList<Tache> getListeTaches() const;
 
 signals:
 
@@ -96,7 +96,7 @@ signals:
 
 private:
 
-    QList<Tache*> listeTaches; /**< Liste des tâches. */
+    QList<Tache> listeTaches; /**< Liste des tâches. */
 };
 
 #endif // GESTIONTACHES_H

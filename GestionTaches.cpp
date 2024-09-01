@@ -49,7 +49,7 @@ Tache GestionTaches::getTache(int id) const
 
 }
 
-QList<Tache*> GestionTaches::getListeTaches() const
+QList<Tache> GestionTaches::getListeTaches() const
 {
 
 }

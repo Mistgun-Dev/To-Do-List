@@ -4,7 +4,7 @@ import QtQuick.Layouts 6.7
 
 Item {
     anchors.fill: parent
-
+/*
     Column {
         spacing: 10
 
@@ -135,4 +135,5 @@ Item {
             }
         }
     }
+    */
 }
