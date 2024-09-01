@@ -8,9 +8,14 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    GestionTaches gestionTaches;
 
+    //Créationd 'un instance de la classe GestionTaches avec SharedPonter pour éviter les problemes de mémoire et de compatibilité
+    //QSharedPointer<GestionTaches> gestionTaches = QSharedPointer<GestionTaches>::create();
+    //engine.rootContext()->setContextProperty("gestionTaches", gestionTaches.data());
+
+    GestionTaches gestionTaches;
     engine.rootContext()->setContextProperty("gestionTaches", &gestionTaches);
+    //engine.rootContext()->setContextProperty("listeTache", gestionTaches.getTachesAsVariantList());
 
     const QUrl url(QStringLiteral("qrc:/To-Do-List/Main.qml"));
 

@@ -4,6 +4,7 @@
 #include "tache.h"
 #include <QSharedPointer>
 #include <QList>
+
 /**
  * @class GestionTaches
  * @brief Classe permettant de gérer une liste de tache.
@@ -15,7 +16,7 @@ class GestionTaches : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<Tache> listeTaches READ getListeTaches NOTIFY tacheAjoutee)
+    Q_PROPERTY(QList<QSharedPointer<Tache>> listeTaches READ getListeTaches NOTIFY tacheAjoutee)
 
 public:
 
@@ -33,7 +34,7 @@ public:
      * @brief Ajoute une tâche déjà créée à la liste des tâches.
      * @param tache Référence à une tâche déja créée, à ajouter à la liste.
      */
-    void ajouterTache(Tache& tache);
+    void ajouterTache(QSharedPointer<Tache>& tache);
 
     /**
      * @brief Crée et ajoute une tâche à la liste avec les attributs spécifiés.
@@ -62,20 +63,22 @@ public:
      * @param id Identifiant unique de la tâche à modifier.
      * @param nouvelleTache Référence à la nouvelle tâche qui remplacera l'ancienne.
      */
-    void modifierTache(int id, const Tache& nouvelleTache);
+    void modifierTache(int id, const QSharedPointer<Tache>& nouvelleTache);
 
     /**
      * @brief Récupère une tâche à partir de son identifiant.
      * @param id Identifiant unique de la tâche à récupérer.
      * @return Tache Tache correspondant à l'identifiant renseigné.
      */
-    Tache getTache(int id) const;
+    QSharedPointer<Tache> getTache(int id) const;
 
     /**
      * @brief Récupère la liste complète des tâches.
      * @return QList Liste contenant toutes les pointeur sur les tâches.
      */
-    QList<Tache> getListeTaches() const;
+    QList<QSharedPointer<Tache>> getListeTaches() const;
+
+    //Q_INVOKABLE QVariantList getTachesAsVariantList() const;
 
 signals:
 
@@ -96,7 +99,7 @@ signals:
 
 private:
 
-    QList<Tache> listeTaches; /**< Liste des tâches. */
+    QList<QSharedPointer<Tache>> listeTaches; /**< Liste des tâches. */
 };
 
 #endif // GESTIONTACHES_H
