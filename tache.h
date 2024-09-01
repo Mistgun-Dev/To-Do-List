@@ -22,17 +22,19 @@ enum class Priority { HIGH, MEDIUM, LOW };
  * Cette classe encapsule les informations d'une tâche et fournit des méthodes pour accéder
  * et modifier ces informations.
  */
-class Tache : public QObject
+class Tache //: public QObject
 {
-    Q_OBJECT
+    //Q_OBJECT
     QML_ELEMENT
 
+    /*
     Q_PROPERTY(int id READ getId WRITE setId NOTIFY idChanged)
     Q_PROPERTY(QString titre READ getTitre WRITE setTitre NOTIFY titreChanged)
     Q_PROPERTY(QString note READ getNote WRITE setNote NOTIFY noteChanged)
     Q_PROPERTY(QDateTime dateHeure READ getDateHeure WRITE setDateHeure NOTIFY dateHeureChanged)
     Q_PROPERTY(bool isCompleted READ getCompleted WRITE setCompleted NOTIFY isCompletedChanged)
     Q_PROPERTY(Priority priority READ getPriority WRITE setPriority NOTIFY priorityChanged)
+    */
 
 public:
 
@@ -153,37 +155,16 @@ public:
      */
     Priority getPriority();
 
+    /*
 signals:
 
-    /**
-     * @brief Signal émis lorsque l'identifiant de la tâche est modifié.
-     */
     void idChanged();
-
-    /**
-     * @brief Signal émis lorsque le titre de la tâche est modifié.
-     */
     void titreChanged();
-
-    /**
-     * @brief Signal émis lorsque la note de la tâche est modifiée.
-     */
     void noteChanged();
-
-    /**
-     * @brief Signal émis lorsque la date et l'heure de la tâche sont modifiées.
-     */
     void dateHeureChanged();
-
-    /**
-     * @brief Signal émis lorsque l'état d'accomplissement de la tâche est modifié.
-     */
     void isCompletedChanged();
-
-    /**
-     * @brief Signal émis lorsque la priorité de la tâche est modifiée.
-     */
     void priorityChanged();
+    */
 
 private:
     int m_id;               // Identifiant unique de la tâche.
