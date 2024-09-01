@@ -18,6 +18,7 @@ qt_add_qml_module(appTo-Do-List
     QML_FILES
         Main.qml
         MainPage.qml
+        TacheSection.qml
     SOURCES
         GestionTaches.h GestionTaches.cpp
         Tache.h Tache.cpp
