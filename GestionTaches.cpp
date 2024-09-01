@@ -26,24 +26,24 @@ void GestionTaches::ajouterTache(int id, const QString &titre, const QString &no
     QSharedPointer<Tache> newTache = QSharedPointer<Tache>::create(id, titre, note, dateHeure, priority);
     listeTaches.append(newTache);
 
-    emit tacheAjoutee();
+    emit tacheUpdate();
 }
 
 
 
 void GestionTaches::ajouterTacheRapide(const QString &titre)
 {
-
+    emit tacheUpdate();
 }
 
 void GestionTaches::supprimerTache(int id)
 {
-
+    emit tacheUpdate();
 }
 
 void GestionTaches::modifierTache(int id, const QSharedPointer<Tache>& nouvelleTache)
 {
-
+    emit tacheUpdate();
 }
 
 QSharedPointer<Tache> GestionTaches::getTache(int id) const
@@ -56,7 +56,6 @@ QList<QSharedPointer<Tache>> GestionTaches::getListeTaches() const
     return listeTaches;
 }
 
-/*
 QVariantList GestionTaches::getTachesAsVariantList() const {
     QVariantList variantList;
     for (const auto& tache : listeTaches) {
@@ -70,4 +69,3 @@ QVariantList GestionTaches::getTachesAsVariantList() const {
     }
     return variantList;
 }
-*/

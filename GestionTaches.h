@@ -16,7 +16,9 @@ class GestionTaches : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QSharedPointer<Tache>> listeTaches READ getListeTaches NOTIFY tacheAjoutee)
+    //Q_PROPERTY(QList<QSharedPointer<Tache>> listeTaches READ getListeTaches NOTIFY tacheAjoutee)
+    Q_PROPERTY(QVariantList listeTaches READ getTachesAsVariantList NOTIFY tacheUpdate)
+
 
 public:
 
@@ -78,24 +80,14 @@ public:
      */
     QList<QSharedPointer<Tache>> getListeTaches() const;
 
-    //Q_INVOKABLE QVariantList getTachesAsVariantList() const;
+    QVariantList getTachesAsVariantList() const;
 
 signals:
 
     /**
-     * @brief Signal émis lorsqu'une nouvelle tâche est ajoutée.
+     * @brief Signal émis lorsque une tache est ajoutée, supprimée, ou modifiée
      */
-    void tacheAjoutee();
-
-    /**
-     * @brief Signal émis lorsqu'une tâche est modifiée.
-     */
-    void tacheModifiee();
-
-    /**
-     * @brief Signal émis lorsqu'une tâche est supprimée.
-     */
-    void tacheSuprimee();
+    void tacheUpdate();
 
 private:
 

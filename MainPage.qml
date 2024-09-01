@@ -12,9 +12,9 @@ Item {
         height: parent.height
         spacing: 10
 
+        //-----------------------------------------------------------------------------------------------------
         // Section "Today"
         Item {
-
             width: parent.width
             height: headerToday.height + (listViewToday.visible ? listViewToday.height : 0)
 
@@ -49,20 +49,15 @@ Item {
                     visible: true
 
                     model: ListModel {
-                               id: tachesModel
-                               Component.onCompleted: {
-                                   var taches = gestionTaches.getTachesAsVariantList();
-                                   for (var i = 0; i < taches.length; i++) {
-                                       tachesModel.append(taches[i]);
-                                   }
-                               }
+                        id: tacheTodayModel
+                        Component.onCompleted: {
+                            for (var i = 0; i < gestionTaches.listeTaches.length; i++) {
+                                var tache = gestionTaches.listeTaches[i];
+                                append(tache);
+                            }
+                        }
                     }
 
-                    /*model: gestionTaches.listeTaches.filter(function(tache) {
-                        var now = new Date()
-                        var endOfWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate() + (7 - now.getDay()))
-                        return tache.dateHeure.date() > Qt.formatDate(now, "yyyy-MM-dd") && tache.dateHeure.date() <= Qt.formatDate(endOfWeek, "yyyy-MM-dd")
-                    })*/
                     delegate: Text {
                         text: model.titre
                         padding: 10
@@ -71,7 +66,7 @@ Item {
             }
         }
 
-        /*
+        //-----------------------------------------------------------------------------------------------------
         // Section "This Week"
         Item {
             id: thisWeekSection
@@ -79,6 +74,9 @@ Item {
             height: headerThisWeek.height + (listViewThisWeek.visible ? listViewThisWeek.height : 0)
 
             Column {
+                width: parent.width
+                height: parent.height
+
                 Rectangle {
                     id: headerThisWeek
                     width: parent.width
@@ -88,6 +86,7 @@ Item {
                     Text {
                         anchors.centerIn: parent
                         text: "This Week"
+                        font.pixelSize: 20
                     }
 
                     MouseArea {
@@ -101,20 +100,26 @@ Item {
                 ListView {
                     id: listViewThisWeek
                     width: parent.width
+                    height: itemHeight * model.count
                     visible: false
-                    model: gestionTaches.listeTaches.filter(function(tache) {
-                        var now = new Date()
-                        var endOfWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate() + (7 - now.getDay()))
-                        return tache.dateHeure.date() > Qt.formatDate(now, "yyyy-MM-dd") && tache.dateHeure.date() <= Qt.formatDate(endOfWeek, "yyyy-MM-dd")
-                    })
+                    model: ListModel {
+                        id: tacheThisWeekModel
+                        Component.onCompleted: {
+                            for (var i = 0; i < gestionTaches.listeTaches.length; i++) {
+                                var tache = gestionTaches.listeTaches[i];
+                                append(tache);
+                            }
+                        }
+                    }
                     delegate: Text {
-                        text: modelData.titre
+                        text: model.titre
                         padding: 10
                     }
                 }
             }
         }
 
+        //-----------------------------------------------------------------------------------------------------
         // Section "Later"
         Item {
             id: laterSection
@@ -122,6 +127,9 @@ Item {
             height: headerLater.height + (listViewLater.visible ? listViewLater.height : 0)
 
             Column {
+                width: parent.width
+                height: parent.height
+
                 Rectangle {
                     id: headerLater
                     width: parent.width
@@ -131,6 +139,7 @@ Item {
                     Text {
                         anchors.centerIn: parent
                         text: "Later"
+                        font.pixelSize: 20
                     }
 
                     MouseArea {
@@ -144,72 +153,42 @@ Item {
                 ListView {
                     id: listViewLater
                     width: parent.width
+                    height: itemHeight * model.count
                     visible: false
-                    model: gestionTaches.listeTaches.filter(function(tache) {
-                        var now = new Date()
-                        var endOfWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate() + (7 - now.getDay()))
-                        return tache.dateHeure.date() > Qt.formatDate(endOfWeek, "yyyy-MM-dd")
-                    })
+                    model: ListModel {
+                        id: tacheLaterModel
+                        Component.onCompleted: {
+                            for (var i = 0; i < gestionTaches.listeTaches.length; i++) {
+                                var tache = gestionTaches.listeTaches[i];
+                                append(tache);
+                            }
+                        }
+                    }
                     delegate: Text {
-                        text: modelData.titre
+                        text: model.titre
                         padding: 10
                     }
                 }
             }
         }
-    */
     }
 
-}
-
-
-
-/*
-import QtQuick 6.7
-import QtQuick.Controls 6.7
-import QtQuick.Layouts 6.7
-
-Item {
-
-    Column {
-        width: parent.width
-        height: parent.height
-        spacing: 10
-        Rectangle {
-            id: headerToday
-            width: parent.width
-            height: 40
-            color: "red"
-            border.color: "black"
-
-            Text {
-                anchors.centerIn: parent
-                text: "Today"
-                color: "white"
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    listViewToday.visible = !listViewToday.visible
-                }
-            }
-        }
-
-        ListView {
-            id: listViewToday
-            width: parent.width
-            height: 100
-            visible: false
-            model: ListModel {
-                ListElement { titre: "Task 1" }
-                ListElement { titre: "Task 2" }
-            }
-            delegate: Text {
-                text: model.titre
-                padding: 10
+    //-----------------------------------------------------------------------------------------------------
+    // Gestion des connexions pour actualiser la vue lorsqu'on ajoute, supprime, ou modifie une tache
+    Connections {
+        target: gestionTaches
+        onTacheUpdate: {
+            tacheTodayModel.clear();
+            for (var i = 0; i < gestionTaches.listeTaches.length; i++) {
+                var tache = gestionTaches.listeTaches[i];
+                tacheTodayModel.append(tache);
             }
         }
     }
 }
-*/
+
+/*model: gestionTaches.listeTaches.filter(function(tache) {
+    var now = new Date()
+    var endOfWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate() + (7 - now.getDay()))
+    return tache.dateHeure.date() > Qt.formatDate(now, "yyyy-MM-dd") && tache.dateHeure.date() <= Qt.formatDate(endOfWeek, "yyyy-MM-dd")
+})*/
