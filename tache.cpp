@@ -14,7 +14,7 @@ void Tache::setId(const int& id)
 {
     if(m_id != id){
         m_id = id;
-        emit idChanged();
+        //emit idChanged();
     }
 }
 
@@ -27,7 +27,7 @@ void Tache::setTitre(const QString& titre)
 {
     if(m_titre != titre){
         m_titre = titre;
-        emit titreChanged();
+        //emit titreChanged();
     }
 }
 
@@ -41,7 +41,7 @@ void Tache::setNote(const QString& note)
 {
     if(m_note != note){
         m_note = note;
-        emit noteChanged();
+        //emit noteChanged();
     }
 }
 
@@ -55,14 +55,14 @@ void Tache::setDateHeure(const QDateTime& dateTime)
 {
     if (m_dateHeure != dateTime) {
         m_dateHeure = dateTime;
-        emit dateHeureChanged();
+        //emit dateHeureChanged();
     }
 }
 
 void Tache::setDateHeureActuelle()
 {
     m_dateHeure = QDateTime::currentDateTime();
-    emit dateHeureChanged();
+    //emit dateHeureChanged();
 }
 
 QDateTime Tache::getDateHeure()
@@ -90,7 +90,7 @@ void Tache::setCompleted(bool val)
 {
     if (m_isCompleted != val) {
         m_isCompleted = val;
-        emit isCompletedChanged();
+        //emit isCompletedChanged();
     }
 }
 
@@ -104,7 +104,7 @@ void Tache::setPriority(Priority priority)
 {
     if (m_priority != priority) {
         m_priority = priority;
-        emit priorityChanged();
+        //emit priorityChanged();
     }
 }
 

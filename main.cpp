@@ -2,7 +2,10 @@
 #include <QQmlApplicationEngine>
 #include "GestionTaches.h"
 #include <QQmlContext>
+<<<<<<< HEAD
 
+=======
+>>>>>>> gestionTaches
 
 int main(int argc, char *argv[])
 {
