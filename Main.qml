@@ -13,7 +13,7 @@ Window {
     StackView {
         id: stackView
         anchors.fill: parent
-        //initialItem: ""
+        initialItem: "MainPage.qml"
 
     }
 

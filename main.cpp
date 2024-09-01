@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "GestionTaches.h"
+#include <QQmlContext>
 
 
 int main(int argc, char *argv[])

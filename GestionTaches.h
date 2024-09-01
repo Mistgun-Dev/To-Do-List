@@ -2,7 +2,8 @@
 #define GESTIONTACHES_H
 
 #include "tache.h"
-
+#include <QSharedPointer>
+#include <QList>
 /**
  * @class GestionTaches
  * @brief Classe permettant de gérer une liste de tache.
@@ -13,6 +14,8 @@
 class GestionTaches : public QObject
 {
     Q_OBJECT
+
+    Q_PROPERTY(QList<Tache> listeTaches READ getListeTaches NOTIFY tacheAjoutee)
 
 public:
 
@@ -70,9 +73,9 @@ public:
 
     /**
      * @brief Récupère la liste complète des tâches.
-     * @return QList Liste contenant toutes les tâches.
+     * @return QList Liste contenant toutes les pointeur sur les tâches.
      */
-    QList<Tache> getListeTaches() const;
+    QList<Tache*> getListeTaches() const;
 
 signals:
 
@@ -93,7 +96,7 @@ signals:
 
 private:
 
-    QList<Tache> listeTaches; /**< Liste des tâches. */
+    QList<Tache*> listeTaches; /**< Liste des tâches. */
 };
 
 #endif // GESTIONTACHES_H
