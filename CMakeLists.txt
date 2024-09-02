@@ -17,6 +17,12 @@ qt_add_qml_module(appTo-Do-List
     VERSION 1.0
     QML_FILES
         Main.qml
+        RESOURCES
+        QML_FILES PageSettings.qml
+        QML_FILES PageSize.qml
+        QML_FILES PageThemes.qml
+        QML_FILES PageHome.qml
+        RESOURCES images/arrowLeft.png images/setting.png
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
