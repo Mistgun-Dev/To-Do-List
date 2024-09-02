@@ -3,10 +3,10 @@
 GestionTaches::GestionTaches()
 {
     //Valeurs de tests en dur
-    ajouterTache(0, "Tache 1", "note 1", QDateTime::currentDateTime(), Priority::HIGH);
-    ajouterTache(1, "Tache 2", "note 2", QDateTime::currentDateTime(), Priority::LOW);
-    ajouterTache(2, "Tache 3", "note 3", QDateTime::currentDateTime(), Priority::HIGH);
-    ajouterTache(3, "Tache 4", "note 4", QDateTime::currentDateTime(), Priority::MEDIUM);
+    ajouterTache(0, "Tache 1", "note 1", "02/09/2024 11:21 AM"/*QDateTime::currentDateTime()*/, Priority::HIGH);
+    ajouterTache(1, "Tache 2", "note 2", "02/09/2024 11:21 AM"/*QDateTime::currentDateTime()*/, Priority::LOW);
+    ajouterTache(2, "Tache 3", "note 3", "02/09/2024 11:21 AM"/*QDateTime::currentDateTime()*/, Priority::HIGH);
+    ajouterTache(3, "Tache 4", "note 4", "02/09/2024 11:21 AM"/*QDateTime::currentDateTime()*/, Priority::MEDIUM);
 
     qDebug() << "Nombre de taches : " << listeTaches.size();
 }
@@ -22,7 +22,7 @@ void GestionTaches::ajouterTache(QSharedPointer<Tache>& tache)
     emit tacheUpdate();
 }
 
-void GestionTaches::ajouterTache(int id, const QString &titre, const QString &note, const QDateTime &dateHeure, Priority priority)
+void GestionTaches::ajouterTache(int id, const QString &titre, const QString &note, const /*QDateTime*/QString &dateHeure, Priority priority)
 {
     // QSharedPointer<Tache> newTache = QSharedPointer<Tache>::create(id, titre, note, dateHeure, priority);
     // listeTaches.append(newTache);
@@ -30,6 +30,7 @@ void GestionTaches::ajouterTache(int id, const QString &titre, const QString &no
     // emit tacheUpdate();
 
     QSharedPointer<Tache> nouvelleTache = QSharedPointer<Tache>::create(id, titre, note, dateHeure, priority);
+    qDebug()<< "id: "<< nouvelleTache->getId()<< "titre: " << nouvelleTache->getTitre() << "dateHeure: " << nouvelleTache->getDateHeure()<< "note: " << nouvelleTache->getNote()/*<< "priority: " << nouvelleTache->getPriority()*/;
     ajouterTache(nouvelleTache);
 }
 
@@ -38,7 +39,8 @@ void GestionTaches::ajouterTache(int id, const QString &titre, const QString &no
 void GestionTaches::ajouterTacheRapide(const QString &titre)
 {
     QDateTime dateHeure = QDateTime::currentDateTime();
-    ajouterTache(-1, titre, "", dateHeure, Priority::MEDIUM);
+    QString formattedString = dateHeure.toString("yyyy-MM-dd HH:mm:ss");
+    ajouterTache(-1, titre, "", formattedString, Priority::MEDIUM);
 }
 
 void GestionTaches::supprimerTache(int id)
@@ -85,7 +87,7 @@ QVariantList GestionTaches::getTachesAsVariantList() const {
         tacheMap["id"] = tache->getId();
         tacheMap["titre"] = tache->getTitre();
         tacheMap["note"] = tache->getNote();
-        tacheMap["dateHeure"] = tache->getDateHeure().toString();
+        tacheMap["dateHeure"] = tache->getDateHeure()/*.toString()*/;
         tacheMap["priority"] = static_cast<int>(tache->getPriority());
         variantList.append(tacheMap);
     }

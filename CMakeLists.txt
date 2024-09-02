@@ -22,7 +22,9 @@ qt_add_qml_module(appTo-Do-List
         GestionTaches.h GestionTaches.cpp
         Tache.h Tache.cpp
         RESOURCES
-        RESOURCES images/Calendar_Icon.svg images/Clock_Icon.svg
+        RESOURCES images/Calendar_Icon.svg images/Clock_Icon.svg images/logout.svg
+        QML_FILES TimeSelector.qml
+        QML_FILES DateSelector.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

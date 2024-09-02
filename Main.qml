@@ -3,6 +3,7 @@ import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
 
 Window {
+    id: mainWindow
     width: 740
     height: 480
     minimumWidth: 550
@@ -11,11 +12,11 @@ Window {
     title: "To-Do-List Application"
 
     StackView {
-        id: stackView
-        anchors.fill: parent
-        //initialItem: ""
-
-    }
+            id: stackView
+            anchors.fill: parent
+            initialItem: NewTask {
+            }
+        }
 
     // Loader pour charger dynamiquement des pages
     Loader {

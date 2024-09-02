@@ -1,10 +1,10 @@
 #include "Tache.h"
 
 
-Tache::Tache(): m_id(0), m_titre(""), m_note(""), m_dateHeure(QDateTime::currentDateTime()), m_isCompleted(false), m_priority(Priority::MEDIUM)
+Tache::Tache(): m_id(0), m_titre(""), m_note(""), m_dateHeure(/*QDateTime::currentDateTime()*/""), m_isCompleted(false), m_priority(Priority::MEDIUM)
 {}
 
-Tache::Tache(int id, const QString &titre, const QString &note, const QDateTime &dateHeure, Priority priority)
+Tache::Tache(int id, const QString &titre, const QString &note, const /*QDateTime*/QString &dateHeure, Priority priority)
     : m_id(id), m_titre(titre), m_note(note), m_dateHeure(dateHeure), m_isCompleted(false), m_priority(priority)
 
 {}
@@ -51,7 +51,7 @@ QString Tache::getNote()
 }
 
 
-void Tache::setDateHeure(const QDateTime& dateTime)
+void Tache::setDateHeure(const /*QDateTime*/QString& dateTime)
 {
     if (m_dateHeure != dateTime) {
         m_dateHeure = dateTime;
@@ -61,28 +61,28 @@ void Tache::setDateHeure(const QDateTime& dateTime)
 
 void Tache::setDateHeureActuelle()
 {
-    m_dateHeure = QDateTime::currentDateTime();
+    // m_dateHeure = QDateTime::currentDateTime();
     emit dateHeureChanged();
 }
 
-QDateTime Tache::getDateHeure()
+/*QDateTime*/QString Tache::getDateHeure()
 {
     return m_dateHeure;
 }
 
 QString Tache::getDateHeureAsString()
 {
-    return m_dateHeure.toString("dd/MM/yyyy HH:mm:ss");
+    return m_dateHeure/*.toString("dd/MM/yyyy HH:mm:ss")*/;
 }
 
 QString Tache::getDateAsString()
 {
-    return m_dateHeure.toString("dd/MM/yyyy");
+    return m_dateHeure/*.toString("dd/MM/yyyy")*/;
 }
 
 QString Tache::getHeureAsString()
 {
-    return m_dateHeure.toString("HH:mm:ss");
+    return m_dateHeure/*.toString("HH:mm:ss")*/;
 }
 
 
