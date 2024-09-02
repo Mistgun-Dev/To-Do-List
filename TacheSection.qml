@@ -1,5 +1,6 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
+import QtQuick.Layouts 6.7
 import "UpdateView.js" as Update
 
 Item {
@@ -12,11 +13,23 @@ Item {
     property alias bulleColor: nbTacheBulle.color
     property bool sectionVisible: listView.visible
 
-    property int itemHeight: 30
-    property int itemContainerHeight: itemHeight + listView.bottomMargin + listView.spacing
+    property int collapsedHeight: 30
+    property int expandedHeight: 70
 
     width: parent.width
     height: header.height + listView.height
+
+    // Variable globale pour suivre l'élément actuellement étendu
+    property Rectangle tacheOuverte: null
+
+
+    Component.onCompleted: {
+        if (sectionVisible) {
+            listView.height = collapsedHeight * (tacheModel.count + 1);
+            listView.visible = true;
+        }
+    }
+
 
     Column {
         width: parent.width
@@ -59,19 +72,19 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        if (animationDefilement.running)
-                            animationDefilement.stop();
+                        if (animationDefilementListview.running)
+                            animationDefilementListview.stop();
 
                         // Si la section est visible, cachez-la et animez la hauteur à 0
                         if (listView.visible) {
-                            animationDefilement.to = 0;
+                            animationDefilementListview.to = 0;
                         } else {
                             // Affichez la section et animez la hauteur
                             listView.visible = true;
-                            animationDefilement.to = itemContainerHeight * tacheModel.count;
+                            animationDefilementListview.to = collapsedHeight * tacheModel.count;
                         }
 
-                        animationDefilement.running = true;
+                        animationDefilementListview.running = true;
                     }
                 }
             }
@@ -103,43 +116,113 @@ Item {
             anchors.margins: 20
             visible: false // Initialement non visible
 
-            delegate: Rectangle {
+            delegate: Rectangle
+            {
+                id: itemRect
                 color: "transparent"
                 border.color: "lightgray"
-                height: itemHeight
-                width: parent.width
+                //border.width : 2
+                height: isExpanded ? expandedHeight : collapsedHeight
+                width: parent.width - listView.spacing
                 radius: 10
 
+                property bool isExpanded: false
+
                 Row {
+                    id: rowInRect
                     anchors.fill: parent
-                    anchors.leftMargin: 10
+                    spacing: 10
+                    anchors.leftMargin: 15
+
                     Image {
                         id: iconValidate
                         source: model.isCompleted ? "images/task_checked" : "images/task_unchecked"
-                        width: 20
-                        height: 20
                         anchors.verticalCenter: parent.verticalCenter
+                        width: 17
+                        height: 17
                         fillMode: Image.PreserveAspectFit
 
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
                                 model.isCompleted = !model.isCompleted;
+                                line.visible = !line.visible
                             }
                         }
                     }
 
-                    Text {
-                        text: model.titre
-                        anchors.verticalCenter: parent.verticalCenter
-                        padding: 10
-                        font.pixelSize: 12
+                    Column {
+                        id: columnInRect
+                        anchors.fill: parent
+                        anchors.leftMargin: 25
+
+                        Text {
+                            text: model.titre
+                            anchors.verticalCenter: parent.verticalCenter
+                            font.pixelSize: 12
+                        }
+
+                        Text {
+                            text: model.note
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.verticalCenter: parent.verticalCenter
+                            visible: isExpanded
+                            font.pixelSize: 12
+                            wrapMode: Text.WordWrap
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+
+                                // Si on clique sur une tache et qu'aucune autre est ouvert
+                                if (tacheOuverte !== null && tacheOuverte !== itemRect) {
+                                    tacheOuverte.isExpanded = false
+                                    tacheOuverte.height = collapsedHeight
+                                    listView.height -= (expandedHeight - collapsedHeight)
+                                    tacheOuverte.border.color = "lightgray"
+                                }
+
+                                // Ouvrir le nouvel élément
+                                isExpanded = !isExpanded
+                                itemRect.height = isExpanded ? expandedHeight : collapsedHeight
+                                itemRect.border.color = isExpanded ? "lightgreen" : "lightgray"
+                                if(isExpanded)
+                                    listView.height += (expandedHeight - collapsedHeight)
+                                else
+                                    listView.height -= (expandedHeight - collapsedHeight)
+                                // Mettre à jour l'élément actuellement étendu
+                                tacheOuverte = isExpanded ? itemRect : null
+                            }
+                        }
                     }
+                }
+
+                Behavior on height {
+                    NumberAnimation {
+                        id: animationDefilementTache
+                        duration: 300
+                        easing.type: Easing.InOutBack
+                        onStopped: {
+
+                        }
+                    }
+                }
+
+                // Ligne horizontale au milieu du rectangle lorsqu
+                Rectangle {
+                    id: line
+                    visible: false;
+                    width: columnInRect.width - columnInRect.x
+                    height: 1
+                    x:  columnInRect.x + columnInRect.anchors.leftMargin - rowInRect.spacing
+                    color: "gray"
+                    anchors.verticalCenter: parent.verticalCenter
                 }
             }
 
             NumberAnimation on height {
-                id: animationDefilement
+                id: animationDefilementListview
                 duration: 300
                 easing.type: Easing.Bezier
                 onStopped: {
@@ -151,13 +234,6 @@ Item {
                     }
                 }
             }
-        }
-    }
-
-    Component.onCompleted: {
-        if (sectionVisible) {
-            listView.height = itemContainerHeight * tacheModel.count;
-            listView.visible = true;
         }
     }
 }

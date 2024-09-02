@@ -10,6 +10,7 @@ Item {
     x: 5
     y: 10
 
+
     Column {
         width: parent.width
         height: parent.height
