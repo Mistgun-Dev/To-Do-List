@@ -1,4 +1,4 @@
 build/
 build
-.DS.STORE
+.DS_Store
 *.user
