@@ -19,15 +19,20 @@ qt_add_qml_module(appTo-Do-List
         Main.qml
         MainPage.qml
         TacheSection.qml
+        UpdateView.js
+        FiltrerTaches.js
     SOURCES
         GestionTaches.h GestionTaches.cpp
         Tache.h Tache.cpp
-        RESOURCES images/arrow_down.png
-        RESOURCES images/arrow_up.png
-        RESOURCES images/task_checked.png images/task_unchecked.png
-        QML_FILES
-        QML_FILES UpdateView.js
-        QML_FILES FiltrerTaches.js
+    RESOURCES
+        images/edit.png
+        images/delete.png
+        images/arrow_down.png
+        images/arrow_up.png
+        images/task_checked.png
+        images/task_unchecked.png
+        RESOURCES
+        RESOURCES images/task_checked.png
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

@@ -10,11 +10,10 @@ Item {
     x: 5
     y: 10
 
-
     Column {
         width: parent.width
         height: parent.height
-        spacing: 10
+        spacing: 15
 
         // Section "Today"
         TacheSection {

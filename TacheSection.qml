@@ -14,7 +14,7 @@ Item {
     property bool sectionVisible: listView.visible
 
     property int collapsedHeight: 30
-    property int expandedHeight: 70
+    property int expandedHeight: 60
 
     width: parent.width
     height: header.height + listView.height
@@ -119,7 +119,7 @@ Item {
             delegate: Rectangle
             {
                 id: itemRect
-                color: "transparent"
+                color: "white"
                 border.color: "lightgray"
                 //border.width : 2
                 height: isExpanded ? expandedHeight : collapsedHeight
@@ -134,9 +134,10 @@ Item {
                     spacing: 10
                     anchors.leftMargin: 15
 
+                    //Bouton de validation de la tache
                     Image {
                         id: iconValidate
-                        source: model.isCompleted ? "images/task_checked" : "images/task_unchecked"
+                        source: model.isCompleted ? "images/task_checked.png" : "images/task_unchecked.png"
                         anchors.verticalCenter: parent.verticalCenter
                         width: 17
                         height: 17
@@ -151,6 +152,7 @@ Item {
                         }
                     }
 
+                    //Affichage des attributs de la tache (titre, date, note)
                     Column {
                         id: columnInRect
                         anchors.fill: parent
@@ -193,6 +195,46 @@ Item {
                                     listView.height -= (expandedHeight - collapsedHeight)
                                 // Mettre à jour l'élément actuellement étendu
                                 tacheOuverte = isExpanded ? itemRect : null
+                            }
+                        }
+                    }
+
+                    //Bouton supprimer
+                    Image {
+                        id: iconDelete
+                        source: "images/delete.png"
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 22
+                        height: 22
+                        fillMode: Image.PreserveAspectFit
+                        anchors.rightMargin: 10
+                        anchors.right: parent.right
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                //model.isCompleted = !model.isCompleted;
+                                //line.visible = !line.visible
+                            }
+                        }
+                    }
+
+                    //Bouton éditer
+                    Image {
+                        id: iconEdit
+                        source: "images/edit.png"
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 22
+                        height: 22
+                        fillMode: Image.PreserveAspectFit
+                        anchors.rightMargin: 15
+                        anchors.right: iconDelete.left
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                //model.isCompleted = !model.isCompleted;
+                                //line.visible = !line.visible
                             }
                         }
                     }

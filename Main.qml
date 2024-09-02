@@ -8,6 +8,7 @@ Window {
     minimumWidth: 550
     minimumHeight: 390
     visible: true
+    color: "#f9dd7f"
     title: "To-Do-List Application"
 
     StackView {
