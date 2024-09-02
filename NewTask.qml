@@ -6,7 +6,7 @@ import QtQuick.Layouts 6.7
 Page {
     id: page
     visible: true
-    width: 640
+    width: 740
     height: 480
     title: "New Task"
 

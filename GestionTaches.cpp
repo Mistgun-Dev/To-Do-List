@@ -18,37 +18,59 @@ GestionTaches::~GestionTaches()
 
 void GestionTaches::ajouterTache(QSharedPointer<Tache>& tache)
 {
-
+    listeTaches.append(tache);
+    emit tacheUpdate();
 }
 
 void GestionTaches::ajouterTache(int id, const QString &titre, const QString &note, const QDateTime &dateHeure, Priority priority)
 {
-    QSharedPointer<Tache> newTache = QSharedPointer<Tache>::create(id, titre, note, dateHeure, priority);
-    listeTaches.append(newTache);
+    // QSharedPointer<Tache> newTache = QSharedPointer<Tache>::create(id, titre, note, dateHeure, priority);
+    // listeTaches.append(newTache);
 
-    emit tacheUpdate();
+    // emit tacheUpdate();
+
+    QSharedPointer<Tache> nouvelleTache = QSharedPointer<Tache>::create(id, titre, note, dateHeure, priority);
+    ajouterTache(nouvelleTache);
 }
 
 
 
 void GestionTaches::ajouterTacheRapide(const QString &titre)
 {
-    emit tacheUpdate();
+    QDateTime dateHeure = QDateTime::currentDateTime();
+    ajouterTache(-1, titre, "", dateHeure, Priority::MEDIUM);
 }
 
 void GestionTaches::supprimerTache(int id)
 {
-    emit tacheUpdate();
+    for (int i = 0; i < listeTaches.size(); ++i) {
+        if (listeTaches[i]->getId() == id) {
+            listeTaches.removeAt(i);
+            emit tacheUpdate();
+            return;
+        }
+    }
 }
 
 void GestionTaches::modifierTache(int id, const QSharedPointer<Tache>& nouvelleTache)
 {
-    emit tacheUpdate();
+    for (int i = 0; i < listeTaches.size(); ++i) {
+        if (listeTaches[i]->getId() == id) {
+            listeTaches[i] = nouvelleTache;
+            emit tacheUpdate();
+            return;
+        }
+    }
 }
 
 QSharedPointer<Tache> GestionTaches::getTache(int id) const
 {
-
+    for (const auto& tache : listeTaches) {
+        if (tache->getId() == id) {
+            return tache;
+        }
+    }
+    return QSharedPointer<Tache>(nullptr);
 }
 
 QList<QSharedPointer<Tache>> GestionTaches::getListeTaches() const
