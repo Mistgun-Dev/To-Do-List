@@ -7,8 +7,13 @@ GestionTaches::GestionTaches()
     ajouterTache(1, "Tache 2", "note 2", QDateTime::currentDateTime(), Priority::LOW);
     ajouterTache(2, "Tache 3", "note 3", QDateTime::currentDateTime(), Priority::HIGH);
     ajouterTache(3, "Tache 4", "note 4", QDateTime::currentDateTime(), Priority::MEDIUM);
-
-    qDebug() << "Nombre de taches : " << listeTaches.size();
+    ajouterTache(4, "Tache 5", "note 5", QDateTime(QDate(2024, 9, 5), QTime(0, 0)), Priority::MEDIUM);
+    ajouterTache(5, "Tache 6", "note 6", QDateTime(QDate(2024, 9, 3), QTime(0, 0)), Priority::MEDIUM);
+    ajouterTache(6, "Tache 7", "note 7", QDateTime::currentDateTime(), Priority::MEDIUM);
+    ajouterTache(7, "Tache 8", "note 8", QDateTime(QDate(2024, 9,18), QTime(0, 0)), Priority::MEDIUM);
+    ajouterTache(8, "Tache 9", "note 9", QDateTime(QDate(2024, 9, 24), QTime(0, 0)), Priority::MEDIUM);
+    ajouterTache(9, "Tache 10", "note 10", QDateTime(QDate(2024, 12, 25), QTime(0, 0)), Priority::MEDIUM);
+    ajouterTache(10, "Tache 11", "note 11", QDateTime(QDate(2025, 9, 3), QTime(0, 0)), Priority::MEDIUM);
 }
 
 GestionTaches::~GestionTaches()
@@ -65,6 +70,8 @@ QVariantList GestionTaches::getTachesAsVariantList() const {
         tacheMap["note"] = tache->getNote();
         tacheMap["dateHeure"] = tache->getDateHeure().toString();
         tacheMap["priority"] = static_cast<int>(tache->getPriority());
+        tacheMap["isCompleted"] = tache->getCompleted();
+
         variantList.append(tacheMap);
     }
     return variantList;
