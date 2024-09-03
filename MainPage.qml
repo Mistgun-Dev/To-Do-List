@@ -51,6 +51,7 @@ Item {
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
+                        page.isEditMode = false;
                         dynamicLoader.source = "NewTask.qml";
                     }
                 }

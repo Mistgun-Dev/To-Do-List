@@ -7,7 +7,8 @@ function getFilteredTodayTasks(listeTaches)
         var task = listeTaches[i];
         task.dateHeure = task.dateHeure.split(' ')[0];
 
-        var today = getDateFormatted();
+        var todayDate = new Date();
+        var today = getDateFormatted(todayDate);
         var ret = (task.dateHeure === today);
 
         if (ret) {
@@ -36,7 +37,7 @@ function getFilteredThisWeekTasks(listeTaches)
         var task = listeTaches[i];
         var taskDate = parseDate(task.dateHeure);
 
-        if (taskDate >= startOfWeek && taskDate <= endOfWeek && taskDate !== today) {
+        if (taskDate >= startOfWeek && taskDate <= endOfWeek && getDateFormatted(taskDate) !== getDateFormatted(today)) {
             filteredTasks.push(task);
         }
     }
@@ -76,10 +77,8 @@ function getFilteredLaterTasks(listeTaches)
 
 //---- FONCTION UTILS -----------------------------------------------
 
-function getDateFormatted()
+function getDateFormatted(today)
 {
-    var today = new Date();
-
     // Récupérer le jour, le mois et l'année
     var day = String(today.getDate()).padStart(2, '0');
     var month = String(today.getMonth() + 1).padStart(2, '0'); // Les mois commencent à 0 en JavaScript, donc on ajoute 1

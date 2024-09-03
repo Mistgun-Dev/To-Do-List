@@ -79,9 +79,8 @@ Item {
                         if (listView.visible) {
                             animationDefilementListview.to = 0;
                         } else {
-                            // Affichez la section et animez la hauteur
                             listView.visible = true;
-                            animationDefilementListview.to = collapsedHeight * tacheModel.count;
+                            animationDefilementListview.to = collapsedHeight * (tacheModel.count + 1);
                         }
 
                         animationDefilementListview.running = true;
@@ -233,8 +232,8 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                //model.isCompleted = !model.isCompleted;
-                                //line.visible = !line.visible
+                                NewTask.isEditMode = true;
+                                dynamicLoader.source = "NewTask.qml";
                             }
                         }
                     }
