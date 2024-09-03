@@ -145,7 +145,7 @@ width: parent.width
                     id: control
                     //value: 0.5
                    from: 0
-                   value:0
+                   value: mainWindow.rslide
                    to:100
                    stepSize: 1
 
@@ -185,9 +185,15 @@ width: parent.width
 
                     onValueChanged: {
                         //console.log(idcar.font.pixelSize)
-                       var a=20+(20*control.value/100)
-                        console.log("a "+Math.round(a))
-                        idcar.font.pixelSize = Math.round(a)
+                       // var pge = mainWindow.parametragefSizeReset*2
+
+
+                        var a=mainWindow.parametragefSizeReset +(mainWindow.parametragefSizeReset*(control.value/100))
+                        var c=mainWindow.sousMenufSizeReset +(mainWindow.sousMenufSizeReset*(control.value/100))
+                        mainWindow.parametragefSize = Math.round(a)
+                        mainWindow.sousMenufSize = Math.round(c)
+                       // console.log( Math.round(c))
+                        mainWindow.rslide = control.value
                     }
                 }
 

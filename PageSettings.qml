@@ -61,19 +61,6 @@ width: parent.width
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         Rectangle{
             Layout.fillWidth: true
             height: 80
@@ -92,12 +79,6 @@ width: parent.width
 
         }
 
-
-
-
-
-
-
 }
 
 
@@ -106,16 +87,15 @@ Rectangle {
     Layout.fillWidth: true
     height:50
     //color: mainWindow.sousMenu
-    Text{
+    //color: mainWindow.sousMenu
+
+     Text{
      text: "Thèmes"
      color:mainWindow.sousMenuColor
      font.pixelSize: mainWindow.sousMenufSize
      anchors.verticalCenter: parent.verticalCenter
-     anchors.margins: 20
-    }
 
-
-
+     }
 
     color: mouseSousM.hovered ?  mainWindow.boutonh : stylusSousM.hovered ? mainWindow.boutonh : "transparent"
 
@@ -138,13 +118,7 @@ Rectangle {
                 stackView.push(Qt.resolvedUrl("PageThemes.qml"))
             }
 
-        }
-
-
-
-
-
-
+    }
 }
 
 
@@ -157,16 +131,13 @@ Rectangle {
     Layout.fillWidth: true
     height:50
   //  color:mainWindow.sousMenu
+
     Text{
      text: "Taille des caractères"
      color:mainWindow.sousMenuColor
      font.pixelSize: mainWindow.sousMenufSize
      anchors.verticalCenter: parent.verticalCenter
     }
-
-
-
-
 
     color: mouseSousMclr.hovered ?  mainWindow.boutonh : stylusSousMclr.hovered ? mainWindow.boutonh : "transparent"
 
@@ -189,9 +160,6 @@ Rectangle {
             }
 
         }
-
-
-
 }
 
 
