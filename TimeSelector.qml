@@ -2,7 +2,7 @@ import QtQuick 6.7
 import QtQuick.Controls 6.7
 //import QtQuick.Controls.Basic
 //import QtQuick.Controls.Imagine
-import QtQuick.Controls.Universal
+//import QtQuick.Controls.Universal
 import QtQuick.Layouts 6.7
 import "."
 
@@ -52,7 +52,7 @@ Dialog {
 
                 Tumbler {
                     id: hoursTumbler
-                    model: 12 /*["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11","12"]*/
+                    model: 12
                     delegate: delegateComponent
                     onCurrentItemChanged: {
                         rect.selectedHour = currentIndex+1

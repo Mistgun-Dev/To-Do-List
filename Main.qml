@@ -6,7 +6,7 @@ ApplicationWindow {
 
     property color  parametrage: "#DDBB3C"
     property color  sparametrage: "#668CCD"
-    property int    parametragefSize: 25
+    property int    parametragefSize: 18
     property int    parametragefSizeReset: 25
     property int    sousMenufSize: 18
     property int    sousMenufSizeReset: 18

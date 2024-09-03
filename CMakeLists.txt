@@ -40,6 +40,7 @@ qt_add_qml_module(appTo-Do-List
         images/arrow_up.png
         images/task_checked.png
         images/task_unchecked.png
+        QML_FILES ListeTaches.js
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
