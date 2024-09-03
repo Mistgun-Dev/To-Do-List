@@ -7,14 +7,17 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
     QQmlApplicationEngine engine;
-    Tache tache;
-    GestionTaches gestionTaches;
 
+    //Instace de Tache
+    Tache tache;
     engine.rootContext()->setContextProperty("tache", &tache);
+
+    //Instance gérant la gestion des Taches
+    GestionTaches gestionTaches;
     engine.rootContext()->setContextProperty("gestionTaches", &gestionTaches);
 
+    //Affectation du Main.qml
     const QUrl url(QStringLiteral("qrc:/To-Do-List/Main.qml"));
 
     QObject::connect(

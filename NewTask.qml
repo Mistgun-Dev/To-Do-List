@@ -70,7 +70,8 @@ Page {
                 id: redRect
                 onPressed: {
                     anim.start()
-                    stackView.pop()
+                    dynamicLoader.source = "MainPage.qml"
+                    //stackView.pop()
                 }
                 SequentialAnimation {
                     id: anim

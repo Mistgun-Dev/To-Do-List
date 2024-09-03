@@ -51,7 +51,7 @@ QString Tache::getNote()
 }
 
 
-void Tache::setDateHeure(const /*QDateTime*/QString& dateTime)
+void Tache::setDateHeure(const QString& dateTime)
 {
     if (m_dateHeure != dateTime) {
         m_dateHeure = dateTime;
@@ -65,7 +65,7 @@ void Tache::setDateHeureActuelle()
     emit dateHeureChanged();
 }
 
-/*QDateTime*/QString Tache::getDateHeure()
+QString Tache::getDateHeure()
 {
     return m_dateHeure;
 }

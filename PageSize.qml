@@ -17,7 +17,7 @@ width: parent.width
 
     Rectangle {
         id: menuSettings
-       // color: apw.boutonp
+       // color: mainWindow.boutonp
 
         height:80
         width: 80
@@ -36,7 +36,7 @@ width: parent.width
 
 
 
-        color: mouse.hovered ?  apw.boutonh : stylus.hovered ? apw.boutonh : apw.boutonp
+        color: mouse.hovered ?  mainWindow.boutonh : stylus.hovered ? mainWindow.boutonh : mainWindow.boutonp
 
         HoverHandler {
             id: stylus
@@ -78,12 +78,12 @@ width: parent.width
             Layout.fillWidth: true
             height: 80
             id:thms
-            color: apw.parametrage
+            color: mainWindow.parametrage
 
             Text{
             id:idcar
             text: "Taille des caractères"
-            font.pixelSize: apw.parametragefSize
+            font.pixelSize: mainWindow.parametragefSize
             font.weight: 650
             anchors.horizontalCenter: parent.horizontalCenter
            // anchors.left: parent.left
@@ -119,7 +119,7 @@ width: parent.width
 
                Text{
                    text:"A"
-                   color:apw.sousMenuColor
+                   color:mainWindow.sousMenuColor
                    font.pixelSize: 15
                    anchors.verticalCenter: parent.verticalCenter
 
@@ -213,7 +213,7 @@ width: parent.width
                         anchors.verticalCenter: parent.verticalCenter
                         font.pixelSize: 25
                         text:"A"
-                        color:apw.sousMenuColor
+                        color:mainWindow.sousMenuColor
                     }
                 }
 

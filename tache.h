@@ -51,7 +51,7 @@ public:
      * @param dateHeure Date et heure associées à la tâche.
      * @param priority Niveau de priorité de la tâche.
      */
-    Tache(int id, const QString& titre, const QString& note, const /*QDateTime*/QString& dateHeure, Priority priority);
+    Tache(int id, const QString& titre, const QString& note, const QString& dateHeure, Priority priority);
 
     /**
      * @brief Destructeur de la classe Tache.

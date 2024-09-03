@@ -15,7 +15,7 @@ width: parent.width
         Rectangle{
             Layout.fillWidth: true
             height: 80
-            color: apw.parametrage
+            color: mainWindow.parametrage
 
             Text{
             text: "To Do List"
@@ -52,7 +52,7 @@ width: parent.width
             height: 35
             }
 
-            color: mouse.hovered ?  apw.boutonh : stylus.hovered ? "tomato" : apw.boutonp
+            color: mouse.hovered ?  mainWindow.boutonh : stylus.hovered ? "tomato" : mainWindow.boutonp
 
             HoverHandler {
                 id: stylus

@@ -17,7 +17,7 @@ width: parent.width
 
     Rectangle {
         id: menuSettings
-       // color: apw.boutonp
+       // color: mainWindow.boutonp
 
         height:80
         width: 80
@@ -36,7 +36,7 @@ width: parent.width
 
 
 
-        color: mouse.hovered ?  apw.boutonh : stylus.hovered ? apw.boutonh : apw.boutonp
+        color: mouse.hovered ?  mainWindow.boutonh : stylus.hovered ? mainWindow.boutonh : mainWindow.boutonp
 
         HoverHandler {
             id: stylus
@@ -78,11 +78,11 @@ width: parent.width
             Layout.fillWidth: true
             height: 80
             id:thms
-            color: apw.parametrage
+            color: mainWindow.parametrage
 
             Text{
             text: "Thèmes"
-            font.pixelSize: apw.parametragefSize
+            font.pixelSize: mainWindow.parametragefSize
             font.weight: 650
             anchors.horizontalCenter: parent.horizontalCenter
            // anchors.left: parent.left
@@ -105,11 +105,11 @@ Rectangle {
     id: dark
     Layout.fillWidth: true
     height:50
-    //color: apw.sousMenu
+    //color: mainWindow.sousMenu
     Text{
      text: "Sombre"
-     color:apw.sousMenuColor
-     font.pixelSize: apw.sousMenufSize
+     color:mainWindow.sousMenuColor
+     font.pixelSize: mainWindow.sousMenufSize
      anchors.verticalCenter: parent.verticalCenter
      anchors.margins: 20
     }
@@ -117,7 +117,7 @@ Rectangle {
 
 
 
-    color: mouseSousM.hovered ?  apw.boutonh : stylusSousM.hovered ? apw.boutonh : "transparent"
+    color: mouseSousM.hovered ?  mainWindow.boutonh : stylusSousM.hovered ? mainWindow.boutonh : "transparent"
 
     HoverHandler {
         id: stylusSousM
@@ -134,11 +134,11 @@ Rectangle {
 
     TapHandler {
             onSingleTapped: {
-                apw.theme="black"
-                apw.sousMenuColor="white"
-                apw.parametrage= "#668CCD"
-                apw.boutonp= "#4B6292"
-                apw.boutonh="#2C477C"
+                mainWindow.theme="black"
+                mainWindow.sousMenuColor="white"
+                mainWindow.parametrage= "#668CCD"
+                mainWindow.boutonp= "#4B6292"
+                mainWindow.boutonh="#2C477C"
 
             }
 
@@ -160,11 +160,11 @@ Rectangle {
     id: clr
     Layout.fillWidth: true
     height:50
-  //  color:apw.sousMenu
+  //  color:mainWindow.sousMenu
     Text{
      text: "Clair"
-     color:apw.sousMenuColor
-     font.pixelSize: apw.sousMenufSize
+     color:mainWindow.sousMenuColor
+     font.pixelSize: mainWindow.sousMenufSize
      anchors.verticalCenter: parent.verticalCenter
     }
 
@@ -172,7 +172,7 @@ Rectangle {
 
 
 
-    color: mouseSousMclr.hovered ?  apw.boutonh : stylusSousMclr.hovered ? apw.boutonh : "transparent"
+    color: mouseSousMclr.hovered ?  mainWindow.boutonh : stylusSousMclr.hovered ? mainWindow.boutonh : "transparent"
 
     HoverHandler {
         id: stylusSousMclr
@@ -189,11 +189,11 @@ Rectangle {
 
     TapHandler {
             onSingleTapped: {
-                apw.theme="white"
-                apw.sousMenuColor="black"
-                apw.parametrage= "#DDBB3C"
-                apw.boutonp="#B89C36"
-                apw.boutonh="#897015"
+                mainWindow.theme="white"
+                mainWindow.sousMenuColor="black"
+                mainWindow.parametrage= "#DDBB3C"
+                mainWindow.boutonp="#B89C36"
+                mainWindow.boutonh="#897015"
 
             }
 
