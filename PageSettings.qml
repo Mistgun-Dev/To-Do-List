@@ -106,13 +106,19 @@ Rectangle {
     Layout.fillWidth: true
     height:50
     //color: apw.sousMenu
-    Text{
+
+
+
+
+     Text{
      text: "Thèmes"
      color:apw.sousMenuColor
      font.pixelSize: apw.sousMenufSize
      anchors.verticalCenter: parent.verticalCenter
-     anchors.margins: 20
-    }
+
+     }
+
+
 
 
 
@@ -156,7 +162,11 @@ Rectangle {
     id: clr
     Layout.fillWidth: true
     height:50
-  //  color:apw.sousMenu
+
+
+
+
+
     Text{
      text: "Taille des caractères"
      color:apw.sousMenuColor

@@ -19,7 +19,7 @@ width: parent.width
 
             Text{
             text: "To Do List"
-            font.pixelSize: 25
+            font.pixelSize: apw.parametragefSize
             font.weight: 650
             anchors.left: parent.left
             anchors.margins: 20

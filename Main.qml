@@ -10,7 +10,13 @@ ApplicationWindow {
     title: "To Do List"
     property color  parametrage: "#DDBB3C"
     property color  sparametrage: "#668CCD"
-    property int  parametragefSize: 20
+    property int  parametragefSize: 25
+    property int  parametragefSizeReset: 25
+    property int sousMenufSize: 18
+    property int sousMenufSizeReset: 18
+
+    property int  rslide: 0
+
 
     property color  sMenuRevenir:"#4B6292"
     property color  menuRevenir:"#B89C36"
@@ -28,7 +34,8 @@ ApplicationWindow {
     property color theme: "white"
     property color sousMenu: "transparent"
     property color sousMenuColor: "black"
-    property int sousMenufSize: 18
+
+
 
 
     color:theme
