@@ -121,10 +121,10 @@ Item {
                 id: itemRect
                 color: "white"
                 border.color: "lightgray"
-                //border.width : 2
+                border.width : 2
                 height: isExpanded ? expandedHeight : collapsedHeight
                 width: parent.width - listView.spacing
-                radius: 10
+                radius: 5
 
                 property bool isExpanded: false
 
