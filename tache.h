@@ -30,7 +30,7 @@ class Tache : public QObject
     Q_PROPERTY(int id READ getId WRITE setId NOTIFY idChanged)
     Q_PROPERTY(QString titre READ getTitre WRITE setTitre NOTIFY titreChanged)
     Q_PROPERTY(QString note READ getNote WRITE setNote NOTIFY noteChanged)
-    Q_PROPERTY(/*QDateTime*/QString dateHeure READ getDateHeure WRITE setDateHeure NOTIFY dateHeureChanged)
+    Q_PROPERTY(QString dateHeure READ getDateHeure WRITE setDateHeure NOTIFY dateHeureChanged)
     Q_PROPERTY(bool isCompleted READ getCompleted WRITE setCompleted NOTIFY isCompletedChanged)
     Q_PROPERTY(Priority priority READ getPriority WRITE setPriority NOTIFY priorityChanged)
 
@@ -101,33 +101,10 @@ public:
     void setDateHeure(const /*QDateTime*/QString& dateTime);
 
     /**
-     * @brief Modifie la date et l'heure de la tâche à l'heure actuelle.
-     */
-    void setDateHeureActuelle();
-
-    /**
      * @brief Récupère la date et l'heure de la tâche.
      * @return Date et heure de la tâche sous forme de QDateTime.
      */
-    /*QDateTime*/QString getDateHeure();
-
-    /**
-     * @brief Récupère la date et l'heure sous forme de chaine de caractère.
-     * @return Date et heure sous forme de QString au format "dd/MM/yyyy HH:mm:ss".
-     */
-    QString getDateHeureAsString();
-
-    /**
-     * @brief Récupère la date sous forme de chaine de caractère.
-     * @return Date sous forme de QString au format "dd/MM/yyyy".
-     */
-    QString getDateAsString();
-
-    /**
-     * @brief Récupère l'heure sous forme de chaine de caractère.
-     * @return Heure sous forme de QString au format "HH:mm:ss".
-     */
-    QString getHeureAsString();
+    QString getDateHeure();
 
     /**
      * @brief Modifie l'état d'accomplissement de la tâche.
@@ -173,8 +150,7 @@ private:
     int m_id;               // Identifiant unique de la tâche.
     QString m_titre;        // Titre de la tâche.
     QString m_note;         // Note associée à la tâche.
-    // QDateTime m_dateHeure;  // Date et heure de la tâche au format QDateTime.
-    QString m_dateHeure;  // Date et heure de la tâche au format QString.
+    QString m_dateHeure;    // Date et heure de la tâche au format QString.
     bool m_isCompleted;     // Indique si la tâche est accomplie.
     Priority m_priority;    // Priorité de la tâche (élevée, moyenne ou basse).
 };

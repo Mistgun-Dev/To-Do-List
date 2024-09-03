@@ -5,11 +5,11 @@ function getFilteredTodayTasks(listeTaches)
 
     for (var i = 0; i < listeTaches.length; i++) {
         var task = listeTaches[i];
-        task.dateHeure = task.dateHeure.split(' ')[0];
+        var tmp = task.dateHeure.split(' ')[0];
 
         var todayDate = new Date();
         var today = getDateFormatted(todayDate);
-        var ret = (task.dateHeure === today);
+        var ret = (tmp === today);
 
         if (ret) {
             filteredTasks.push(task);
@@ -91,7 +91,8 @@ function getDateFormatted(today)
 }
 
 // Fonction pour convertir le format "jj/mm/aaaa hh:ss AM/PM" en objet Date
-function parseDate(dateString) {
+function parseDate(dateString)
+{
     var [datePart, timePart] = dateString.split(' ');
     var [day, month, year] = datePart.split('/').map(Number);
     var [hours, minutes] = timePart.split(':').map(Number);

@@ -9,12 +9,6 @@ Item {
     width: parent.width
     height: parent.height
 
-    /*
-    Component.onCompleted{
-        var listeTachesGlobale = gestionTaches.listeTaches
-    }
-    */
-
     //Column{
 
         PageHome
@@ -51,8 +45,9 @@ Item {
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        page.isEditMode = false;
                         dynamicLoader.source = "NewTask.qml";
+                        if (dynamicLoader.item)
+                            dynamicLoader.item.isEditMode = false;
                     }
                 }
             }
@@ -76,8 +71,6 @@ Item {
                         Component.onCompleted: {
                             var listeTachesToday = Filtre.getFilteredTodayTasks(Tache.getListeTaches());
                             //var listeTachesToday = Tache.getListeTaches();
-                            console.log(" NN = ", listeTachesToday.length)
-                            console.log("Today tasks count = ", listeTachesToday.length);
                             for (var i = 0; i < listeTachesToday.length; i++) {
                                 append(listeTachesToday[i]);
                             }
@@ -97,7 +90,6 @@ Item {
                     Component.onCompleted: {
 
                         var listeTachesThisWeek = Filtre.getFilteredThisWeekTasks(Tache.getListeTaches());
-                        console.log("Week tasks count = ", listeTachesThisWeek.length);
                         for (var i = 0; i < listeTachesThisWeek.length; i++) {
                             append(listeTachesThisWeek[i]);
                         }

@@ -3,6 +3,7 @@ import QtQuick.Controls 6.7
 import QtQuick.Controls.Fusion
 import QtQuick.Layouts 6.7
 import "."
+import "ListeTaches.js" as EditTaches
 
 Page {
     id: page
@@ -13,7 +14,6 @@ Page {
 
     /** type:bool Propriété pour déterminer s'il s'agit d'une modification de tâche ou bien création */
     property bool isEditMode: false
-
 
     /** type:bool Propriété pour déterminer si le mode est sombre */
     property bool isDarkMode: false
@@ -28,7 +28,10 @@ Page {
     property color buttonColorLight: "#4CAF50"
 
     /** type:color Propriété pour la couleur du text en mode clair */
-    property color inputFieldColorLight: "gray"
+    property color inputFieldColorLight: "black"
+
+    /** type:color Propriété pour la couleur du holder text en mode clair */
+    property color inputFielHolderdColor: "gray"
 
     /** type:color Propriété pour la couleur du background en mode clair */
     property color backgroundColorLight: "#F7F7F7"
@@ -166,8 +169,8 @@ Page {
             Layout.fillWidth: true
             implicitHeight: page.height* 0.08 /*40*/
             placeholderText: "Task name"
-            text:  page.isEditMode ? qsTr("l'ancien titre") : qsTr("")
-            placeholderTextColor : inputFieldColor
+            text:  page.isEditMode ? tache.titre : qsTr("")
+            placeholderTextColor : inputFielHolderdColor
             color : inputFieldColor
             font.pixelSize: fontSizeInput
             background: Rectangle {
@@ -194,12 +197,12 @@ Page {
                 color : inputFieldColor
                 placeholderTextColor : inputFieldColor
                 font.pixelSize: fontSizeInput
+                text: page.isEditMode ? EditTaches.getDateParse(tache.dateHeure) : ""
                 background: Rectangle {
                     color: backgroundColor
                     border.color: "lightgray"
                     radius: 5
                 }
-                onEditingFinished: tache.titre= textfieldate.text
             }
 
             Button {
@@ -229,15 +232,17 @@ Page {
                 Layout.fillWidth: true
                 implicitHeight: page.height* 0.08
                 placeholderText: "hh:mm AP"
+                text: "12:34 AM" //page.isEditMode ? EditTaches.getHeureParse(tache.dateHeure) : ""
                 color : inputFieldColor
                 placeholderTextColor : inputFieldColor
                 font.pixelSize: fontSizeInput
-                background: Rectangle {
-                    color: backgroundColor
-                    border.color: "lightgray"
-                    radius: 5
-                }
-                onEditingFinished: tache.titre= textfieltime.text
+                background:
+                    Rectangle
+                    {
+                        color: backgroundColor
+                        border.color: "lightgray"
+                        radius: 5
+                    }
             }
 
             Button {
@@ -283,7 +288,7 @@ Page {
 
         TextArea {
             id: note
-            text:  page.isEditMode ? qsTr("la note ancienne") : qsTr("")
+            text:  page.isEditMode ? tache.note : qsTr("")
             color : inputFieldColor
             font.pixelSize: fontSizeInput
             Layout.fillWidth: true
@@ -295,7 +300,7 @@ Page {
                 radius: 5
             }
 
-            onEditingFinished : {
+            onEditingFinished :{
                 tache.note= note.text
             }
         }
@@ -311,13 +316,24 @@ Page {
             Layout.alignment: Qt.AlignBottom
             Layout.fillWidth: true
             onClicked: {
-                console.log("Task added")
-                tache.id = page.generateRandomInt(1, 100);
-                //console.log("Task added")
-                tache.dateHeure = textfieldate.text +" "+ textfieltime.text
-                tache.priority = 1
-                gestionTaches.ajouterTache(tache.id, tache.titre, tache.note, tache.dateHeure, tache.priority)
-                stackView.pop()
+
+                if(isEditMode){
+                    tache.titre = textfieldtitre.text
+                    tache.dateHeure = textfieldate.text + " " + textfieltime.text
+                    tache.note = note.text
+
+                    gestionTaches.modifierTache(tache.id, tache)
+                }
+                else
+                {
+                    tache.id = page.generateRandomInt(1, 100);
+                    tache.dateHeure = textfieldate.text +" "+ textfieltime.text
+                    tache.priority = 1
+                    gestionTaches.ajouterTache(tache.id, tache.titre, tache.note, tache.dateHeure, tache.priority)
+                }
+
+                //stackView.pop()
+                dynamicLoader.source = "MainPage.qml";
             }
         }
     }
@@ -326,21 +342,6 @@ Page {
         //color: "white"
         color: backgroundColor
     }
-
-    // Ajouter un bouton pour basculer entre le mode clair et le mode sombre
-        Button {
-            text: isDarkMode ? "Mode clair" : "Mode sombre"
-            background: Rectangle {
-                color: buttonColor
-                radius: 10
-            }
-            anchors.bottom: parent.bottom
-            anchors.right: parent.right
-            anchors.margins: 20
-            onClicked: {
-                isDarkMode = !isDarkMode
-            }
-        }
 
     //Dialog pour sélectionner la date
     DateSelector {

@@ -2,6 +2,7 @@ import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
 import "UpdateView.js" as Update
+import "ListeTaches.js" as EditTaches
 
 Item {
     id: tacheSection
@@ -212,8 +213,7 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                //model.isCompleted = !model.isCompleted;
-                                //line.visible = !line.visible
+                                gestionTaches.supprimerTaches(model.id);
                             }
                         }
                     }
@@ -232,8 +232,13 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                NewTask.isEditMode = true;
                                 dynamicLoader.source = "NewTask.qml";
+                                tache.titre = model.titre;
+                                tache.note = model.note;
+                                tache.dateHeure = model.dateHeure;
+                                tache.id = model.id;
+                                tache.priority = model.priority;
+                                dynamicLoader.item.isEditMode = true;
                             }
                         }
                     }
