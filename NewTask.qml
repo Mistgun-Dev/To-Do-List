@@ -11,41 +11,79 @@ Page {
     height: mainWindow.height
     title: "New Task"
 
-    // Propriété pour déterminer le mode
-    property bool isDarkMode: false
-
-    // Propriétés pour le mode clair
-    property color headerColorLight: "#4CAF50"
-    property color textColorLight: "#4CAF50"
-    property color buttonColorLight: "#4CAF50"
-    property color inputFieldColorLight: "gray"
-    property color backgroundColorLight: "#F7F7F7"
-
-    // Propriétés pour le mode sombre
-    property color headerColorDark: "#2E7D32"
-    property color textColorDark: "#2E7D32"
-    property color buttonColorDark: "#81C784"
-    property color inputFieldColorDark: "#FFFFFF"
-    property color backgroundColorDark: "#303030"
-
-    // Liaison des couleurs en fonction du mode
-    property color headerColor: isDarkMode ? headerColorDark : headerColorLight
-    property color textColor: isDarkMode ? textColorDark : textColorLight
-    property color buttonColor: isDarkMode ? buttonColorDark : buttonColorLight
-    property color inputFieldColor: isDarkMode ? inputFieldColorDark : inputFieldColorLight
-    property color backgroundColor: isDarkMode ? backgroundColorDark : backgroundColorLight
-
-    // Propriétés pour la taille de police
-    property int fontSize: 20
-
-    // Choix de la taille de police selon les besoins
-    property int fontSizeHeader: fontSize
-    property int fontSizeLabel: fontSize - 2
-    property int fontSizeInput: fontSize - 4
-
+    /** type:bool Propriété pour déterminer s'il s'agit d'une modification de tâche ou bien création */
     property bool isEditMode: false
 
-    //fonction pour génerer un int aléatoire pour l'affecter à l'id d'une tâche
+
+    /** type:bool Propriété pour déterminer si le mode est sombre */
+    property bool isDarkMode: false
+
+    /** type:color Propriété pour la couleur du header en mode clair */
+    property color headerColorLight: "#4CAF50"
+
+    /** type:color Propriété pour la couleur du label en mode clair */
+    property color textColorLight: "#4CAF50"
+
+    /** type:color Propriété pour la couleur du bouton en mode clair */
+    property color buttonColorLight: "#4CAF50"
+
+    /** type:color Propriété pour la couleur du text en mode clair */
+    property color inputFieldColorLight: "gray"
+
+    /** type:color Propriété pour la couleur du background en mode clair */
+    property color backgroundColorLight: "#F7F7F7"
+
+    /** type:color Propriété pour la couleur du header en mode sombre */
+    property color headerColorDark: "#2E7D32"
+
+    /** type:color Propriété pour la couleur du label en mode sombre */
+    property color textColorDark: "#2E7D32"
+
+    /** type:color Propriété pour la couleur du bouton en mode sombre */
+    property color buttonColorDark: "#81C784"
+
+    /** type:color Propriété pour la couleur du text en mode sombre */
+    property color inputFieldColorDark: "#FFFFFF"
+
+    /** type:color Propriété pour la couleur du background en mode sombre */
+    property color backgroundColorDark: "#303030"
+
+
+    /** type:color Propriété pour la liaison des couleurs du header en fonction du mode */
+    property color headerColor: isDarkMode ? headerColorDark : headerColorLight
+
+    /** type:color Propriété pour la liaison des couleurs du label en fonction du mode */
+    property color textColor: isDarkMode ? textColorDark : textColorLight
+
+    /** type:color Propriété pour la liaison des couleurs du bouton en fonction du mode */
+    property color buttonColor: isDarkMode ? buttonColorDark : buttonColorLight
+
+    /** type:color Propriété pour la liaison des couleurs du text en fonction du mode */
+    property color inputFieldColor: isDarkMode ? inputFieldColorDark : inputFieldColorLight
+
+    /** type:color Propriété pour la liaison des couleurs du background en fonction du mode */
+    property color backgroundColor: isDarkMode ? backgroundColorDark : backgroundColorLight
+
+
+    /** type:int Propriété pour la taille de police */
+    property int fontSize: 20
+
+    /** type:int Propriété pour la taille de police du text en header */
+    property int fontSizeHeader: fontSize
+
+    /** type:int Propriété pour la taille de police du text du label */
+    property int fontSizeLabel: fontSize - 2
+
+    /** type:int Propriété pour la taille de police du text à entrer */
+    property int fontSizeInput: fontSize - 4
+
+
+    /**
+     * Fonction pour génerer un entier aléatoire pour l'affecter à l'id d'une tâche
+     * @param type:int min la valeur de retour est supérieure ou égale à min
+     * @param type:int max la valeur de retour est inférieure ou égale à max
+     * @return type:int Un entier aléatoire dans l'intervale [min,max]
+     */
     function generateRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -226,6 +264,7 @@ Page {
             color: textColor
             font.pixelSize: fontSizeLabel
         }
+
         // Bouton "Finished Editing"
         Button {
                 text: qsTr("Finished Editing")
@@ -261,6 +300,7 @@ Page {
             }
         }
 
+        // Bouton "Add task" ou "Update task" selon le mode de l'édit
         Button {
             text: page.isEditMode ? qsTr("Update task") : qsTr("Add task")
             font.pixelSize: fontSizeInput
@@ -302,10 +342,12 @@ Page {
             }
         }
 
+    //Dialog pour sélectionner la date
     DateSelector {
         id: dateSelectorDialog
     }
 
+    //Dialog pour sélectionner l'heure
     TimeSelector {
         id: timeSelectorDialog
     }

@@ -24,13 +24,37 @@ Dialog {
         border.color: "transparent"
            anchors.centerIn: parent
 
+        /** type:int Propriété pour contenir l'heure en entier */
+        property int selectedHour: 12
+
+        /** type:int Propriété pour contenir les minutes en entier */
+        property int selectedMinute: 30
+
+        /** type:int Propriété pour contenir l'es minutes'heure en string */
+        property string selectedHourAsString: "01"
+
+        /** type:int Propriété pour contenir les minutes en string */
+        property string selectedMinuteAsString: "01"
+
+        /**
+         * Fonction pour convertir le text du model de Tumbler des heures en valeur de "01" à "12"
+         * @param type:int count le model de Tumbler des heures
+         * @param type:int modelData la valeur afficher sur le Tumbler des heures en entier
+         * @return type:string la valeur afficher sur le Tumbler des heures en string
+         */
         function formatText(count, modelData) {
             var data = count === 12 ? modelData + 1 : modelData;
             return data.toString().length < 2 ? "0" + data : data;
         }
 
-        property int selectedHour: 12
-        property int selectedMinute: 30
+        /**
+         * Fonction pour convertir un nombre entier en string
+         * @param type:int number le nombre à convertir
+         * @return type:string la valeur de conversion en string
+         */
+        function numberToString(number) {
+            return number.toString().length < 2 ? "0" + number : number;
+        }
 
         FontMetrics {
             id: fontMetrics
@@ -56,8 +80,9 @@ Dialog {
                     delegate: delegateComponent
                     onCurrentItemChanged: {
                         rect.selectedHour = currentIndex+1
-                        console.log(rect.selectedHour /*hoursTumbler.currentItem.text*/)
-                        textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHour  /*hoursTumbler.currentItem.text*/ + ":" + rect.selectedMinute + " " + amPmTumbler.currentItem.text}
+                        rect.selectedHourAsString = rect.numberToString(rect.selectedHour)
+                        console.log(rect.selectedHour)
+                        textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text}
                 }
 
                 Tumbler {
@@ -72,8 +97,9 @@ Dialog {
                     }
                     onCurrentItemChanged: {
                         rect.selectedMinute = minutesTumbler.currentItem.text
+                        rect.selectedMinuteAsString = rect.numberToString(rect.selectedMinute)
                         console.log(rect.selectedMinute)
-                        textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHour  /*hoursTumbler.currentItem.text*/ + ":" + rect.selectedMinute + " " + amPmTumbler.currentItem.text
+                        textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
                     }
                 }
 
@@ -83,7 +109,7 @@ Dialog {
                     delegate: delegateComponent
                     onCurrentItemChanged: {
                         console.log(amPmTumbler.currentItem.text)
-                      textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHour  /*hoursTumbler.currentItem.text*/ + ":" + rect.selectedMinute + " " + amPmTumbler.currentItem.text
+                      textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
                     }
                 }
             }
