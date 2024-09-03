@@ -20,7 +20,6 @@ Dialog {
             textfieldate.clear()
             dateSelectorDialog.close(); // Fermer le dialogue sans ajouter la tâche
         }
-        // console.log("Date Selection confirmed");
     }
     onRejected: {
         console.log("Date Selection ignored");
@@ -35,12 +34,6 @@ Dialog {
             Layout.fillWidth: true
             model: ["January", "February", "Mars", "April", "May", "Jun", "July", "August", "September", "October", "November", "December"]
             currentIndex: 1
-        //     onCurrentIndexChanged: {
-        //         calendar.month = currentMonth
-        //     }
-        //     yearSelector.onCurrentIndexChanged: {
-        //         calendarYear = years[currentYear]
-        //     }
         }
 
         ComboBox {
@@ -57,7 +50,7 @@ Dialog {
                 ListElement { year: 2029 }
             }
             textRole: "year"
-            currentIndex: 6 // Pour l'année 2029
+            currentIndex: 1 // Pour l'année 2024
         }
 
         GridLayout {
@@ -86,12 +79,28 @@ Dialog {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
+            /** type:var Propriété pour la date */
             property var selectedDate: new  Date()
+
+            /** type:string Propriété pour contenir le mois en string */
+            property string selectedMonthAsString: "01"
+
+            /** type:string Propriété pour contenir le jour en string */
+            property string selectedDayAsString: "01"
+
+            /**
+             * Fonction pour convertir un nombre entier en string
+             * @param type:int number le nombre à convertir
+             * @return type:string la valeur de conversion en string
+             */
+            function numberToString(number) {
+                return number.toString().length < 2 ? "0" + number : number;
+            }
 
                 delegate: Item {
                     id: delegateItem
 
-                    // compare dates without time
+                    /** type:bool Propriété pour comparer des dates sans heures */
                     property bool isSelectedDay: (
                                     model.year  === grid.selectedDate.getFullYear()
                                     && model.month+1 === grid.selectedDate.getMonth()+1
@@ -106,11 +115,13 @@ Dialog {
                     }
 
                 }
+
                 onPressed: function (date) {
                     selectedDate = date
+                    grid.selectedMonthAsString = grid.numberToString(grid.selectedDate.getMonth()+1)
+                    grid.selectedDayAsString = grid.numberToString(grid.selectedDate.getDate())
                     console.log(grid.selectedDate)
-                    console.log(grid.selectedDate.getDate())
-                    textfieldate.text= grid.selectedDate.getDate()+"/"+(grid.selectedDate.getMonth()+1) +"/"+grid.selectedDate.getFullYear()
+                    textfieldate.text= grid.selectedDayAsString+"/"+grid.selectedMonthAsString +"/"+grid.selectedDate.getFullYear()
                 }
         }
         }
