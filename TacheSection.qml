@@ -65,7 +65,7 @@ Item {
                     // Nom de la section
                     Text {
                         id: headerText
-                        font.pixelSize: 15
+                        font.pixelSize: mainWindow.sousMenufSize
                         anchors.verticalCenter: parent.verticalCenter
                         font.bold: true
                     }
@@ -119,8 +119,8 @@ Item {
 
             delegate: Rectangle {
                 id: itemRect
-                color: "white"
-                border.color: "lightgray"
+                color: mainWindow.tchColor
+                border.color: mainWindow.tchColor
                 border.width: 2
                 height: isExpanded ? expandedHeight : collapsedHeight
                 width: parent.width - listView.spacing
@@ -163,7 +163,7 @@ Item {
                         Text {
                             id: titleText
                             text: model.titre
-                            font.pixelSize: 14
+                            font.pixelSize: mainWindow.tchfSize
                             wrapMode: Text.WordWrap
                             font.bold: true
                             elide: Text.ElideRight
@@ -184,7 +184,8 @@ Item {
                         Text {
                             id: dateText
                             text: model.dateHeure
-                            font.pixelSize: 12
+                            //font.pixelSize: 12
+                            font.pixelSize: mainWindow.tchfSizeDate
                             wrapMode: Text.WordWrap
                             color: "green"
                             elide: Text.ElideRight

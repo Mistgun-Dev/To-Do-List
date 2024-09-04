@@ -19,10 +19,13 @@ Page {
     property bool isDarkMode: false
 
     /** type:color Propriété pour la couleur du header en mode clair */
-    property color headerColorLight: "#4CAF50"
+    //property color headerColorLight: "#4CAF50"
+    property color headerColorLight: mainWindow.parametrage
 
     /** type:color Propriété pour la couleur du label en mode clair */
-    property color textColorLight: "#4CAF50"
+    //property color textColorLight: "#4CAF50"
+    property color  textColorLight: "#4CAF50"
+     property color textColorLightReset: "#4CAF50"
 
     /** type:color Propriété pour la couleur du bouton en mode clair */
     property color buttonColorLight: "#4CAF50"
@@ -34,7 +37,8 @@ Page {
     property color inputFielHolderdColor: "gray"
 
     /** type:color Propriété pour la couleur du background en mode clair */
-    property color backgroundColorLight: "#F7F7F7"
+    //property color backgroundColorLight: "#F7F7F7"
+    property color backgroundColorLight: mainWindow.theme
 
     /** type:color Propriété pour la couleur du header en mode sombre */
     property color headerColorDark: "#2E7D32"
@@ -72,7 +76,7 @@ Page {
     property int fontSize: mainWindow.sousMenufSize
 
     /** type:int Propriété pour la taille de police du text en header */
-    property int fontSizeHeader: fontSize + 7
+    property int fontSizeHeader: mainWindow.parametragefSize
 
     /** type:int Propriété pour la taille de police du text du label */
     property int fontSizeLabel: fontSize
@@ -152,7 +156,8 @@ Page {
 
             Label {
                 text: page.isEditMode ? qsTr("Edit task") : qsTr("New task")
-                color: "white"
+                //color: "white"
+                color: "black"
                 font.pixelSize: fontSizeHeader
                 font.bold: true
                 Layout.alignment: Qt.AlignCenter
@@ -185,7 +190,8 @@ Page {
             color : inputFieldColor
             font.pixelSize: fontSizeInput
             background: Rectangle {
-                color: backgroundColor
+                //color:backgroundColor
+                color: mainWindow.txtField
                 border.color: "lightgray"
                 radius: 5
             }
@@ -210,7 +216,8 @@ Page {
                 font.pixelSize: fontSizeInput
                 text: page.isEditMode ? EditTaches.getDateParse(tache.dateHeure) : ""
                 background: Rectangle {
-                    color: backgroundColor
+                    //color: backgroundColor
+                    color: mainWindow.txtField
                     border.color: "lightgray"
                     radius: 5
                 }
@@ -250,7 +257,8 @@ Page {
                 background:
                     Rectangle
                     {
-                        color: backgroundColor
+                        //color: backgroundColor
+                        color: mainWindow.txtField
                         border.color: "lightgray"
                         radius: 5
                     }
@@ -306,7 +314,8 @@ Page {
             Layout.fillHeight: true
             implicitHeight: page.height* 0.2
             background: Rectangle {
-                color: backgroundColor
+                //color: backgroundColor
+                color:mainWindow.txtField
                 border.color: "lightgray"
                 radius: 5
             }

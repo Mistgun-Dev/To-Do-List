@@ -1,6 +1,7 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
+import "."
 
 
 Item {
@@ -19,8 +20,8 @@ width: parent.width
         id: menuSettings
        // color: mainWindow.boutonp
 
-        height:80
-        width: 80
+        height:55
+        width: 55
 
         Image {
         anchors.verticalCenter: parent.verticalCenter
@@ -28,8 +29,8 @@ width: parent.width
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: 20
         source: "images/arrowLeft.png"
-        width: 35
-        height: 35
+        width: 25
+        height: 25
         }
 
         color: mouse.hovered ?  mainWindow.boutonh : stylus.hovered ? mainWindow.boutonh : mainWindow.boutonp
@@ -72,7 +73,7 @@ width: parent.width
 
         Rectangle{
             Layout.fillWidth: true
-            height: 80
+            height: 55
             id:thms
             color: mainWindow.parametrage
 
@@ -136,6 +137,9 @@ Rectangle {
                 mainWindow.boutonp= "#4B6292"
                 mainWindow.boutonh="#2C477C"
 
+                mainWindow.newTaskAutomatic= mainWindow.stxtField
+                page.textColorLight = "red"
+
             }
 
         }
@@ -187,9 +191,14 @@ Rectangle {
             onSingleTapped: {
                 mainWindow.theme="white"
                 mainWindow.sousMenuColor="black"
-                mainWindow.parametrage= "#DDBB3C"
-                mainWindow.boutonp="#B89C36"
-                mainWindow.boutonh="#897015"
+                //mainWindow.parametrage= "#DDBB3C"
+                //mainWindow.boutonp="#B89C36"
+                //mainWindow.boutonh="#897015"
+                mainWindow.parametrage= mainWindow.parametrageReset
+                mainWindow.boutonp= mainWindow.boutonpReset
+                mainWindow.boutonh= mainWindow.boutonhReset
+
+               // mainWindow.boutonh= mainWindow.txtField
 
             }
 

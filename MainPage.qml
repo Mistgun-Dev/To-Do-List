@@ -11,11 +11,14 @@ Item {
     height: parent.height
     z: 1
 
-        Image {
-            source: "images/background.jpg"
-            anchors.fill: parent
-            fillMode: Image.PreserveAspectCrop
-        }
+        // Image {
+        //     source: "images/background.jpg"
+        //     anchors.fill: parent
+        //     fillMode: Image.PreserveAspectCrop
+        // }
+
+
+
 
         PageHome
         {
@@ -23,34 +26,55 @@ Item {
             z:2
         }
 
+
+
         Column {
             id: column
             width: parent.width
             height: parent.height - buttonAddTask.height - y - 20
             x:5
             y: 50
+
             spacing: 15
 
+
+
+            Row{
+                width: parent.width
+                height: 16
+
+            }
 
             Row{
                 width: parent.width
                 height: 30
                 anchors.leftMargin: 25
                 anchors.rightMargin: 25
+
                 spacing : 5
 
                 TextField {
                     id: newTaskAutomatic
                     width: parent.width - buttonAddAutomaticTask.width - 20
                     height : parent.height
+
+                    background: Rectangle{
+
+                        color:mainWindow.stxtField
+                        border.color: "#cccccc"
+
+                    }
+
+
                     placeholderText: "Entrez une nouvelle tâche"
-                    font.pixelSize: 15
+                    font.pixelSize: mainWindow.tchfSize
                 }
 
                 Button {
                     id: buttonAddAutomaticTask
                     anchors.verticalCenter: parent.verticalCenter
                     text: qsTr("Ajouter")
+                    font.pixelSize: mainWindow.tchfSizeDate
                     width: 150
                     height: 40
                     highlighted: true
@@ -89,7 +113,7 @@ Item {
                 sectionTitre: "Today"
                 color: "transparent"
                 bulleColor: "green"
-                textColor: "black"
+                textColor: mainWindow.sousMenuColor
                 sectionVisible: true
 
                 tacheModel:
@@ -110,7 +134,7 @@ Item {
                 sectionTitre: "This Week"
                 color: "transparent"
                 bulleColor: "orange"
-                textColor: "black"
+                textColor: mainWindow.sousMenuColor
                 sectionVisible: false
                 tacheModel: ListModel {
                     id: thisWeekModel
@@ -129,7 +153,7 @@ Item {
                 sectionTitre: "Later"
                 color: "transparent"
                 bulleColor: "purple"
-                textColor: "black"
+                textColor: mainWindow.sousMenuColor
                 sectionVisible: false
                 tacheModel: ListModel {
                     id: tacheLaterModel
