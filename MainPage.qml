@@ -197,13 +197,16 @@ Item {
                             //
                         }
                         else{
-                            tache.id = 123;
+                            tache.id = Filtre.generateRandomInt(1, 100);
                             tache.titre = newTaskAutomatic.text;
                             tache.note = "";
                             tache.dateHeure = tache.getDateHeureNow();
-                            console.log("TACHE = ", tache.dateHeure);
                             tache.priority = 1;
+
+                            console.log("AJOUT D4UNE TACHE RAPIDE : ", tache.id);
                             gestionTaches.ajouterTache(tache.id, tache.titre, tache.note, tache.dateHeure, tache.priority);
+
+                            dbManager.addTache(gestionTaches.getTache(tache.id))
                             sectionToday.newTaskAdded(tache);
                         }
                     }
@@ -237,6 +240,7 @@ Item {
                     ListModel {
                         id: todayModel
                         Component.onCompleted: {
+                            //var liste = gestionTache.listeTaches;
                             var listeTachesToday = Filtre.getFilteredTodayTasks(Tache.getListeTaches());
                             for (var i = 0; i < listeTachesToday.length; i++) {
                                 append(listeTachesToday[i]);
@@ -360,6 +364,4 @@ Item {
                 }
             }
         }
-
-        //}
 }

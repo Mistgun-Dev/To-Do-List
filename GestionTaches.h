@@ -2,6 +2,7 @@
 #define GESTIONTACHES_H
 
 #include "tache.h"
+#include "database.h"
 #include <QSharedPointer>
 #include <QList>
 
@@ -52,7 +53,7 @@ public:
      * @brief Crée et ajoute une tâche à la date actuelle en ne renseignant que le titre, depuis l'écran principal.
      * @param titre Titre de la tâche.
      */
-    Q_INVOKABLE void ajouterTacheRapide(const QString& titre);
+    Q_INVOKABLE void ajouterTacheRapide(int id, const QString& titre);
 
     /**
      * @brief Supprime une tâche de la liste en fonction de son identifiant.
@@ -72,7 +73,7 @@ public:
      * @param id Identifiant unique de la tâche à récupérer.
      * @return Tache Tache correspondant à l'identifiant renseigné.
      */
-    QSharedPointer<Tache> getTache(int id) const;
+    Q_INVOKABLE QSharedPointer<Tache> getTache(int id) const;
 
     /**
      * @brief Récupère la liste complète des tâches.

@@ -2,6 +2,7 @@
 
 GestionTaches::GestionTaches()
 {
+    /*
      QString format = "dd/MM/yyyy hh:mm AP";
 
     //Valeurs de tests en dur
@@ -24,6 +25,7 @@ GestionTaches::GestionTaches()
 
     //Non valide (antérieure)
     ajouterTache(9, "Tache 10", "note 10", "05/01/2024 11:21 AM", Priority::MEDIUM);
+*/
 }
 
 GestionTaches::~GestionTaches()
@@ -46,13 +48,12 @@ void GestionTaches::ajouterTache(int id, const QString &titre, const QString &no
 
 
 
-void GestionTaches::ajouterTacheRapide(const QString &titre)
+void GestionTaches::ajouterTacheRapide(int id, const QString &titre)
 {
 
     QDateTime dateHeure = QDateTime::currentDateTime();
     QString formattedString = dateHeure.toString("yyyy-MM-dd HH:mm:ss");
-    ajouterTache(-1, titre, "", formattedString, Priority::MEDIUM);
-    qDebug() << "AJOUTTTTTTTTT";
+    ajouterTache(id, titre, "", formattedString, Priority::MEDIUM);
     emit tacheAdded();
 }
 
@@ -77,8 +78,11 @@ void GestionTaches::modifierTache(int id, Tache *nouvelleTache)
     newTache->setNote(nouvelleTache->getNote());
     newTache->setPriority(nouvelleTache->getPriority());
 
+    qDebug() << "recherche de l'id : " << nouvelleTache->getId();
     for (int i = 0; i < listeTaches.size(); ++i) {
+        qDebug() << "i =  " << i << " id = " << listeTaches[i]->getId();
         if (listeTaches[i]->getId() == id) {
+            qDebug() << "TACHE MODIFIEEEEEEEEEEEE";
             listeTaches[i] = newTache;
             emit tacheUpdate();
             return;
@@ -103,8 +107,28 @@ QList<QSharedPointer<Tache>> GestionTaches::getListeTaches() const
     return listeTaches;
 }
 
+
 QVariantList GestionTaches::getTachesAsVariantList() const
 {
+    Database& database = Database::instance();
+    const auto& allTaches = database.getAllTaches();
+    QVariantList variantList;
+    for (const auto& tache : allTaches) {
+        QVariantMap tacheMap;
+        tacheMap["id"] = tache->getId();
+        tacheMap["titre"] = tache->getTitre();
+        tacheMap["note"] = tache->getNote();
+        tacheMap["dateHeure"] = tache->getDateHeure();
+        tacheMap["priority"] = static_cast<int>(tache->getPriority());
+        tacheMap["isCompleted"] = tache->getCompleted();
+
+        variantList.append(tacheMap);
+    }
+    return variantList;
+}
+
+/*
+QVariantList GestionTaches::getTachesAsVariantList() const {
     QVariantList variantList;
     for (const auto& tache : listeTaches) {
         QVariantMap tacheMap;
@@ -119,3 +143,4 @@ QVariantList GestionTaches::getTachesAsVariantList() const
     }
     return variantList;
 }
+*/

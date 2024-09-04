@@ -4,7 +4,7 @@ project(To-Do-List VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Core Quick Sql)
 
 qt_standard_project_setup()
 
@@ -32,6 +32,7 @@ qt_add_qml_module(appTo-Do-List
     SOURCES
         GestionTaches.h GestionTaches.cpp
         Tache.h Tache.cpp
+        database.h database.cpp
     RESOURCES
         images/arrowLeft.png
         images/Calendar_Icon.svg
@@ -65,6 +66,8 @@ set_target_properties(appTo-Do-List PROPERTIES
 
 target_link_libraries(appTo-Do-List
     PRIVATE Qt6::Quick
+    PRIVATE Qt6::Core
+    PRIVATE Qt6::Sql
 )
 
 include(GNUInstallDirs)

@@ -1,6 +1,11 @@
 
 var listeTachesGlobale =  gestionTaches.listeTaches;
 
+function initListeTaches()
+{
+    listeTachesGlobale =  gestionTaches.listeTaches;
+}
+
 // Fonction pourrecupérer la liste de taches
 function getListeTaches()
 {
