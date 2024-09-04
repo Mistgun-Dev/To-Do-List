@@ -4,83 +4,64 @@ import QtQuick.Layouts 6.7
 
 
 Item {
-
-ColumnLayout{
-width: parent.width
-
-    RowLayout{
     width: parent.width
-    spacing: 0
 
-        Rectangle{
-            Layout.fillWidth: true
-            height: 80
-            color: mainWindow.parametrage
+    ColumnLayout{
+    width: parent.width
 
-            Text{
-            text: "To Do List"
-            font.pixelSize: mainWindow.parametragefSize
-            font.weight: 650
-            anchors.left: parent.left
-            anchors.margins: 20
-            anchors.verticalCenter: parent.verticalCenter
-            }
+        RowLayout{
+        width: parent.width
+        spacing: 0
 
-        }
+            Rectangle{
+                width: parent.width
+                height: 40
+                color: mainWindow.parametrage
 
-
-
-
-
-        Rectangle {
-            id: muSettings
-
-
-            height:80
-            width: 80
-
-
-
-            Image {
-
-            anchors.verticalCenter: parent.verticalCenter
-           //anchors.right: parent.right
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.margins: 20
-            source: "images/setting.png"
-            width: 35
-            height: 35
-            }
-
-            color: mouse.hovered ?  mainWindow.boutonh : stylus.hovered ? "tomato" : mainWindow.boutonp
-
-            HoverHandler {
-                id: stylus
-                acceptedDevices: PointerDevice.Stylus
-                cursorShape: Qt.CrossCursor
-            }
-
-            HoverHandler {
-                id: mouse
-                acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
-                cursorShape: Qt.PointingHandCursor
-
-            }
-
-
-            TapHandler {
-                    onSingleTapped: stackView.push(Qt.resolvedUrl("PageSettings.qml"))
+                Text{
+                text: "To Do List"
+                font.pixelSize: mainWindow.parametragefSize
+                font.weight: 650
+                anchors.left: parent.left
+                anchors.margins: 20
+                anchors.verticalCenter: parent.verticalCenter
                 }
 
+            }
 
+            Rectangle {
+                id: muSettings
+                height:30
+                width: 30
+                anchors.right: parent.right
+                anchors.rightMargin: 25
+                color: "transparent"
 
+                Image {
+                    anchors.fill: parent
+                    source: "images/settings.png"
+                    fillMode: Image.PreserveAspectFit
+                }
 
+                //color: mouse.hovered ?  mainWindow.boutonh : stylus.hovered ? "tomato" : mainWindow.boutonp
 
+                HoverHandler {
+                    id: stylus
+                    acceptedDevices: PointerDevice.Stylus
+                    cursorShape: Qt.CrossCursor
+                }
 
+                HoverHandler {
+                    id: mouse
+                    acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+                    cursorShape: Qt.PointingHandCursor
 
+                }
+
+                TapHandler {
+                    onSingleTapped: stackView.push(Qt.resolvedUrl("PageSettings.qml"))
+                }
+            }
         }
-
-}
-}
-
+    }
 }

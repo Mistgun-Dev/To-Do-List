@@ -4,7 +4,7 @@
 Tache::Tache(): m_id(0), m_titre(""), m_note(""), m_dateHeure(/*QDateTime::currentDateTime()*/""), m_isCompleted(false), m_priority(Priority::MEDIUM)
 {}
 
-Tache::Tache(int id, const QString &titre, const QString &note, const /*QDateTime*/QString &dateHeure, Priority priority)
+Tache::Tache(int id, const QString &titre, const QString &note, const QString &dateHeure, Priority priority)
     : m_id(id), m_titre(titre), m_note(note), m_dateHeure(dateHeure), m_isCompleted(false), m_priority(priority)
 
 {}
@@ -59,30 +59,18 @@ void Tache::setDateHeure(const QString& dateTime)
     }
 }
 
-void Tache::setDateHeureActuelle()
-{
-    // m_dateHeure = QDateTime::currentDateTime();
-    emit dateHeureChanged();
-}
 
 QString Tache::getDateHeure()
 {
     return m_dateHeure;
 }
 
-QString Tache::getDateHeureAsString()
+QString Tache::getDateHeureNow()
 {
-    return m_dateHeure/*.toString("dd/MM/yyyy HH:mm:ss")*/;
-}
+    QDateTime dateHeure = QDateTime::currentDateTime();
+    QString formattedString = dateHeure.toString("dd/MM/yyyy HH:mm AP");
 
-QString Tache::getDateAsString()
-{
-    return m_dateHeure/*.toString("dd/MM/yyyy")*/;
-}
-
-QString Tache::getHeureAsString()
-{
-    return m_dateHeure/*.toString("HH:mm:ss")*/;
+    return formattedString;
 }
 
 

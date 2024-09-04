@@ -6,7 +6,7 @@ ApplicationWindow {
 
     property color  parametrage: "#DDBB3C"
     property color  sparametrage: "#668CCD"
-    property int    parametragefSize: 25
+    property int    parametragefSize: 18
     property int    parametragefSizeReset: 25
     property int    sousMenufSize: 18
     property int    sousMenufSizeReset: 18
@@ -36,11 +36,21 @@ ApplicationWindow {
         id: stackView
         anchors.fill: parent
         initialItem: "MainPage.qml"
+
+        pushEnter: Transition {
+            NumberAnimation { property: "opacity"; from: 0; to: 1; duration: 300 }
+            NumberAnimation { property: "x"; from: width; to: 0; duration: 300 }
+        }
+        popExit: Transition {
+            NumberAnimation { property: "opacity"; from: 1; to: 0; duration: 300 }
+            NumberAnimation { property: "x"; from: 0; to: -width; duration: 300 }
+        }
     }
 
     // Loader pour charger dynamiquement des pages
     Loader {
         id: dynamicLoader
+        anchors.fill: parent
         visible: false
        onLoaded: {
         if (dynamicLoader.item !== null){

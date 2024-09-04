@@ -2,7 +2,7 @@ import QtQuick 6.7
 import QtQuick.Controls 6.7
 //import QtQuick.Controls.Basic
 //import QtQuick.Controls.Imagine
-import QtQuick.Controls.Universal
+//import QtQuick.Controls.Universal
 import QtQuick.Layouts 6.7
 import "."
 
@@ -13,6 +13,7 @@ Dialog {
     standardButtons: Dialog.Ok | Dialog.Cancel
     onAccepted: {
         console.log("Popup Confirmée");
+        textfieltime.text = page.isEditMode ? qsTr("") : (rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text);
     }
     onRejected: {
         console.log("Popup Annulée");
@@ -82,7 +83,8 @@ Dialog {
                         rect.selectedHour = currentIndex+1
                         rect.selectedHourAsString = rect.numberToString(rect.selectedHour)
                         console.log(rect.selectedHour)
-                        textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text}
+                        //textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text}
+                    }
                 }
 
                 Tumbler {
@@ -99,7 +101,7 @@ Dialog {
                         rect.selectedMinute = minutesTumbler.currentItem.text
                         rect.selectedMinuteAsString = rect.numberToString(rect.selectedMinute)
                         console.log(rect.selectedMinute)
-                        textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                        //textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
                     }
                 }
 
@@ -109,7 +111,7 @@ Dialog {
                     delegate: delegateComponent
                     onCurrentItemChanged: {
                         console.log(amPmTumbler.currentItem.text)
-                      textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                      //textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
                     }
                 }
             }

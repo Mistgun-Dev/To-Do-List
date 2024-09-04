@@ -53,8 +53,11 @@ width: parent.width
 
 
         TapHandler {
-                onSingleTapped: stackView.pop()
+                onSingleTapped: {
+
+                    stackView.pop();
             }
+        }
 
 
 
@@ -156,7 +159,7 @@ Rectangle {
 
     TapHandler {
             onSingleTapped: {
-                stackView.push(Qt.resolvedUrl("PageSize.qml"))
+                stackView.push(Qt.resolvedUrl("PageSize.qml"));
             }
 
         }

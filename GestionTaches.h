@@ -4,7 +4,6 @@
 #include "tache.h"
 #include <QSharedPointer>
 #include <QList>
-#include <QDebug>
 
 /**
  * @class GestionTaches
@@ -37,7 +36,7 @@ public:
      * @brief Ajoute une tâche déjà créée à la liste des tâches.
      * @param tache Référence à une tâche déja créée, à ajouter à la liste.
      */
-    Q_INVOKABLE void ajouterTache(QSharedPointer<Tache>& tache);
+    void ajouterTache(QSharedPointer<Tache>& tache);
 
     /**
      * @brief Crée et ajoute une tâche à la liste avec les attributs spécifiés.
@@ -47,7 +46,7 @@ public:
      * @param dateHeure Date et heure de la tâche.
      * @param priority Priorité de la tâche.
      */
-    Q_INVOKABLE void ajouterTache(int id, const QString& titre, const QString& note, const /*QDateTime*/QString& dateHeure, Priority priority);
+    Q_INVOKABLE void ajouterTache(int id, const QString &titre, const QString &note, const QString &dateHeure, Priority priority);
 
     /**
      * @brief Crée et ajoute une tâche à la date actuelle en ne renseignant que le titre, depuis l'écran principal.
@@ -66,7 +65,7 @@ public:
      * @param id Identifiant unique de la tâche à modifier.
      * @param nouvelleTache Référence à la nouvelle tâche qui remplacera l'ancienne.
      */
-    Q_INVOKABLE void modifierTache(int id, const QSharedPointer<Tache>& nouvelleTache);
+    Q_INVOKABLE void modifierTache(int id, Tache* nouvelleTache);
 
     /**
      * @brief Récupère une tâche à partir de son identifiant.
@@ -89,6 +88,8 @@ signals:
      * @brief Signal émis lorsque une tache est ajoutée, supprimée, ou modifiée
      */
     void tacheUpdate();
+
+    void tacheAdded();
 
 private:
 

@@ -10,8 +10,9 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     //Instace de Tache
-    Tache tache;
-    engine.rootContext()->setContextProperty("tache", &tache);
+    //QSharedPointer<Tache> tache = QSharedPointer<Tache>::create();
+    Tache *tache = new Tache();
+    engine.rootContext()->setContextProperty("tache", tache);
 
     //Instance gérant la gestion des Taches
     GestionTaches gestionTaches;
