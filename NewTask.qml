@@ -69,16 +69,16 @@ Page {
 
 
     /** type:int Propriété pour la taille de police */
-    property int fontSize: 20
+    property int fontSize: mainWindow.sousMenufSize
 
     /** type:int Propriété pour la taille de police du text en header */
-    property int fontSizeHeader: fontSize
+    property int fontSizeHeader: fontSize + 7
 
     /** type:int Propriété pour la taille de police du text du label */
-    property int fontSizeLabel: fontSize - 2
+    property int fontSizeLabel: fontSize
 
     /** type:int Propriété pour la taille de police du text à entrer */
-    property int fontSizeInput: fontSize - 4
+    property int fontSizeInput: fontSize - 2
 
 
     /**
@@ -110,10 +110,20 @@ Page {
                 background: Rectangle { color: "transparent"}
                 id: redRect
                 onPressed: {
-                    //anim.start()
-                    dynamicLoader.source = "MainPage.qml"
-                    //stackView.pop()
+                    anim.start()
+                    closeTimer.start()
                 }
+
+                // Déclaration du Timer
+                Timer {
+                    id: closeTimer
+                    interval: 200 // Le Timer s'exécutera après la durée de l'animation
+                    repeat: false
+                    onTriggered: {
+                        dynamicLoader.source = "MainPage.qml"  // Ferme la fenêtre après le délai
+                    }
+                }
+
                 SequentialAnimation {
                     id: anim
                     // Expand the button
@@ -121,7 +131,7 @@ Page {
                         target: redRect
                         property: "scale"
                         to: 1.3
-                        duration: 200
+                        duration: 100
                         easing.type: Easing.InOutQuad
                     }
 
@@ -130,7 +140,7 @@ Page {
                         target: redRect
                         property: "scale"
                         to: 1.0
-                        duration: 200
+                        duration: 100
                         easing.type: Easing.InOutQuad
                     }
                 }
@@ -144,6 +154,7 @@ Page {
                 text: page.isEditMode ? qsTr("Edit task") : qsTr("New task")
                 color: "white"
                 font.pixelSize: fontSizeHeader
+                font.bold: true
                 Layout.alignment: Qt.AlignCenter
             }
 
@@ -194,8 +205,8 @@ Page {
                 Layout.fillWidth: true
                 implicitHeight: page.height* 0.08
                 placeholderText: "dd/MM/yyyy"
+                placeholderTextColor : inputFielHolderdColor
                 color : inputFieldColor
-                placeholderTextColor : inputFieldColor
                 font.pixelSize: fontSizeInput
                 text: page.isEditMode ? EditTaches.getDateParse(tache.dateHeure) : ""
                 background: Rectangle {
