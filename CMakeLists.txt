@@ -37,15 +37,19 @@ qt_add_qml_module(appTo-Do-List
         images/Calendar_Icon.svg
         images/Clock_Icon.svg
         images/logout.svg
-        images/edit.png
-        images/delete.png
-        images/arrow_down.png
-        images/arrow_up.png
+        images/editLight.svg
+        images/deleteLight.svg
+        images/editDark.svg
+        images/deleteDark.svg
         images/task_checked.png
         images/task_unchecked.png
         images/settings.png
-        RESOURCES images/addbutton.png
-        RESOURCES images/background.jpg
+        images/addButtonLight.svg
+        images/addButtonDark.svg
+        images/arrowDownLight.svg
+        images/arrowDownDark.svg
+        images/arrowUpLight.svg
+        images/arrowUpDark.svg
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

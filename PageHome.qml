@@ -5,6 +5,7 @@ import QtQuick.Layouts 6.7
 
 Item {
     width: parent.width
+    anchors.margins: 5
 
     ColumnLayout{
     width: parent.width
@@ -17,6 +18,7 @@ Item {
                 width: parent.width
                 height: 40
                 color: mainWindow.parametrage
+                radius: 15
 
                 Text{
                 text: "To Do List"

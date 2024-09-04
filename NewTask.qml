@@ -112,6 +112,8 @@ Page {
                 onPressed: {
                     anim.start()
                     closeTimer.start()
+                    dynamicLoader.source = "MainPage.qml"
+                    //stackView.pop()
                 }
 
                 // Déclaration du Timer

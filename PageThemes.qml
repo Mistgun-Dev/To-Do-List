@@ -57,19 +57,6 @@ width: parent.width
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         Rectangle{
             Layout.fillWidth: true
             height: 80
@@ -135,7 +122,7 @@ Rectangle {
                 mainWindow.parametrage= "#668CCD"
                 mainWindow.boutonp= "#4B6292"
                 mainWindow.boutonh="#2C477C"
-
+                mainWindow.isDarkMode = true
             }
 
         }
@@ -164,10 +151,6 @@ Rectangle {
      anchors.verticalCenter: parent.verticalCenter
     }
 
-
-
-
-
     color: mouseSousMclr.hovered ?  mainWindow.boutonh : stylusSousMclr.hovered ? mainWindow.boutonh : "transparent"
 
     HoverHandler {
@@ -190,17 +173,9 @@ Rectangle {
                 mainWindow.parametrage= "#DDBB3C"
                 mainWindow.boutonp="#B89C36"
                 mainWindow.boutonh="#897015"
-
+                mainWindow.isDarkMode = false
             }
-
         }
-
-
-
 }
-
-
-
-
 }
 }

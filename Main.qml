@@ -4,7 +4,8 @@ import QtQuick.Layouts 6.7
 
 ApplicationWindow {
 
-    property color  parametrage: "#DDBB3C"
+    property bool   isDarkMode: false
+    property color  parametrage: "lightgray"//"#DDBB3C"
     property color  sparametrage: "#668CCD"
     property int    parametragefSize: 18
     property int    parametragefSizeReset: 25
@@ -21,7 +22,7 @@ ApplicationWindow {
     property color  sboutonh: "#2C477C"
     property color  theme: "white"
     property color  sousMenu: "transparent"
-    property color  sousMenuColor: "black"
+    property color  sousMenuColor: "#2D2D2D"
 
     id: mainWindow
     width: 740
