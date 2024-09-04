@@ -19,8 +19,8 @@ width: parent.width
         id: menuSettings
        // color: mainWindow.boutonp
 
-        height:55
-        width: 55
+        height:80
+        width: 80
 
 
 
@@ -30,8 +30,8 @@ width: parent.width
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: 20
         source: "images/arrowLeft.png"
-        width: 25
-        height: 25
+        width: 35
+        height: 35
         }
 
 
@@ -76,7 +76,7 @@ width: parent.width
 
         Rectangle{
             Layout.fillWidth: true
-            height: 55
+            height: 80
             id:thms
             color: mainWindow.parametrage
 
@@ -120,7 +120,7 @@ width: parent.width
                Text{
                    text:"A"
                    color:mainWindow.sousMenuColor
-                   font.pixelSize: 14
+                   font.pixelSize: 15
                    anchors.verticalCenter: parent.verticalCenter
 
                }
@@ -157,7 +157,7 @@ width: parent.width
                         x: control.leftPadding
                         y: control.topPadding + control.availableHeight / 2 - height / 2
                         implicitWidth: recslide.width
-                        implicitHeight: 3
+                        implicitHeight: 4
                         //width: control.availableWidth
                         height: implicitHeight
                         radius: 2
@@ -174,8 +174,8 @@ width: parent.width
                     handle: Rectangle {
                         x: control.leftPadding + control.visualPosition * (control.availableWidth - width)
                         y: control.topPadding + control.availableHeight / 2 - height / 2
-                        implicitWidth: 18
-                        implicitHeight: 18
+                        implicitWidth: 26
+                        implicitHeight: 26
                         radius: 13
                         color: control.pressed ? "#f0f0f0" : "#f6f6f6"
                         border.color: "#bdbebf"
@@ -190,12 +190,8 @@ width: parent.width
 
                         var a=mainWindow.parametragefSizeReset +(mainWindow.parametragefSizeReset*(control.value/100))
                         var c=mainWindow.sousMenufSizeReset +(mainWindow.sousMenufSizeReset*(control.value/100))
-                        var d=mainWindow.tchfSizeReset +(mainWindow.tchfSizeReset*(control.value/100))
-                        var e=mainWindow.tchfSizeDateReset +(mainWindow.tchfSizeDateReset*(control.value/100))
                         mainWindow.parametragefSize = Math.round(a)
                         mainWindow.sousMenufSize = Math.round(c)
-                        mainWindow.tchfSize = Math.round(d)
-                        mainWindow.tchfSizeDate = Math.round(e)
                        // console.log( Math.round(c))
                         mainWindow.rslide = control.value
                     }
@@ -221,7 +217,7 @@ width: parent.width
                     color: "transparent"
                     Text{
                         anchors.verticalCenter: parent.verticalCenter
-                        font.pixelSize: 20
+                        font.pixelSize: 25
                         text:"A"
                         color:mainWindow.sousMenuColor
                     }

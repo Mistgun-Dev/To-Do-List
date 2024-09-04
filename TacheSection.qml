@@ -10,12 +10,24 @@ Item {
     property alias tacheModel: listView.model
     property alias headerHeight: header.height
     property alias color: header.color
-    property alias textColor: headerText.color
+    property alias titleSectionColor: headerText.color
     property alias bulleColor: nbTacheBulle.color
     property bool sectionVisible: listView.visible
 
+    property color titleTacheColor: "black"
+    property color dateHeureColor: "green"
+    property color noteColor: "black"
+    property color borderTacheColor: "lightgray"
+    property color backgroundTacheColor: "white"
+    property color checkBoxValidatedBorderColor: "lightgray"
+    property color checkBoxValidatedColor: "#008000"
+    property color bulleBorderColor: "transparent"
+
+
     property int collapsedHeight: 30
     property int expandedHeight: 75
+
+    property string currentSection: ""
 
     // Animation de hauteur pour l'insertion
     property bool isNew: false
@@ -55,7 +67,7 @@ Item {
                     // Icone flèche
                     Image {
                         id: iconArrow
-                        source: "images/arrow_down.png"
+                        source: isDarkMode ? "images/arrowDownDark.svg" : "images/arrowDownLight.svg";
                         width: 22
                         height: 22
                         anchors.verticalCenter: parent.verticalCenter
@@ -65,7 +77,7 @@ Item {
                     // Nom de la section
                     Text {
                         id: headerText
-                        font.pixelSize: mainWindow.sousMenufSize
+                        font.pixelSize: 15
                         anchors.verticalCenter: parent.verticalCenter
                         font.bold: true
                     }
@@ -95,8 +107,9 @@ Item {
                 id: nbTacheBulle
                 width: 20
                 height: 20
-                radius: 50
+                radius: 10
                 anchors.verticalCenter: parent.verticalCenter
+                border.color: bulleBorderColor
 
                 Text {
                     id: textTacheRestante
@@ -111,7 +124,7 @@ Item {
 
         ListView {
             id: listView
-            width: parent.width
+            width: parent.width- 10
             height: 0
             spacing: 10
             anchors.margins: 20
@@ -119,9 +132,9 @@ Item {
 
             delegate: Rectangle {
                 id: itemRect
-                color: mainWindow.tchColor
-                border.color: mainWindow.tchColor
-                border.width: 2
+                color: backgroundTacheColor
+                border.color: borderTacheColor
+                border.width: 1
                 height: isExpanded ? expandedHeight : collapsedHeight
                 width: parent.width - listView.spacing
                 radius: 5
@@ -133,24 +146,37 @@ Item {
                     anchors.fill: parent
                     spacing: 10
                     anchors.leftMargin: 15
+                    anchors.rightMargin: 15
 
-                    // Bouton de validation de la tâche
-                    Image {
+                    CheckBox {
                         id: iconValidate
-                        source: model.isCompleted ? "images/task_checked.png" : "images/task_unchecked.png"
+                        checked: model.isCompleted ? true : false
                         anchors.verticalCenter: parent.verticalCenter
-                        width: 17
-                        height: 17
-                        fillMode: Image.PreserveAspectFit
+                        font.pointSize: 8
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                model.isCompleted = !model.isCompleted;
-                                line.visible = !line.visible;
+                        indicator: Rectangle {
+                            width: 15
+                            height: 15
+                            radius: 2
+                            border.color: checkBoxValidatedBorderColor
+                            color: model.isCompleted ? checkBoxValidatedColor : "transparent"
+                            anchors.verticalCenter: parent.verticalCenter
+
+                            Text {
+                                anchors.centerIn: parent
+                                text: model.isCompleted ? "✓" : ""
+                                color: "white"
+                                font.bold : true
                             }
                         }
+
+                        onCheckedChanged: {
+                            model.isCompleted = !model.isCompleted;
+                            line.visible = !line.visible;
+                        }
                     }
+
+
 
                     // Item pour les textes et les dates
                     Item {
@@ -162,17 +188,19 @@ Item {
                         // Titre
                         Text {
                             id: titleText
+                            color: titleTacheColor
                             text: model.titre
-                            font.pixelSize: mainWindow.tchfSize
+                            font.pixelSize: 14
                             wrapMode: Text.WordWrap
-                            font.bold: true
                             elide: Text.ElideRight
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
                         // Note
                         Text {
+                            id: noteText
                             text: model.note
+                            color: noteColor
                             visible: isExpanded
                             font.pixelSize: 12
                             wrapMode: Text.WordWrap
@@ -182,12 +210,11 @@ Item {
 
                         // Date
                         Text {
-                            id: dateText
-                            text: model.dateHeure
-                            //font.pixelSize: 12
-                            font.pixelSize: mainWindow.tchfSizeDate
+                            id: dateHeureText
+                            text: currentSection === "today" ? EditTaches.getHeureParse(model.dateHeure) : model.dateHeure
+                            font.pixelSize: 12
                             wrapMode: Text.WordWrap
-                            color: "green"
+                            color: isDarkMode ? "white" : bulleColor
                             elide: Text.ElideRight
                             anchors.right: parent.right
                             anchors.verticalCenter: parent.verticalCenter
@@ -201,13 +228,13 @@ Item {
                                     tacheOuverte.isExpanded = false;
                                     tacheOuverte.height = collapsedHeight;
                                     listView.height -= (expandedHeight - collapsedHeight);
-                                    tacheOuverte.border.color = "lightgray";
+                                    tacheOuverte.border.color = (isDarkMode ? "white" : "lightgray");
                                 }
 
                                 // Ouvrir le nouvel élément
                                 isExpanded = !isExpanded;
                                 itemRect.height = isExpanded ? expandedHeight : collapsedHeight;
-                                itemRect.border.color = isExpanded ? "lightgreen" : "lightgray";
+                                itemRect.border.color = isExpanded ? (isDarkMode ? "white" : bulleColor) : (isDarkMode ? "white" : "lightgray");
                                 if (isExpanded)
                                     listView.height += (expandedHeight - collapsedHeight);
                                 else
@@ -238,7 +265,7 @@ Item {
                     // Bouton supprimer
                     Image {
                         id: iconDelete
-                        source: "images/delete.png"
+                        source: isDarkMode ? "images/deleteDark.svg" :"images/deleteLight.svg"
                         anchors.verticalCenter: parent.verticalCenter
                         width: 22
                         height: 22
@@ -258,7 +285,7 @@ Item {
                     // Bouton éditer
                     Image {
                         id: iconEdit
-                        source: "images/edit.png"
+                        source: isDarkMode ? "images/editDark.svg" :"images/editLight.svg"
                         anchors.verticalCenter: parent.verticalCenter
                         width: 22
                         height: 22
@@ -276,6 +303,7 @@ Item {
                                 tache.id = model.id;
                                 tache.priority = model.priority;
                                 dynamicLoader.item.isEditMode = true;
+                                dynamicLoader.item.isDarkMode = isDarkMode;
                             }
                         }
                     }
@@ -295,7 +323,7 @@ Item {
                     visible: false;
                     width: rowListElements.width + rowListElements.anchors.rightMargin - 20
                     height: 1
-                    x: rowListElements.x + rowListElements.anchors.leftMargin - rowInRect.spacing
+                    x: rowListElements.x + rowListElements.anchors.leftMargin - rowInRect.spacing - 15
                     color: "gray"
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -309,9 +337,9 @@ Item {
                 onStopped: {
                     if (listView.height === 0) {
                         listView.visible = false;
-                        iconArrow.source = "images/arrow_down.png";
+                        iconArrow.source = isDarkMode ? "images/arrowDownDark.svg" : "images/arrowDownLight.svg";
                     } else {
-                        iconArrow.source = "images/arrow_up.png";
+                        iconArrow.source = isDarkMode ? "images/arrowUpDark.svg" : "images/arrowUpLight.svg";
                     }
                 }
             }
