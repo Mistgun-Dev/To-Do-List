@@ -69,6 +69,7 @@ Item {
                             tache.priority = 1;
 
                             gestionTaches.ajouterTache(tache.id, tache.titre, tache.note, tache.dateHeure, tache.priority);
+                            dbManager.addTache(gestionTaches.getTache(tache.id))
                             //Tache.addTaskInListe(tache);
 
                             // Notify each TacheSection about the new task

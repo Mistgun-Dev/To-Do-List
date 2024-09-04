@@ -105,8 +105,10 @@ QList<QSharedPointer<Tache>> GestionTaches::getListeTaches() const
 
 QVariantList GestionTaches::getTachesAsVariantList() const
 {
+    Database& database = Database::instance();
+    const auto& allTaches = database.getAllTaches();
     QVariantList variantList;
-    for (const auto& tache : listeTaches) {
+    for (const auto& tache : allTaches) {
         QVariantMap tacheMap;
         tacheMap["id"] = tache->getId();
         tacheMap["titre"] = tache->getTitre();

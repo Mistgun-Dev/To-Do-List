@@ -250,6 +250,8 @@ Item {
                             onClicked: {
                                 if(!model.isCompleted)
                                     deleteAnimation.running = true;
+                                    tache.id = model.id;
+                                    dbManager.removeTache(tache.id)
                             }
                         }
                     }

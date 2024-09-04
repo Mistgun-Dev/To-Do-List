@@ -1,13 +1,20 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include "Tache.h"
 #include "GestionTaches.h"
-#include <QQmlContext>
+#include "database.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
+
+    // Créer une instance de database
+    Database& dbManager = Database::instance();
+    dbManager.createTable();
+
+    engine.rootContext()->setContextProperty("dbManager", &dbManager);
 
     //Instace de Tache
     //QSharedPointer<Tache> tache = QSharedPointer<Tache>::create();

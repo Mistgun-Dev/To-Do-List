@@ -2,6 +2,7 @@
 #define GESTIONTACHES_H
 
 #include "tache.h"
+#include "database.h"
 #include <QSharedPointer>
 #include <QList>
 
@@ -72,7 +73,7 @@ public:
      * @param id Identifiant unique de la tâche à récupérer.
      * @return Tache Tache correspondant à l'identifiant renseigné.
      */
-    QSharedPointer<Tache> getTache(int id) const;
+    Q_INVOKABLE QSharedPointer<Tache> getTache(int id) const;
 
     /**
      * @brief Récupère la liste complète des tâches.

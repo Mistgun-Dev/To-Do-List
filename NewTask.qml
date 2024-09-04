@@ -334,6 +334,7 @@ Page {
                     tache.note = note.text
 
                     gestionTaches.modifierTache(tache.id, tache)
+                    dbManager.updateTache(gestionTaches.getTache(tache.id))
                 }
                 else
                 {
@@ -342,6 +343,7 @@ Page {
                     tache.priority = 1
                     tache.note= note.text
                     gestionTaches.ajouterTache(tache.id, tache.titre, tache.note, tache.dateHeure, tache.priority)
+                    dbManager.addTache(gestionTaches.getTache(tache.id))
                 }
 
                 //stackView.pop()
