@@ -22,19 +22,15 @@ width: parent.width
         height:80
         width: 80
 
-
-
         Image {
         anchors.verticalCenter: parent.verticalCenter
-       //anchors.right: parent.right
+        //anchors.right: parent.right
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: 20
         source: "images/arrowLeft.png"
         width: 35
         height: 35
         }
-
-
 
         color: mouse.hovered ?  mainWindow.boutonh : stylus.hovered ? mainWindow.boutonh : mainWindow.boutonp
 

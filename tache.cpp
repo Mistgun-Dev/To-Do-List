@@ -65,6 +65,14 @@ QString Tache::getDateHeure()
     return m_dateHeure;
 }
 
+QString Tache::getDateHeureNow()
+{
+    QDateTime dateHeure = QDateTime::currentDateTime();
+    QString formattedString = dateHeure.toString("dd/MM/yyyy HH:mm AP");
+
+    return formattedString;
+}
+
 
 void Tache::setCompleted(bool val)
 {

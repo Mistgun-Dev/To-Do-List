@@ -110,7 +110,7 @@ Page {
                 background: Rectangle { color: "transparent"}
                 id: redRect
                 onPressed: {
-                    //anim.start()
+                    anim.start()
                     dynamicLoader.source = "MainPage.qml"
                     //stackView.pop()
                 }

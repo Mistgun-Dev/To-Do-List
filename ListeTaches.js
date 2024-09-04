@@ -1,5 +1,5 @@
 
-var listeTachesGlobale = gestionTaches.listeTaches;
+var listeTachesGlobale =  gestionTaches.listeTaches;
 
 // Fonction pourrecupérer la liste de taches
 function getListeTaches()
@@ -20,7 +20,6 @@ function updateTask(id) {
     return false;
 }
 
-
 function getHeureParse(dateHeure)
 {
     var heure = dateHeure.split(' ')[1] + ' ' + dateHeure.split(' ')[2];
@@ -31,4 +30,9 @@ function getDateParse(dateHeure)
 {
     var date = dateHeure.split(' ')[0]
     return date;
+}
+
+function addTaskInListe(tache)
+{
+    listeTachesGlobale.push(tache);
 }

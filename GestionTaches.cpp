@@ -34,14 +34,14 @@ GestionTaches::~GestionTaches()
 void GestionTaches::ajouterTache(QSharedPointer<Tache>& tache)
 {
     listeTaches.append(tache);
-    emit tacheUpdate();
+    emit tacheAdded();
 }
 
 void GestionTaches::ajouterTache(int id, const QString &titre, const QString &note, const QString &dateHeure, Priority priority)
 {
     QSharedPointer<Tache> newTache = QSharedPointer<Tache>::create(id, titre, note, dateHeure, priority);
     listeTaches.append(newTache);
-    emit tacheUpdate();
+    emit tacheAdded();
 }
 
 
@@ -52,7 +52,8 @@ void GestionTaches::ajouterTacheRapide(const QString &titre)
     QDateTime dateHeure = QDateTime::currentDateTime();
     QString formattedString = dateHeure.toString("yyyy-MM-dd HH:mm:ss");
     ajouterTache(-1, titre, "", formattedString, Priority::MEDIUM);
-    emit tacheUpdate();
+    qDebug() << "AJOUTTTTTTTTT";
+    emit tacheAdded();
 }
 
 void GestionTaches::supprimerTache(int id)
@@ -76,11 +77,9 @@ void GestionTaches::modifierTache(int id, Tache *nouvelleTache)
     newTache->setNote(nouvelleTache->getNote());
     newTache->setPriority(nouvelleTache->getPriority());
 
-    qDebug() << "FONCTION DE MODIFICATIONNNN";
     for (int i = 0; i < listeTaches.size(); ++i) {
         if (listeTaches[i]->getId() == id) {
             listeTaches[i] = newTache;
-            qDebug() << "TACHE MODIFIEEEEEEEE";
             emit tacheUpdate();
             return;
         }

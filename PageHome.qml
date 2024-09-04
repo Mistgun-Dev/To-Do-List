@@ -4,6 +4,7 @@ import QtQuick.Layouts 6.7
 
 
 Item {
+    width: parent.width
 
     ColumnLayout{
     width: parent.width
@@ -30,14 +31,15 @@ Item {
 
             Rectangle {
                 id: muSettings
-                height:25
-                width: 25
+                height:30
+                width: 30
                 anchors.right: parent.right
                 anchors.rightMargin: 25
+                color: "transparent"
 
                 Image {
                     anchors.fill: parent
-                    source: "images/setting.png"
+                    source: "images/settings.png"
                     fillMode: Image.PreserveAspectFit
                 }
 

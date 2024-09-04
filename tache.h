@@ -107,6 +107,12 @@ public:
     QString getDateHeure();
 
     /**
+     * @brief Récupère la date et l'heure actuelle.
+     * @return Date et heure de la tâche sous forme de QDateTime.
+     */
+    Q_INVOKABLE QString getDateHeureNow();
+
+    /**
      * @brief Modifie l'état d'accomplissement de la tâche.
      * @param val Booléen indiquant si la tâche est accomplie.
      */

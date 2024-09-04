@@ -46,19 +46,19 @@ public:
      * @param dateHeure Date et heure de la tâche.
      * @param priority Priorité de la tâche.
      */
-    void ajouterTache(int id, const QString &titre, const QString &note, const QString &dateHeure, Priority priority);
+    Q_INVOKABLE void ajouterTache(int id, const QString &titre, const QString &note, const QString &dateHeure, Priority priority);
 
     /**
      * @brief Crée et ajoute une tâche à la date actuelle en ne renseignant que le titre, depuis l'écran principal.
      * @param titre Titre de la tâche.
      */
-    void ajouterTacheRapide(const QString& titre);
+    Q_INVOKABLE void ajouterTacheRapide(const QString& titre);
 
     /**
      * @brief Supprime une tâche de la liste en fonction de son identifiant.
      * @param id Identifiant unique de la tâche à supprimer.
      */
-    void supprimerTache(int id);
+    Q_INVOKABLE void supprimerTache(int id);
 
     /**
      * @brief Modifie une tâche existante avec une nouvelle tâche.
@@ -88,6 +88,8 @@ signals:
      * @brief Signal émis lorsque une tache est ajoutée, supprimée, ou modifiée
      */
     void tacheUpdate();
+
+    void tacheAdded();
 
 private:
 
