@@ -8,8 +8,6 @@ ApplicationWindow {
     property int    nbmaxtaches: 6
     property bool   rtch: false
 
-    property bool hideCompletedTasks: false
-
     //property color  parametrage: "#DDBB3C"
     property color  parametrage: "#4CAF50"
     property color  parametrageReset: "#4CAF50"

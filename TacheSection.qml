@@ -294,7 +294,7 @@ Item {
                 width: parent.width - listView.spacing
                 radius: 5
                 Component.onCompleted: {
-                    if(mainWindow.hideCompletedTasks)
+                    if(mainWindow.rtch)
                     {
                         if(model.isCompleted){
                             itemRect.visible = false
@@ -349,7 +349,7 @@ Item {
                             model.isCompleted = !model.isCompleted;
                             line.visible = !line.visible;
 
-                            if(mainWindow.hideCompletedTasks)
+                            if(mainWindow.rtch)
                             {
                                 deleteAnimation.running = true;
                                 hideTask = true;
