@@ -4,6 +4,7 @@ import QtQuick.Controls 6.7
 //import QtQuick.Controls.Imagine
 //import QtQuick.Controls.Universal
 import QtQuick.Layouts 6.7
+import "ListeTaches.js" as EditTaches
 import "."
 
 // Time selector
@@ -13,7 +14,7 @@ Dialog {
     standardButtons: Dialog.Ok | Dialog.Cancel
     onAccepted: {
         console.log("Popup Confirmée");
-        textfieltime.text = page.isEditMode ? qsTr("") : (rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text);
+        //textfieltime.text = page.isEditMode ? qsTr("") : (rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text);
     }
     onRejected: {
         console.log("Popup Annulée");
@@ -26,16 +27,16 @@ Dialog {
            anchors.centerIn: parent
 
         /** type:int Propriété pour contenir l'heure en entier */
-        property int selectedHour: 12
+        property int selectedHour: 0
 
         /** type:int Propriété pour contenir les minutes en entier */
-        property int selectedMinute: 30
+        property int selectedMinute: 0
 
         /** type:int Propriété pour contenir l'es minutes'heure en string */
-        property string selectedHourAsString: "01"
+        property string selectedHourAsString: "00"
 
         /** type:int Propriété pour contenir les minutes en string */
-        property string selectedMinuteAsString: "01"
+        property string selectedMinuteAsString: "00"
 
         /**
          * Fonction pour convertir le text du model de Tumbler des heures en valeur de "01" à "12"
@@ -76,32 +77,50 @@ Dialog {
                 id: row
 
                 Tumbler {
+                    // id: hoursTumbler
+                    // model: 12
+                    // delegate: delegateComponent
+                    // currentIndex: 0
+                    // onCurrentIndexChanged: {
+                    //     rect.selectedHour = currentIndex+1
+                    //     rect.selectedHourAsString = rect.numberToString(rect.selectedHour)
+                    //     console.log(rect.selectedHour)
+                    //     textfieltime.text = rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                    //     console.log(textfieltime.text)
+                    //     //focus= false
+                    // }
                     id: hoursTumbler
-                    model: 12
-                    delegate: delegateComponent
-                    onCurrentItemChanged: {
-                        rect.selectedHour = currentIndex+1
-                        rect.selectedHourAsString = rect.numberToString(rect.selectedHour)
-                        console.log(rect.selectedHour)
-                        //textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text}
-                    }
+                        model: 12
+                        delegate: delegateComponent
+                        currentIndex: page.isEditMode ? EditTaches.getHourIndex(tache.dateHeure) : 0  // Initialize to correct hour
+                        onCurrentIndexChanged: {
+                            rect.selectedHour = currentIndex + 1
+                            rect.selectedHourAsString = rect.numberToString(rect.selectedHour)
+                            console.log(rect.selectedHour)
+                            textfieltime.text = rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                            console.log(textfieltime.text)
+                            // focus = false
+                        }
+
                 }
 
                 Tumbler {
                     id: minutesTumbler
                     model: 60
                     delegate: delegateComponent
+                    currentIndex: page.isEditMode ? EditTaches.getMinuteIndex(tache.dateHeure) : 0  // Initialize to correct minutes
                     background: Item {
                         Rectangle{
                             border.color: "#000000"
-
                         }
                     }
-                    onCurrentItemChanged: {
+                    onCurrentIndexChanged: {
                         rect.selectedMinute = minutesTumbler.currentItem.text
                         rect.selectedMinuteAsString = rect.numberToString(rect.selectedMinute)
-                        console.log(rect.selectedMinute)
-                        //textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                        console.log(rect.selectedHourAsString)
+                        textfieltime.text = rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                        console.log(textfieltime.text)
+                        //focus= false
                     }
                 }
 
@@ -109,9 +128,12 @@ Dialog {
                     id: amPmTumbler
                     model: ["AM", "PM"]
                     delegate: delegateComponent
-                    onCurrentItemChanged: {
+                    currentIndex: page.isEditMode ? EditTaches.getAmPmIndex(tache.dateHeure) : 0  // Initialize to AM or PM
+                    onCurrentIndexChanged: {
                         console.log(amPmTumbler.currentItem.text)
-                      //textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                        textfieltime.text = rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                        console.log(textfieltime.text)
+                        //focus= false
                     }
                 }
             }
