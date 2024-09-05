@@ -13,7 +13,10 @@ width: parent.width
     spacing: 0
 
 
-
+/**
+*@brief bouton permettant le retour vers la page précédente
+*
+**/
 
     Rectangle {
         id: menuSettings
@@ -138,7 +141,10 @@ width: parent.width
 
 
 
-
+/**
+*brief Slider: composant pour définir la tailles des caractères
+*
+*/
 
 
                 Slider {

@@ -5,6 +5,8 @@ import QtQuick.Layouts 6.7
 ApplicationWindow {
 
     property bool   isDarkMode: false
+    property int    nbmaxtaches: 6
+    property bool   rtch: false
 
     property bool hideCompletedTasks: false
 

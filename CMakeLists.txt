@@ -56,6 +56,8 @@ qt_add_qml_module(appTo-Do-List
         images/datascientest.png
         QML_FILES introductionAnim.qml
         QML_FILES MainPageProperties.qml
+        QML_FILES PageNbMaxTaches.qml
+        QML_FILES PageRetirerTch.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
