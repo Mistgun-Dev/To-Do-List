@@ -24,8 +24,10 @@ Cette application est une application de bureau multiplateforme développée en 
 ## Installation depuis Github
 
 1. Clonez le dépôt.
-2. Ouvrez le projet avec Qt Creator.
-3. Compilez et exécutez le projet.
+   ```bash
+    git clone git@github.com:Mistgun-Dev/To-Do-List.git
+3. Ouvrez le projet avec Qt Creator.
+4. Compilez et exécutez le projet.
 
 ## Installation avec l'installateur fourni
 
