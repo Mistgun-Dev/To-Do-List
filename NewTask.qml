@@ -5,6 +5,12 @@ import QtQuick.Layouts 6.7
 import "."
 import "ListeTaches.js" as EditTaches
 
+/**
+ * @class Page
+ * @brief Page principale pour créer ou modifier une tâche.
+ * Cette page permet à l'utilisateur de créer une nouvelle tâche ou de modifier une tâche existante.
+ * Elle offre également la possibilité de sélectionner une date et une heure pour la tâche.
+ */
 Page {
     id: page
     visible: true
@@ -116,7 +122,9 @@ Page {
                     //stackView.pop()
                 }
 
-                // Déclaration du Timer
+                /**
+                 * @brief Timer pour fermer la page après une animation du bouton de retour.
+                 */
                 Timer {
                     id: closeTimer
                     interval: 200 // Le Timer s'exécutera après la durée de l'animation
@@ -126,6 +134,9 @@ Page {
                     }
                 }
 
+                /**
+                 * @brief Animation pour agrandir et rétrécir le bouton de retour.
+                 */
                 SequentialAnimation {
                     id: anim
                     // Expand the button

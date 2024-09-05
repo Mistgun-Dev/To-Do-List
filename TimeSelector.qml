@@ -8,6 +8,12 @@ import "ListeTaches.js" as EditTaches
 import "."
 
 // Time selector
+/**
+ * @brief Boîte de dialogue pour la sélection de l'heure.
+ * La boîte de dialogue affiche trois "Tumbler" pour sélectionner l'heure, les minutes,
+ * et le format AM/PM. Lorsque l'utilisateur confirme sa sélection, l'heure est mise à jour
+ * et affichée dans un champ de texte externe "Due Time".
+ */
 Dialog {
     modal: true
     anchors.centerIn:  parent
