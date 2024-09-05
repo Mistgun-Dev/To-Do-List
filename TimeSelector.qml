@@ -83,7 +83,7 @@ Dialog {
                         rect.selectedHour = currentIndex+1
                         rect.selectedHourAsString = rect.numberToString(rect.selectedHour)
                         console.log(rect.selectedHour)
-                        //textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text}
+                        textfieltime.text = rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
                     }
                 }
 
@@ -101,7 +101,7 @@ Dialog {
                         rect.selectedMinute = minutesTumbler.currentItem.text
                         rect.selectedMinuteAsString = rect.numberToString(rect.selectedMinute)
                         console.log(rect.selectedMinute)
-                        //textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                        textfieltime.text = rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
                     }
                 }
 
@@ -111,7 +111,7 @@ Dialog {
                     delegate: delegateComponent
                     onCurrentItemChanged: {
                         console.log(amPmTumbler.currentItem.text)
-                      //textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                      textfieltime.text = page.isEditMode ? qsTr("") : rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
                     }
                 }
             }

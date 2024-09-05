@@ -210,7 +210,7 @@ Page {
                 placeholderTextColor : inputFielHolderdColor
                 color : inputFieldColor
                 font.pixelSize: fontSizeInput
-                text: page.isEditMode ? EditTaches.getDateParse(tache.dateHeure) : ""
+                text: /*page.isEditMode ? EditTaches.getDateParse(tache.dateHeure) :*/ "dd/MM/yyyy"
                 background: Rectangle {
                     color: backgroundColor
                     border.color: "lightgray"
@@ -245,7 +245,9 @@ Page {
                 Layout.fillWidth: true
                 implicitHeight: page.height* 0.08
                 placeholderText: "hh:mm AP"
-                text: page.isEditMode ? EditTaches.getHeureParse(tache.dateHeure) : ""
+
+                text: page.isEditMode ? EditTaches.getHeureParse(tache.dateHeure) : "hh:mm AP"
+
                 color : inputFieldColor
                 placeholderTextColor : inputFieldColor
                 font.pixelSize: fontSizeInput
@@ -335,9 +337,9 @@ Page {
                     tache.dateHeure = textfieldate.text + " " + textfieltime.text
                     tache.note = note.text
 
-                    console.log("MODIF DE LA TACHE : ", tache.id);
                     gestionTaches.modifierTache(tache.id, tache)
-                    dbManager.updateTache(tache)
+                    dbManager.updateTache(gestionTaches.getTache(tache.id))
+                    //dbManager.updateTache(tache)
                 }
                 else
                 {
