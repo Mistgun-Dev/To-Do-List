@@ -1,0 +1,293 @@
+import QtQuick 6.7
+import QtQuick.Controls 6.7
+import QtQuick.Layouts 6.7
+
+/**
+ * @class PageSettings
+ * @brief Page permettant la configure des thèmes, tailles des caractères, taches complétées nombre maximum de taches
+ *
+ */
+
+Item {
+
+ColumnLayout{
+width: parent.width
+Layout.leftMargin: 10
+
+    RowLayout{
+    width: parent.width
+    spacing: 0
+
+
+/**
+*@brief bouton permettant le retour vers la page précédente
+*
+**/
+
+    Rectangle {
+        id: menuSettings
+       // color: mainWindow.boutonp
+
+        height:55
+        width: 55
+
+
+
+        Image {
+        anchors.verticalCenter: parent.verticalCenter
+       //anchors.right: parent.right
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.margins: 20
+        source: "images/arrowLeft.png"
+        width: 25
+        height: 25
+        }
+
+
+
+        color: mouse.hovered ?  mainWindow.boutonh : stylus.hovered ? mainWindow.boutonh : mainWindow.boutonp
+
+        HoverHandler {
+            id: stylus
+            acceptedDevices: PointerDevice.Stylus
+            cursorShape: Qt.CrossCursor
+        }
+
+        HoverHandler {
+            id: mouse
+            acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+            cursorShape: Qt.PointingHandCursor
+
+        }
+
+
+        TapHandler {
+                onSingleTapped: {
+
+                    stackView.pop();
+            }
+        }
+
+
+
+
+    }
+
+        Rectangle{
+            Layout.fillWidth: true
+            height: 55
+            id:thms
+            color: mainWindow.parametrage
+
+            Text{
+            text: "Paramètres"
+            font.pixelSize: mainWindow.parametragefSize
+            font.weight: 650
+            anchors.horizontalCenter: parent.horizontalCenter
+           // anchors.left: parent.left
+            anchors.margins: 20
+            anchors.verticalCenter: parent.verticalCenter
+            }
+
+        }
+
+}
+
+/**
+*@brief Thèmes:  pour accéder au menu des thèmes
+*/
+Rectangle {
+    id: dark
+    Layout.fillWidth: true
+    height:50
+    //color: mainWindow.sousMenu
+    //color: mainWindow.sousMenu
+
+     Text{
+     text: "    Thèmes"
+     color:mainWindow.sousMenuColor
+     font.pixelSize: mainWindow.sousMenufSize
+     anchors.verticalCenter: parent.verticalCenter
+
+     }
+
+    color: mouseSousM.hovered ?  mainWindow.boutonh : stylusSousM.hovered ? mainWindow.boutonh : "transparent"
+
+    HoverHandler {
+        id: stylusSousM
+        acceptedDevices: PointerDevice.Stylus
+        cursorShape: Qt.CrossCursor
+    }
+
+    HoverHandler {
+        id: mouseSousM
+        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+        cursorShape: Qt.PointingHandCursor
+    }
+
+
+    TapHandler {
+            onSingleTapped: {
+
+                stackView.push(Qt.resolvedUrl("PageThemes.qml"))
+            }
+
+    }
+}
+
+
+
+/**
+*@brief Tailles des caractères: menu pour accéder aux tailles des caractères
+*/
+
+
+Rectangle {
+    id: clr
+    Layout.fillWidth: true
+    height:50
+  //  color:mainWindow.sousMenu
+
+    Text{
+     text: "    Taille des caractères"
+     color:mainWindow.sousMenuColor
+     font.pixelSize: mainWindow.sousMenufSize
+     anchors.verticalCenter: parent.verticalCenter
+    }
+
+    color: mouseSousMclr.hovered ?  mainWindow.boutonh : stylusSousMclr.hovered ? mainWindow.boutonh : "transparent"
+
+    HoverHandler {
+        id: stylusSousMclr
+        acceptedDevices: PointerDevice.Stylus
+        cursorShape: Qt.CrossCursor
+    }
+
+    HoverHandler {
+        id: mouseSousMclr
+        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+        cursorShape: Qt.PointingHandCursor
+    }
+
+
+    TapHandler {
+            onSingleTapped: {
+                stackView.push(Qt.resolvedUrl("PageSize.qml"));
+            }
+
+        }
+}
+
+
+
+
+
+/**
+*@brief Retirer tâches complétées : menu pour accéder à cette page
+*/
+
+Rectangle {
+   id: rtc
+    Layout.fillWidth: true
+    height:50
+  //  color:mainWindow.sousMenu
+
+    Text{
+     text: "    Retirer tâches complétées"
+     color:mainWindow.sousMenuColor
+     font.pixelSize: mainWindow.sousMenufSize
+     anchors.verticalCenter: parent.verticalCenter
+    }
+
+    color: mouseSousMrtc.hovered ?  mainWindow.boutonh : stylusSousMrtc.hovered ? mainWindow.boutonh : "transparent"
+
+    HoverHandler {
+        id: stylusSousMrtc
+        acceptedDevices: PointerDevice.Stylus
+        cursorShape: Qt.CrossCursor
+    }
+
+    HoverHandler {
+        id: mouseSousMrtc
+        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+        cursorShape: Qt.PointingHandCursor
+    }
+
+
+    TapHandler {
+            onSingleTapped: {
+                stackView.push(Qt.resolvedUrl("PageRetirerTch.qml"));
+            }
+
+        }
+}
+
+
+
+
+
+
+
+
+
+/**
+*@brief Nombre maximum de taches : menu pour accéder à cette page
+*/
+
+Rectangle {
+   id: nbtache
+    Layout.fillWidth: true
+    height:50
+  //  color:mainWindow.sousMenu
+
+    Text{
+     text: "    Nombre maximum de tâches"
+     color:mainWindow.sousMenuColor
+     font.pixelSize: mainWindow.sousMenufSize
+     anchors.verticalCenter: parent.verticalCenter
+    }
+
+    color: mouseSousMnbtache.hovered ?  mainWindow.boutonh : stylusSousMnbtache.hovered ? mainWindow.boutonh : "transparent"
+
+    HoverHandler {
+        id: stylusSousMnbtache
+        acceptedDevices: PointerDevice.Stylus
+        cursorShape: Qt.CrossCursor
+    }
+
+    HoverHandler {
+        id: mouseSousMnbtache
+        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+        cursorShape: Qt.PointingHandCursor
+    }
+
+
+    TapHandler {
+            onSingleTapped: {
+                stackView.push(Qt.resolvedUrl("PageNbMaxTaches.qml"));
+            }
+
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+}
