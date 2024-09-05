@@ -63,7 +63,7 @@ ApplicationWindow {
     StackView {
         id: stackView
         anchors.fill: parent
-        initialItem: "MainPage.qml" //"introductionAnim.qml"
+        initialItem: "introductionAnim.qml"
 
         pushEnter: Transition {
             NumberAnimation { property: "opacity"; from: 0; to: 1; duration: 300 }
