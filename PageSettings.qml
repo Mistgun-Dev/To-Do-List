@@ -169,5 +169,109 @@ Rectangle {
 
 
 
+
+
+
+Rectangle {
+   id: rtc
+    Layout.fillWidth: true
+    height:50
+  //  color:mainWindow.sousMenu
+
+    Text{
+     text: "    Retirer tâches complétées"
+     color:mainWindow.sousMenuColor
+     font.pixelSize: mainWindow.sousMenufSize
+     anchors.verticalCenter: parent.verticalCenter
+    }
+
+    color: mouseSousMrtc.hovered ?  mainWindow.boutonh : stylusSousMrtc.hovered ? mainWindow.boutonh : "transparent"
+
+    HoverHandler {
+        id: stylusSousMrtc
+        acceptedDevices: PointerDevice.Stylus
+        cursorShape: Qt.CrossCursor
+    }
+
+    HoverHandler {
+        id: mouseSousMrtc
+        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+        cursorShape: Qt.PointingHandCursor
+    }
+
+
+    TapHandler {
+            onSingleTapped: {
+                stackView.push(Qt.resolvedUrl("PageRetirerTch.qml"));
+            }
+
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+Rectangle {
+   id: nbtache
+    Layout.fillWidth: true
+    height:50
+  //  color:mainWindow.sousMenu
+
+    Text{
+     text: "    Nombre maximum de tâches"
+     color:mainWindow.sousMenuColor
+     font.pixelSize: mainWindow.sousMenufSize
+     anchors.verticalCenter: parent.verticalCenter
+    }
+
+    color: mouseSousMnbtache.hovered ?  mainWindow.boutonh : stylusSousMnbtache.hovered ? mainWindow.boutonh : "transparent"
+
+    HoverHandler {
+        id: stylusSousMnbtache
+        acceptedDevices: PointerDevice.Stylus
+        cursorShape: Qt.CrossCursor
+    }
+
+    HoverHandler {
+        id: mouseSousMnbtache
+        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+        cursorShape: Qt.PointingHandCursor
+    }
+
+
+    TapHandler {
+            onSingleTapped: {
+                stackView.push(Qt.resolvedUrl("PageNbMaxTaches.qml"));
+            }
+
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 }
