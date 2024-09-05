@@ -5,7 +5,7 @@ Cette application est une application de bureau multiplateforme développée en 
 
 ## Fonctionnalités Principales
 
-### Gestion des Tâches
+Gestion des Tâches
 - **Organisation par catégories** :
   - "Aujourd'hui"
   - "Cette semaine"
@@ -16,15 +16,15 @@ Cette application est une application de bureau multiplateforme développée en 
 ### Vue des Paramètres
 - **Changer le thème** : Basculer entre le mode clair et le mode sombre.
 - **Changer la taille de la police** : Ajuster la taille du texte dans l'application.
-- **Retirer les tâches complétées** : Supprimer toutes les tâches marquées comme complétées.
+- **Retirer les tâches complétées** : Supprimer toutes les tâches marquées comme complétées. (Implémentation à vnenir)
 - **Limiter le nombre de tâches** : Définir un nombre maximum de tâches par catégorie.
-- **Navigation** : Cliquer sur chaque paramètre amène l'utilisateur à une page dédiée pour modifier le paramètre.
-
+  
 ### Ajout et Gestion des Tâches
 - **Bandeau d'ajout rapide** : Un bandeau permet d'ajouter une nouvelle tâche pour le jour même en spécifiant seulement un nom.
 - **Bouton d'ajout de tâche** : Présent sur l'interface principale pour permettre la création de nouvelles tâches.
 - **Marquage des tâches** : Chaque tâche comporte une checkbox pour la marquer comme complétée, avec un changement visuel lorsqu'elle est cochée.
 - **Édition des tâches** : Cliquer sur une tâche existante permet de l'éditer.
+- **Suppression des tâches** : Châque tâche comporte un icone de suppression pour supprimer la tâche
 
 ### Détails de l'Ajout de Tâche
 - **Nom de la tâche** : Ajouter un nom à la tâche.
