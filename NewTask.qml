@@ -306,9 +306,11 @@ Page {
             font.pixelSize: fontSizeLabel
         }
 
+
         // Bouton "Finished Editing"
         Button {
                 text: qsTr("Finished Editing")
+                palette.buttonText: "white"
                 font.pixelSize: fontSizeInput
                 background: Rectangle {
                     color: buttonColor
@@ -345,6 +347,8 @@ Page {
         // Bouton "Add task" ou "Update task" selon le mode de l'édit
         Button {
             text: page.isEditMode ? qsTr("Update task") : qsTr("Add task")
+            palette.buttonText: "white"
+            font.bold: true
             font.pixelSize: fontSizeInput
             background: Rectangle {
                 color: buttonColor

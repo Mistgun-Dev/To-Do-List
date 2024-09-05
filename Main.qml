@@ -4,12 +4,13 @@ import QtQuick.Layouts 6.7
 
 ApplicationWindow {
 
+    property bool   isDarkMode: false
+
     //property color  parametrage: "#DDBB3C"
     property color  parametrage: "#4CAF50"
     property color  parametrageReset: "#4CAF50"
 
     property color  sparametrage: "#668CCD"
-
 
     property int    parametragefSize: 19
     property int    parametragefSizeReset: 19
@@ -34,21 +35,16 @@ ApplicationWindow {
     property color  boutonp: "green"
     property color  boutonpReset: "green"
 
-
     property color  sboutonp: "#4B6292"
 
     //property color  boutonh: "#897015"
     property color  boutonh: "#5CAF50"
     property color  boutonhReset: "#5CAF50"
 
-
     property color  sboutonh: "#2C477C"
     property color  theme: "white"
     property color  sousMenu: "transparent"
     property color  sousMenuColor: "black"
-
-
-
 
     property color  txtField: "#cccccc"
     property color  stxtField: "#eeeeee"

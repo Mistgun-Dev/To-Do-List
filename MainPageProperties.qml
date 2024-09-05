@@ -15,7 +15,7 @@ Item {
      * @brief Propriété pour la taille de la police.
      * @default mainWindow.sousMenufSize
      */
-    property int fontSize: mainWindow.sousMenufSize
+    property int fontSize: mainWindow.sousMenufSize + 2
 
     /**
      * @property color bulleColorTodayLight
@@ -162,7 +162,7 @@ Item {
      * @brief Couleur du titre de la section en mode clair.
      * @default "black"
      */
-    property color titleSectionColorLight: "black"
+    property color titleSectionColorLight: mainWindow.sousMenuColor
 
     /**
      * @property color titleSectionColorDark

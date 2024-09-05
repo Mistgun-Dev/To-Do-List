@@ -7,6 +7,7 @@ Item {
 
 ColumnLayout{
 width: parent.width
+Layout.leftMargin: 10
 
     RowLayout{
     width: parent.width
@@ -93,7 +94,7 @@ Rectangle {
     //color: mainWindow.sousMenu
 
      Text{
-     text: "Thèmes"
+     text: "    Thèmes"
      color:mainWindow.sousMenuColor
      font.pixelSize: mainWindow.sousMenufSize
      anchors.verticalCenter: parent.verticalCenter
@@ -136,7 +137,7 @@ Rectangle {
   //  color:mainWindow.sousMenu
 
     Text{
-     text: "Taille des caractères"
+     text: "    Taille des caractères"
      color:mainWindow.sousMenuColor
      font.pixelSize: mainWindow.sousMenufSize
      anchors.verticalCenter: parent.verticalCenter

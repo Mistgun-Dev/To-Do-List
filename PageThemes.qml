@@ -7,8 +7,7 @@ import "."
 Item {
 
 ColumnLayout{
-width: parent.width
-
+    width: parent.width
     RowLayout{
     width: parent.width
     spacing: 0
@@ -58,19 +57,6 @@ width: parent.width
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         Rectangle{
             Layout.fillWidth: true
             height: 55
@@ -88,13 +74,6 @@ width: parent.width
             }
 
         }
-
-
-
-
-
-
-
 }
 
 
@@ -104,7 +83,7 @@ Rectangle {
     height:50
     //color: mainWindow.sousMenu
     Text{
-     text: "Sombre"
+     text: "    Sombre"
      color:mainWindow.sousMenuColor
      font.pixelSize: mainWindow.sousMenufSize
      anchors.verticalCenter: parent.verticalCenter
@@ -139,21 +118,11 @@ Rectangle {
 
                 mainWindow.newTaskAutomatic= mainWindow.stxtField
                 page.textColorLight = "red"
-
+                mainWindow.isDarkMode = true
             }
 
         }
-
-
-
-
-
-
 }
-
-
-
-
 
 
 Rectangle {
@@ -162,7 +131,7 @@ Rectangle {
     height:50
   //  color:mainWindow.sousMenu
     Text{
-     text: "Clair"
+     text: "    Clair"
      color:mainWindow.sousMenuColor
      font.pixelSize: mainWindow.sousMenufSize
      anchors.verticalCenter: parent.verticalCenter
@@ -197,7 +166,7 @@ Rectangle {
                 mainWindow.parametrage= mainWindow.parametrageReset
                 mainWindow.boutonp= mainWindow.boutonpReset
                 mainWindow.boutonh= mainWindow.boutonhReset
-
+                mainWindow.isDarkMode = false
                // mainWindow.boutonh= mainWindow.txtField
 
             }

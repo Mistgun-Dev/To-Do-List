@@ -45,9 +45,7 @@ Item {
         Row{
             width: parent.width
             height: 16
-
         }
-
 
         /**
          * @brief Ligne contenant le champ de texte pour ajouter une tâche et le bouton "Ajouter".
@@ -67,9 +65,9 @@ Item {
                 width: parent.width - buttonAddAutomaticTask.width - column.x - 20
                 height: parent.height
                 color: style.textFieldAddTaskBackgroundColor
-                border.color: style.textFieldAddTaskBorderColor
+                border.color: "transparent" //style.textFieldAddTaskBorderColor
                 border.width: 1
-                radius: 4
+                radius: 3
 
                 Item {
                     anchors.fill: parent
@@ -80,19 +78,16 @@ Item {
                     TextField {
                         id: newTaskAutomatic
                         anchors.fill: parent
+                        anchors.verticalCenter: parent.verticalCenter
                         placeholderText: ""
-                        //font.pixelSize: fontSize - 3
                         font.pixelSize: style.fontSize - 3
-
-                        //color: style.textFieldAddTaskTextColor
                         color: mainWindow.boutonp
-
-
                         selectionColor: "#008000"
                         background: Rectangle {
                             color: style.textFieldAddTaskBackgroundColor
-                            //border.color: style.textFieldAddTaskBorderColor
-                            border.color: mainWindow.boutonp
+                            border.color: style.textFieldAddTaskBorderColor
+                            //border.color: "transparent" //mainWindow.boutonp
+                            radius: 3
                         }
                         onTextChanged: {
                             placeholder.visible = newTaskAutomatic.text.length === 0
@@ -105,9 +100,7 @@ Item {
                     Text {
                         id: placeholder
                         text: "Entrez une nouvelle tâche"
-                        //color: style.textFieldAddTaskPlaceHolderTextColorLight
                         color: mainWindow.boutonp
-                        //font.pixelSize: fontSize - 3
                         font.pixelSize: style.fontSize - 3
                         anchors.left: parent.left
                         anchors.leftMargin: 10
@@ -129,7 +122,6 @@ Item {
                 height: 30
                 highlighted: true
                 background: Rectangle {
-                    //color: style.buttonAddTaskColor
                     color: mainWindow.boutonp
 
                     radius: 4
@@ -138,6 +130,7 @@ Item {
                 Text {
                     anchors.centerIn: parent
                     text: "Ajouter"
+                    font.bold: true
                     color: "white"
                     //font.pixelSize: fontSize - 3
                     font.pixelSize: style.fontSize - 3
@@ -179,13 +172,12 @@ Item {
             sectionTitre: "Today"
             color: style.backgroundColorTitle
 
-            //bulleColor: style.bulleColorToday
-            bulleColor: mainWindow.boutonp
+            bulleColor: style.bulleColorToday
+            //bulleColor: mainWindow.boutonp
 
             bulleBorderColor: style.bulleBorderColorToday
             //titleSectionColor: style.titleSectionColor
-            titleSectionColor: mainWindow.sousMenuColor
-
+            titleSectionColor: style.titleSectionColor // mainWindow.sousMenuColor
             borderTacheColor: style.borderTacheColor
             backgroundTacheColor: style.backgroundTacheColor
             titleTacheColor: style.titleTacheColor
@@ -218,12 +210,12 @@ Item {
             sectionTitre: "This Week"
             color: style.backgroundColorTitle
 
-            //bulleColor: style.bulleColorThisWeek
-             bulleColor: mainWindow.boutonp
+             bulleColor: style.bulleColorThisWeek
+             //bulleColor: mainWindow.boutonp
 
             bulleBorderColor: style.bulleBorderColorThisWeek
-            //titleSectionColor: style.titleSectionColor
-            titleSectionColor: mainWindow.sousMenuColor
+            titleSectionColor: style.titleSectionColor
+            //titleSectionColor: mainWindow.sousMenuColor
 
 
             borderTacheColor: style.borderTacheColor
@@ -258,13 +250,13 @@ Item {
             sectionTitre: "Later"
             color: style.backgroundColorTitle
 
-            //bulleColor: style.bulleColorLater
-            bulleColor: mainWindow.boutonp
+            bulleColor: style.bulleColorLater
+            //bulleColor: mainWindow.boutonp
 
             bulleBorderColor: style.bulleBorderColorLater
 
-            //titleSectionColor: style.titleSectionColor
-            titleSectionColor: mainWindow.sousMenuColor
+            titleSectionColor: style.titleSectionColor
+            //titleSectionColor: mainWindow.sousMenuColor
 
             borderTacheColor: style.borderTacheColor
             backgroundTacheColor: style.backgroundTacheColor
@@ -300,7 +292,7 @@ Item {
         //height: 50
 
         width:120
-        height:50
+        height:40
         radius:4
 
         anchors.horizontalCenter: parent.horizontalCenter
@@ -329,6 +321,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             text:"Ajouter"
+            font.bold: true
             color: "white"
             font.pixelSize: style.fontSize - 3
         }
