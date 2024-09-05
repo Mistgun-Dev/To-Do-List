@@ -19,10 +19,14 @@ Page {
     property bool isDarkMode: false
 
     /** type:color Propriété pour la couleur du header en mode clair */
-    property color headerColorLight: "#4CAF50"
+   //property color headerColorLight: "#4CAF50"
+    property color headerColorLight: mainWindow.parametrage
 
     /** type:color Propriété pour la couleur du label en mode clair */
-    property color textColorLight: "#4CAF50"
+    //property color textColorLight: "#4CAF50"
+    property color  textColorLight: mainWindow.sousMenuColor
+    //property color textColorLightReset: "black"
+
 
     /** type:color Propriété pour la couleur du bouton en mode clair */
     property color buttonColorLight: "#4CAF50"
@@ -34,7 +38,9 @@ Page {
     property color inputFielHolderdColor: "gray"
 
     /** type:color Propriété pour la couleur du background en mode clair */
-    property color backgroundColorLight: "#F7F7F7"
+    //property color backgroundColorLight: "#F7F7F7"
+    property color backgroundColorLight: mainWindow.theme
+
 
     /** type:color Propriété pour la couleur du header en mode sombre */
     property color headerColorDark: "#2E7D32"
@@ -59,7 +65,9 @@ Page {
     property color textColor: isDarkMode ? textColorDark : textColorLight
 
     /** type:color Propriété pour la liaison des couleurs du bouton en fonction du mode */
-    property color buttonColor: isDarkMode ? buttonColorDark : buttonColorLight
+    //property color buttonColor: isDarkMode ? buttonColorDark : buttonColorLight
+    property color buttonColor: mainWindow.boutonp
+
 
     /** type:color Propriété pour la liaison des couleurs du text en fonction du mode */
     property color inputFieldColor: isDarkMode ? inputFieldColorDark : inputFieldColorLight
@@ -187,7 +195,8 @@ Page {
             color : inputFieldColor
             font.pixelSize: fontSizeInput
             background: Rectangle {
-                color: backgroundColor
+                //color: backgroundColor
+                color:"white"
                 border.color: "lightgray"
                 radius: 5
             }
@@ -196,7 +205,8 @@ Page {
 
         Label {
             text: "Due date"
-            color: textColor
+            //color: textColor
+            color:"white"
             font.pixelSize: fontSizeLabel
         }
 
@@ -212,7 +222,8 @@ Page {
                 font.pixelSize: fontSizeInput
                 text: page.isEditMode ? EditTaches.getDateParse(tache.dateHeure) : "dd/MM/yyyy"
                 background: Rectangle {
-                    color: backgroundColor
+                    //color: backgroundColor
+                    color: "white"
                     border.color: "lightgray"
                     radius: 5
                 }
@@ -252,7 +263,8 @@ Page {
                 background:
                     Rectangle
                     {
-                        color: backgroundColor
+                        //color: backgroundColor
+                        color: "white"
                         border.color: "lightgray"
                         radius: 5
                     }
@@ -308,7 +320,8 @@ Page {
             Layout.fillHeight: true
             implicitHeight: page.height* 0.2
             background: Rectangle {
-                color: backgroundColor
+                //color: backgroundColor
+                color:"white"
                 border.color: "lightgray"
                 radius: 5
             }

@@ -42,6 +42,14 @@ Item {
         y: 55
         spacing: 15
 
+
+        Row{
+            width: parent.width
+            height: 16
+
+        }
+
+
         /**
          * @brief Ligne contenant le champ de texte pour ajouter une tâche et le bouton "Ajouter".
          */
@@ -74,12 +82,18 @@ Item {
                         id: newTaskAutomatic
                         anchors.fill: parent
                         placeholderText: ""
-                        font.pixelSize: fontSize - 3
-                        color: style.textFieldAddTaskTextColor
+                        //font.pixelSize: fontSize - 3
+                        font.pixelSize: style.fontSize - 3
+
+                        //color: style.textFieldAddTaskTextColor
+                        color: mainWindow.boutonp
+
+
                         selectionColor: "#008000"
                         background: Rectangle {
                             color: style.textFieldAddTaskBackgroundColor
-                            border.color: style.textFieldAddTaskBorderColor
+                            //border.color: style.textFieldAddTaskBorderColor
+                            border.color: mainWindow.boutonp
                         }
                         onTextChanged: {
                             placeholder.visible = newTaskAutomatic.text.length === 0
@@ -92,8 +106,10 @@ Item {
                     Text {
                         id: placeholder
                         text: "Entrez une nouvelle tâche"
-                        color: style.textFieldAddTaskPlaceHolderTextColorLight
-                        font.pixelSize: fontSize - 3
+                        //color: style.textFieldAddTaskPlaceHolderTextColorLight
+                        color: mainWindow.boutonp
+                        //font.pixelSize: fontSize - 3
+                        font.pixelSize: style.fontSize - 3
                         anchors.left: parent.left
                         anchors.leftMargin: 10
                         anchors.right: parent.right
@@ -114,7 +130,9 @@ Item {
                 height: 30
                 highlighted: true
                 background: Rectangle {
-                    color: style.buttonAddTaskColor
+                    //color: style.buttonAddTaskColor
+                    color: mainWindow.boutonp
+
                     radius: 4
                 }
 
@@ -122,7 +140,8 @@ Item {
                     anchors.centerIn: parent
                     text: "Ajouter"
                     color: "white"
-                    font.pixelSize: fontSize - 3
+                    //font.pixelSize: fontSize - 3
+                    font.pixelSize: style.fontSize - 3
                 }
 
                 onClicked: {
@@ -158,9 +177,14 @@ Item {
             currentSection: "today"
             sectionTitre: "Today"
             color: style.backgroundColorTitle
-            bulleColor: style.bulleColorToday
+
+            //bulleColor: style.bulleColorToday
+            bulleColor: mainWindow.boutonp
+
             bulleBorderColor: style.bulleBorderColorToday
-            titleSectionColor: style.titleSectionColor
+            //titleSectionColor: style.titleSectionColor
+            titleSectionColor: mainWindow.sousMenuColor
+
             borderTacheColor: style.borderTacheColor
             backgroundTacheColor: style.backgroundTacheColor
             titleTacheColor: style.titleTacheColor
@@ -192,9 +216,15 @@ Item {
             currentSection: "thisWeek"
             sectionTitre: "This Week"
             color: style.backgroundColorTitle
-            bulleColor: style.bulleColorThisWeek
+
+            //bulleColor: style.bulleColorThisWeek
+             bulleColor: mainWindow.boutonp
+
             bulleBorderColor: style.bulleBorderColorThisWeek
-            titleSectionColor: style.titleSectionColor
+            //titleSectionColor: style.titleSectionColor
+            titleSectionColor: mainWindow.sousMenuColor
+
+
             borderTacheColor: style.borderTacheColor
             backgroundTacheColor: style.backgroundTacheColor
             titleTacheColor: style.titleTacheColor
@@ -226,9 +256,15 @@ Item {
             currentSection: "later"
             sectionTitre: "Later"
             color: style.backgroundColorTitle
-            bulleColor: style.bulleColorLater
+
+            //bulleColor: style.bulleColorLater
+            bulleColor: mainWindow.boutonp
+
             bulleBorderColor: style.bulleBorderColorLater
-            titleSectionColor: style.titleSectionColor
+
+            //titleSectionColor: style.titleSectionColor
+            titleSectionColor: mainWindow.sousMenuColor
+
             borderTacheColor: style.borderTacheColor
             backgroundTacheColor: style.backgroundTacheColor
             titleTacheColor: style.titleTacheColor
@@ -259,12 +295,18 @@ Item {
      */
     Rectangle {
         id: buttonAddTask
-        width: 50
-        height: 50
+        //width: 50
+        //height: 50
+
+        width:120
+        height:50
+        radius:4
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 25
-        color: "transparent"
+        //color: "transparent"
+        color: mainWindow.boutonp
 
         transform: Scale {
             id: buttonScale
@@ -274,12 +316,22 @@ Item {
             yScale: 1.0
         }
 
-        Image {
-            width: parent.width
-            height: parent.height
-            source: isDarkMode ? "images/addButtonDark.svg" : "images/addButtonLight.svg"
-            fillMode: Image.PreserveAspectCrop
+        //Image {
+          //  width: parent.width
+            //height: parent.height
+            //source: isDarkMode ? "images/addButtonDark.svg" : "images/addButtonLight.svg"
+            //fillMode: Image.PreserveAspectCrop
+        //}
+
+
+        Text{
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            text:"Ajouter"
+            color: "white"
+            font.pixelSize: style.fontSize - 3
         }
+
 
         MouseArea {
             anchors.fill: parent

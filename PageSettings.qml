@@ -19,8 +19,8 @@ width: parent.width
         id: menuSettings
        // color: mainWindow.boutonp
 
-        height:80
-        width: 80
+        height:55
+        width: 55
 
 
 
@@ -30,8 +30,8 @@ width: parent.width
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: 20
         source: "images/arrowLeft.png"
-        width: 35
-        height: 35
+        width: 25
+        height: 25
         }
 
 
@@ -66,7 +66,7 @@ width: parent.width
 
         Rectangle{
             Layout.fillWidth: true
-            height: 80
+            height: 55
             id:thms
             color: mainWindow.parametrage
 

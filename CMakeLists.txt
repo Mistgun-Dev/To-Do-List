@@ -44,7 +44,7 @@ qt_add_qml_module(appTo-Do-List
         images/deleteDark.svg
         images/task_checked.png
         images/task_unchecked.png
-        images/settings.png
+        images/setting.png
         images/addButtonLight.svg
         images/addButtonDark.svg
         images/arrowDownLight.svg
