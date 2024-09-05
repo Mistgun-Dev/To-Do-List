@@ -4,56 +4,191 @@ import QtQuick.Layouts 6.7
 import "UpdateView.js" as Update
 import "ListeTaches.js" as EditTaches
 
+/**
+* @qmltype Item
+* @brief Implémente une section de tâches avec une en-tête et une liste de tâches.
+
+    Ce composant représente une section composé d'une liste de tâches, affichant chaque tâche avec les attributs qui la compose.
+*/
 Item {
     id: tacheSection
+
+    /**
+    * @property sectionTitre
+    * @brief Alias pour le texte de l'en-tête de la section.
+    * @type string
+    */
     property alias sectionTitre: headerText.text
+
+    /**
+    * @property tacheModel
+    * @brief Alias pour le modèle de données des tâches.
+    * @type ListModel
+    */
     property alias tacheModel: listView.model
+
+    /**
+    * @property headerHeight
+    * @brief Alias pour la hauteur de l'en-tête.
+    * @type int
+    */
     property alias headerHeight: header.height
+
+    /**
+    * @property color
+    * @brief Alias pour la couleur de l'en-tête.
+    * @type color
+    */
     property alias color: header.color
+
+    /**
+    * @property titleSectionColor
+    * @brief Alias pour la couleur du texte de l'en-tête.
+    * @type color
+    */
     property alias titleSectionColor: headerText.color
+
+    /**
+    * @property bulleColor
+    * @brief Alias pour la couleur de la bulle affichant le nombre de tâches restantes.
+    * @type color
+    */
     property alias bulleColor: nbTacheBulle.color
+
+    /**
+    * @property sectionVisible
+    * @brief Indique si la section est visible.
+    * @type bool
+    */
     property bool sectionVisible: listView.visible
 
+    /**
+    * @property fontSize
+    * @brief Taille de la police par défaut utilisée dans la section.
+    * @type int
+    * @default 18
+    */
+    property int fontSize: 18
+
+    /**
+    * @property titleTacheColor
+    * @brief Couleur du texte du titre de la tâche.
+    * @type color
+    */
     property color titleTacheColor: "black"
+
+    /**
+    * @property dateHeureColor
+    * @brief Couleur du texte de la date et heure.
+    * @type color
+    */
     property color dateHeureColor: "green"
+
+    /**
+    * @property noteColor
+    * @brief Couleur du texte de la note.
+    * @type color
+    */
     property color noteColor: "black"
+
+    /**
+    * @property borderTacheColor
+    * @brief Couleur de la bordure des tâches.
+    * @type color
+    */
     property color borderTacheColor: "lightgray"
+
+    /**
+    * @property backgroundTacheColor
+    * @brief Couleur de fond des tâches.
+    * @type color
+    */
     property color backgroundTacheColor: "white"
+
+    /**
+    * @property checkBoxValidatedBorderColor
+    * @brief Couleur de la bordure des cases à cocher.
+    * @type color
+    */
     property color checkBoxValidatedBorderColor: "lightgray"
+
+    /**
+    * @property checkBoxValidatedColor
+    * @brief Couleur de fond des cases à cocher.
+    * @type color
+    */
     property color checkBoxValidatedColor: "#008000"
+
+    /**
+    * @property bulleBorderColor
+    * @brief Couleur de la bordure de la bulle affichant le nombre de tâches restantes.
+    * @type color
+    */
     property color bulleBorderColor: "transparent"
 
-
+    /**
+    * @property collapsedHeight
+    * @brief Hauteur de la section lorsqu'elle est réduite.
+    * @type int
+    */
     property int collapsedHeight: 30
+
+    /**
+    * @property expandedHeight
+    * @brief Hauteur de la section lorsqu'elle est étendue.
+    * @type int
+    */
     property int expandedHeight: 75
 
+    /**
+    * @property currentSection
+    * @brief Indique la section actuelle.
+    * @type string
+    */
     property string currentSection: ""
 
-    // Animation de hauteur pour l'insertion
+    /**
+    * @property isNew
+    * @brief Indique si la tache est nouvelle (pour lancer une animation d'insertion).
+    * @type bool
+    */
     property bool isNew: false
+
+    /**
+    * @property tacheOuverte
+    * @brief Référence à la tâche actuellement ouverte.
+    * @type Rectangle
+    */
+    property Rectangle tacheOuverte: null
 
     width: parent.width
     height: header.height + listView.height
 
-    // Variable globale pour suivre l'élément actuellement étendu
-    property Rectangle tacheOuverte: null
 
     Component.onCompleted: {
         if (sectionVisible) {
-            listView.height = collapsedHeight * (tacheModel.count + 1);
+            listView.height = collapsedHeight * (tacheModel.count);
             listView.visible = true;
         }
     }
 
+    /**
+    * @brief Colonne contenant la liste des tâches.
+    */
     Column {
         width: parent.width
         height: parent.height
 
-        // Header
+        /**
+        * @brief En-tête de la section.
+        */
         Row {
             spacing: 0
             width: parent.width
 
+            /**
+            * @brief Rectangle représentant l'en-tête de la section.
+            */
             Rectangle {
                 id: header
                 width: headerText.implicitWidth + iconArrow.width + 10
@@ -64,25 +199,32 @@ Item {
                 Row {
                     anchors.fill: parent
 
-                    // Icone flèche
+                    /**
+                    * @brief Icône de flèche pour déplier/replier la section.
+                    */
                     Image {
                         id: iconArrow
-                        source: isDarkMode ? "images/arrowDownDark.svg" : "images/arrowDownLight.svg";
+                        source: isDarkMode ? "images/arrowDownDark.svg" : "images/arrowDownLight.svg"
                         width: 22
                         height: 22
                         anchors.verticalCenter: parent.verticalCenter
                         fillMode: Image.PreserveAspectFit
                     }
 
-                    // Nom de la section
+                    /**
+                    * @brief Texte de l'en-tête de la section.
+                    */
                     Text {
                         id: headerText
-                        font.pixelSize: 15
+                        font.pixelSize: fontSize - 3
                         anchors.verticalCenter: parent.verticalCenter
                         font.bold: true
                     }
                 }
 
+                /**
+                * @brief Zone cliquable pour déplier/replier la section.
+                */
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
@@ -102,19 +244,24 @@ Item {
                 }
             }
 
-            // Bulle, nombre de tâches restante
+            /**
+            * @brief Bulle affichant le nombre de tâches restantes.
+            */
             Rectangle {
                 id: nbTacheBulle
-                width: 20
-                height: 20
+                width: fontSize + 2
+                height: fontSize + 2
                 radius: 10
                 anchors.verticalCenter: parent.verticalCenter
                 border.color: bulleBorderColor
 
+                /**
+                * @brief Texte affichant le nombre de tâches restantes.
+                */
                 Text {
                     id: textTacheRestante
                     anchors.centerIn: parent
-                    font.pixelSize: 11
+                    font.pixelSize: fontSize - 7
                     font.bold: true
                     color : "white"
                     text: Update.getNombreDeTachesIncomplete(tacheModel)
@@ -122,14 +269,20 @@ Item {
             }
         }
 
+        /**
+        * @brief Liste des tâches.
+        */
         ListView {
             id: listView
-            width: parent.width- 10
+            width: parent.width - 10
             height: 0
             spacing: 10
             anchors.margins: 20
-            visible: false // Initialement non visible
+            visible: false
 
+            /**
+            * @brief Delegate pour chaque élément de la liste de tâches.
+            */
             delegate: Rectangle {
                 id: itemRect
                 color: backgroundTacheColor
@@ -141,6 +294,9 @@ Item {
 
                 property bool isExpanded: false
 
+                /**
+                * @brief Contenu de chaque élément de tâche.
+                */
                 Row {
                     id: rowInRect
                     anchors.fill: parent
@@ -148,6 +304,9 @@ Item {
                     anchors.leftMargin: 15
                     anchors.rightMargin: 15
 
+                    /**
+                    * @brief Case à cocher pour marquer une tâche comme complétée.
+                    */
                     CheckBox {
                         id: iconValidate
                         checked: model.isCompleted ? true : false
@@ -176,43 +335,49 @@ Item {
                         }
                     }
 
-
-
-                    // Item pour les textes et les dates
+                    /**
+                    * @brief Élément contenant lee titre, la date, et la note de la tâche.
+                    */
                     Item {
                         id: rowListElements
                         anchors.fill: parent
-                        anchors.leftMargin: iconValidate .width + rowInRect.spacing
+                        anchors.leftMargin: iconValidate.width + rowInRect.spacing
                         anchors.rightMargin: iconEdit.width + iconDelete.width + iconEdit.anchors.rightMargin + iconDelete.anchors.rightMargin + 20
 
-                        // Titre
+                        /**
+                        * @brief Titre de la tâche.
+                        */
                         Text {
                             id: titleText
                             color: titleTacheColor
                             text: model.titre
-                            font.pixelSize: 14
+                            font.pixelSize: fontSize - 4
                             wrapMode: Text.WordWrap
                             elide: Text.ElideRight
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
-                        // Note
+                        /**
+                        * @brief Note de la tâche.
+                        */
                         Text {
                             id: noteText
                             text: model.note
                             color: noteColor
                             visible: isExpanded
-                            font.pixelSize: 12
+                            font.pixelSize: fontSize - 6
                             wrapMode: Text.WordWrap
                             elide: Text.ElideRight
                             anchors.centerIn: parent
                         }
 
-                        // Date
+                        /**
+                        * @brief Date et heure de la tâche.
+                        */
                         Text {
                             id: dateHeureText
                             text: currentSection === "today" ? EditTaches.getHeureParse(model.dateHeure) : model.dateHeure
-                            font.pixelSize: 12
+                            font.pixelSize: fontSize - 6
                             wrapMode: Text.WordWrap
                             color: isDarkMode ? "white" : bulleColor
                             elide: Text.ElideRight
@@ -220,6 +385,9 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
+                        /**
+                        * @brief Zone cliquable pour étendre/replier une tâche.
+                        */
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
@@ -246,6 +414,9 @@ Item {
                         }
                     }
 
+                    /**
+                    * @brief Animation pour la suppression d'une tâche.
+                    */
                     NumberAnimation on x {
                         id: deleteAnimation
                         target: itemRect
@@ -262,7 +433,9 @@ Item {
                         }
                     }
 
-                    // Bouton supprimer
+                    /**
+                    * @brief Bouton pour supprimer une tâche.
+                    */
                     Image {
                         id: iconDelete
                         source: isDarkMode ? "images/deleteDark.svg" :"images/deleteLight.svg"
@@ -284,7 +457,9 @@ Item {
                         }
                     }
 
-                    // Bouton éditer
+                    /**
+                    * @brief Bouton pour éditer une tâche.
+                    */
                     Image {
                         id: iconEdit
                         source: isDarkMode ? "images/editDark.svg" :"images/editLight.svg"
@@ -311,6 +486,9 @@ Item {
                     }
                 }
 
+                /**
+                * @brief Animation pour le défilement des tâches.
+                */
                 Behavior on height {
                     NumberAnimation {
                         id: animationDefilementTache
@@ -319,23 +497,26 @@ Item {
                     }
                 }
 
-                // Ligne horizontale au milieu du rectangle lorsque on valide la tâche
+                /**
+                * @brief Ligne horizontale au milieu du rectangle lorsque la tâche est validée.
+                */
                 Rectangle {
                     id: line
                     visible: false;
-                    width: rowListElements.width + rowListElements.anchors.rightMargin - 20
+                    width: rowListElements.width + rowListElements.anchors.rightMargin - 30
                     height: 1
                     x: rowListElements.x + rowListElements.anchors.leftMargin - rowInRect.spacing - 15
-                    color: "gray"
+                    color: isDarkMode ? "white" : "gray"
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
 
-
+            /**
+            * @brief Animation pour le défilement de la liste des tâches.
+            */
             NumberAnimation on height {
                 id: animationDefilementListview
                 duration: 300
-                //easing.type: Easing.InElastic
                 onStopped: {
                     if (listView.height === 0) {
                         listView.visible = false;
@@ -348,8 +529,15 @@ Item {
         }
     }
 
+    /**
+    * @brief Signal émis lorsqu'une nouvelle tâche est ajoutée.
+    */
     signal newTaskAdded()
 
+    /**
+    * @brief Ajoute une nouvelle tâche à la liste (tacheMode) et anime le défilement.
+    * @param tache La tâche à ajouter.
+    */
     function addTask(tache) {
         isNew = true;
         tacheModel.insert(0, tache);
@@ -358,6 +546,9 @@ Item {
         animationDefilementListview.running = true;
     }
 
+    /**
+    * @brief Fonction appelée lorsque le signal newTaskAdded est émis.
+    */
     onNewTaskAdded: {
         addTask(tache);
     }
