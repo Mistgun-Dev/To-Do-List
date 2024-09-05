@@ -74,7 +74,7 @@ width: parent.width
 
             Text{
             id:idcar
-            text: "Nombres maximum de tâches"
+            text: "Nombre maximum de tâches"
             font.pixelSize: mainWindow.parametragefSize
             font.weight: 650
             anchors.horizontalCenter: parent.horizontalCenter
@@ -103,7 +103,7 @@ width: parent.width
                 color: "transparent"
 
                Text{
-                   text:"Nombres de tâches"
+                   text:"Nombre de tâches"
                    color:mainWindow.sousMenuColor
                    font.pixelSize: mainWindow.sousMenufSize
                    anchors.verticalCenter: parent.verticalCenter
