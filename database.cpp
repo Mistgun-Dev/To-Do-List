@@ -142,52 +142,13 @@ bool Database::updateTache(Tache* tache) {
     query.bindValue(":id", tache->getId());
 
     if (query.exec()) {
+        qDebug() << "TACHE MODIFIE";
+        updateModel();
         return true;
     } else {
         qDebug() << "Erreur lors de la mise à jour de la tâche:" << query.lastError();
     }
 }
-
-/*
-bool Database::updateTache(QSharedPointer<Tache> tache) {
-        if (!tache) {
-            qDebug() << "Invalid tache pointer";
-            return false;
-        }
-
-        QSqlQuery query;
-        if (!query.prepare("UPDATE taches SET titre = :titre, note = :note, dateHeure = :dateHeure, "
-                           "isCompleted = :isCompleted, priority = :priority WHERE id = :id")) {
-            qDebug() << "Query preparation failed:" << query.lastError();
-            return false;
-        }
-
-        query.bindValue(":titre", tache->getTitre());
-        query.bindValue(":note", tache->getNote());
-        query.bindValue(":dateHeure", tache->getDateHeure());
-        query.bindValue(":isCompleted", tache->getCompleted());
-        query.bindValue(":priority", static_cast<int>(tache->getPriority()));
-        query.bindValue(":id", tache->getId());
-
-        if (!query.exec()) {
-            qDebug() << "Erreur lors de la mise à jour de la tâche:" << query.lastError();
-            return false;
-        }
-
-        for (int i = 0; i < m_taches.size(); ++i) {
-            if (m_taches[i]->getId() == tache->getId()) {
-                m_taches[i] = tache;
-                emit tacheModelChanged();  // Émet le signal après la mise à jour
-                qDebug() << "tache modifiée, id:" << tache->getId();
-                return true;
-            }
-        }
-
-        qDebug() << "Tache with id" << tache->getId() << "not found in m_taches.";
-
-        return false;
-}
-*/
 
 void Database::updateModel() {
     m_taches.clear();

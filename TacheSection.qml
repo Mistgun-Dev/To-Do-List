@@ -449,7 +449,6 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                if(!model.isCompleted)
                                     deleteAnimation.running = true;
                                     tache.id = model.id;
                                     dbManager.removeTache(tache.id)
@@ -503,7 +502,7 @@ Item {
                 Rectangle {
                     id: line
                     visible: false;
-                    width: rowListElements.width + rowListElements.anchors.rightMargin - 30
+                    width: rowListElements.width + rowListElements.anchors.rightMargin - 35
                     height: 1
                     x: rowListElements.x + rowListElements.anchors.leftMargin - rowInRect.spacing - 15
                     color: isDarkMode ? "white" : "gray"

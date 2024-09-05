@@ -67,7 +67,6 @@ public:
      * @return True si la mise à jour a été effectuée avec succès, False sinon.
      */
     Q_INVOKABLE bool updateTache(Tache*  tache);
-    //Q_INVOKABLE bool updateTache(QSharedPointer<Tache> tache);
 
 signals:
     /**
