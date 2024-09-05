@@ -12,15 +12,20 @@ Cette application est une application de bureau multiplateforme développée en 
 - **Animations** : Animation lors de l'appui sur le bouton de retour pour une meilleure expérience utilisateur.
 - **Documentation Doxygen** : Les commentaires dans le code sont formatés pour générer automatiquement une documentation avec Doxygen.
 
-## Structure du Projet
+## Structure software générale du Projet
 
 - `main.qml` : Point d'entrée de l'application.
 - `NewTask.qml` : Page principale pour la création et la modification de tâches.
 - `DateSelector.qml` : Dialog pour sélectionner une date.
 - `TimeSelector.qml` : Dialog pour sélectionner une heure.
 - `ListeTaches.js` : Script JavaScript pour la gestion des tâches, incluant des fonctions pour l'obtention d'indices pour l'heure, les minutes, et le format AM/PM.
-- `dbManager` : Interface pour l'intégration avec une base de données pour la sauvegarde et la gestion des tâches.
-
+- `dbManager.cpp` : Interface pour l'intégration avec une base de données pour la sauvegarde et la gestion des tâches.
+- `TacheSection.qml` : Fichie gérant le chargement, l'affichage, et la gestion d'une section de taches
+- `MainPage.qml` : Fichier gérant l'affichage de toute les taches, et la gestion d'ajout de nouvelles tâches via des boutons d'interactions
+- `introductionAnim` : Fichier gérant l'animation d'introduction, défilant les 3 Logo partenaires de notre programme
+- `Tâche.cpp` : Classe source gérant la définition d'une tâche et de ses attributs en backend
+- `GestionTaches.cpp` : Classe gérant la gestion d'un groupe de tâches en backend
+  
 ## Installation depuis Github
 
 1. Clonez le dépôt.
