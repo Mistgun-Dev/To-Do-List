@@ -210,7 +210,7 @@ Page {
                 placeholderTextColor : inputFielHolderdColor
                 color : inputFieldColor
                 font.pixelSize: fontSizeInput
-                text: /*page.isEditMode ? EditTaches.getDateParse(tache.dateHeure) :*/ "dd/MM/yyyy"
+                text: page.isEditMode ? EditTaches.getDateParse(tache.dateHeure) : "dd/MM/yyyy"
                 background: Rectangle {
                     color: backgroundColor
                     border.color: "lightgray"
@@ -245,9 +245,7 @@ Page {
                 Layout.fillWidth: true
                 implicitHeight: page.height* 0.08
                 placeholderText: "hh:mm AP"
-
                 text: page.isEditMode ? EditTaches.getHeureParse(tache.dateHeure) : "hh:mm AP"
-
                 color : inputFieldColor
                 placeholderTextColor : inputFieldColor
                 font.pixelSize: fontSizeInput
@@ -337,9 +335,9 @@ Page {
                     tache.dateHeure = textfieldate.text + " " + textfieltime.text
                     tache.note = note.text
 
-                    gestionTaches.modifierTache(tache.id, tache)
-                    dbManager.updateTache(gestionTaches.getTache(tache.id))
-                    //dbManager.updateTache(tache)
+                    //gestionTaches.modifierTache(tache.id, tache)
+                    //dbManager.updateTache(gestionTaches.getTache(tache.id))
+                    dbManager.updateTache(tache)
                 }
                 else
                 {
@@ -347,10 +345,6 @@ Page {
                     tache.dateHeure = textfieldate.text +" "+ textfieltime.text
                     tache.priority = 1
                     tache.note= note.text
-                    console.log("date heure = ", tache.dateHeure);
-                    console.log("note = ", tache.note);
-                    console.log("id = ", tache.id);
-                    console.log("TACHE = ", tache.titre);
 
                     gestionTaches.ajouterTache(tache.id, tache.titre, tache.note, tache.dateHeure, tache.priority)
                     dbManager.addTache(gestionTaches.getTache(tache.id))

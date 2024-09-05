@@ -131,12 +131,13 @@ Item {
                     } else {
                         tache.id = Filtre.generateRandomInt(1, 100);
                         tache.titre = newTaskAutomatic.text;
-                        tache.note = "";
+                        tache.note = "note";
                         tache.dateHeure = tache.getDateHeureNow();
                         tache.priority = 1;
 
                         gestionTaches.ajouterTache(tache.id, tache.titre, tache.note, tache.dateHeure, tache.priority);
                         dbManager.addTache(gestionTaches.getTache(tache.id));
+
                         sectionToday.newTaskAdded(tache);
                     }
                 }

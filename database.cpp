@@ -127,7 +127,7 @@ QList<QSharedPointer<Tache>> Database::getAllTaches() {
     return m_taches;
 }
 
-/*
+
 bool Database::updateTache(Tache* tache) {
 
     QSqlQuery query;
@@ -145,8 +145,10 @@ bool Database::updateTache(Tache* tache) {
         return true;
     } else {
         qDebug() << "Erreur lors de la mise à jour de la tâche:" << query.lastError();
-*/
+    }
+}
 
+/*
 bool Database::updateTache(QSharedPointer<Tache> tache) {
         if (!tache) {
             qDebug() << "Invalid tache pointer";
@@ -185,6 +187,7 @@ bool Database::updateTache(QSharedPointer<Tache> tache) {
 
         return false;
 }
+*/
 
 void Database::updateModel() {
     m_taches.clear();

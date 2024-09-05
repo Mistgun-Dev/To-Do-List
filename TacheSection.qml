@@ -167,7 +167,7 @@ Item {
 
     Component.onCompleted: {
         if (sectionVisible) {
-            listView.height = collapsedHeight * (tacheModel.count);
+            listView.height = collapsedHeight * (tacheModel.count + 1);
             listView.visible = true;
         }
     }

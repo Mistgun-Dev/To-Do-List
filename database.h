@@ -66,8 +66,8 @@ public:
      * @param tache Pointeur vers la tâche mise à jour.
      * @return True si la mise à jour a été effectuée avec succès, False sinon.
      */
-    //Q_INVOKABLE bool updateTache(Tache*  tache);
-    Q_INVOKABLE bool updateTache(QSharedPointer<Tache> tache);
+    Q_INVOKABLE bool updateTache(Tache*  tache);
+    //Q_INVOKABLE bool updateTache(QSharedPointer<Tache> tache);
 
 signals:
     /**
