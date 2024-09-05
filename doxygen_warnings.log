@@ -1,0 +1,20 @@
+warning: source './src' is not a readable file or directory... skipping.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_database.cpp:90: warning: documented symbol 'const QMetaObject Database::staticMetaObject' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_database.cpp:116: warning: documented symbol 'void Database::qt_static_metacall' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_database.cpp:162: warning: documented symbol 'const QMetaObject * Database::metaObject' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_database.cpp:167: warning: documented symbol 'void * Database::qt_metacast' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_database.cpp:175: warning: documented symbol 'int Database::qt_metacall' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_GestionTaches.cpp:104: warning: documented symbol 'const QMetaObject GestionTaches::staticMetaObject' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_GestionTaches.cpp:144: warning: documented symbol 'void GestionTaches::qt_static_metacall' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_GestionTaches.cpp:201: warning: documented symbol 'const QMetaObject * GestionTaches::metaObject' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_GestionTaches.cpp:206: warning: documented symbol 'void * GestionTaches::qt_metacast' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_GestionTaches.cpp:214: warning: documented symbol 'int GestionTaches::qt_metacall' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_Tache.cpp:111: warning: documented symbol 'const QMetaObject Tache::staticMetaObject' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_Tache.cpp:150: warning: documented symbol 'void Tache::qt_static_metacall' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_Tache.cpp:241: warning: documented symbol 'const QMetaObject * Tache::metaObject' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_Tache.cpp:246: warning: documented symbol 'void * Tache::qt_metacast' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/build/Qt_6_7_2-Debug/appTo-Do-List_autogen/EWIEGA46WW/moc_Tache.cpp:254: warning: documented symbol 'int Tache::qt_metacall' was not declared or defined.
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/database.h:36: warning: argument 'other' of command @param is not found in the argument list of Database::Database(const Database &)
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/database.h:44: warning: argument 'other' of command @param is not found in the argument list of Database::operator=(const Database &)
+/Users/neharimohamed/Desktop/Formation/Projet/To-Do-List/GestionTaches.h:53: warning: The following parameter of GestionTaches::ajouterTacheRapide(int id, const QString &titre) is not documented:
+  parameter 'id'
