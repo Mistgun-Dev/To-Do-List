@@ -2,6 +2,11 @@ import QtQuick 6.7
 import QtQuick.Controls 6.7
 import QtQuick.Layouts 6.7
 
+/**
+ * @class PageSettings
+ * @brief Page permettant la configure des thèmes, tailles des caractères, taches complétées nombre maximum de taches
+ *
+ */
 
 Item {
 
@@ -14,7 +19,10 @@ Layout.leftMargin: 10
     spacing: 0
 
 
-
+/**
+*@brief bouton permettant le retour vers la page précédente
+*
+**/
 
     Rectangle {
         id: menuSettings
@@ -85,7 +93,9 @@ Layout.leftMargin: 10
 
 }
 
-
+/**
+*@brief Thèmes:  pour accéder au menu des thèmes
+*/
 Rectangle {
     id: dark
     Layout.fillWidth: true
@@ -127,7 +137,9 @@ Rectangle {
 
 
 
-
+/**
+*@brief Tailles des caractères: menu pour accéder aux tailles des caractères
+*/
 
 
 Rectangle {
@@ -170,7 +182,9 @@ Rectangle {
 
 
 
-
+/**
+*@brief Retirer tâches complétées : menu pour accéder à cette page
+*/
 
 Rectangle {
    id: rtc
@@ -216,7 +230,9 @@ Rectangle {
 
 
 
-
+/**
+*@brief Nombre maximum de taches : menu pour accéder à cette page
+*/
 
 Rectangle {
    id: nbtache

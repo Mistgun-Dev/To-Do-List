@@ -13,7 +13,10 @@ ColumnLayout{
     spacing: 0
 
 
-
+/**
+*@brief bouton permettant l'accès vers la page précédente
+*
+**/
 
     Rectangle {
         id: menuSettings
@@ -77,6 +80,11 @@ ColumnLayout{
 }
 
 
+/**
+*@brief Sombre : option pour activer le mode Sombre
+*
+*/
+
 Rectangle {
     id: dark
     Layout.fillWidth: true
@@ -124,6 +132,12 @@ Rectangle {
         }
 }
 
+
+
+/**
+*@brief Clair : option pour activer le mode Clair
+*
+*/
 
 Rectangle {
     id: clr

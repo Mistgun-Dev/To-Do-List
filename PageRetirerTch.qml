@@ -13,6 +13,9 @@ width: parent.width
     spacing: 0
 
 
+/**
+*@brief bouton permettant le retour vers la page précédente
+*/
 
 
     Rectangle {
@@ -135,7 +138,10 @@ width: parent.width
                 color: "transparent"
 
 
-
+/**
+*brief switch: permet d'activer ou désactiver la suppression des tâches marquées comme complétées
+*
+*/
                 Switch {
                     id: control
                     //text: qsTr("Retirer taches complétées")

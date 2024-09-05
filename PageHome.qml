@@ -32,7 +32,10 @@ width: parent.width
 
 
 
-
+/**
+*@brief bouton permettant d'accéder aux paramétrages
+*
+*/
 
 
         Rectangle {

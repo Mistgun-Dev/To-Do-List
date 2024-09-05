@@ -14,7 +14,10 @@ width: parent.width
     spacing: 0
 
 
-
+/**
+*@brief bouton permettant le retour vers la page précédente
+*
+*/
 
     Rectangle {
         id: menuSettings
@@ -135,7 +138,10 @@ width: parent.width
 
 
 
-
+                /**
+                *@brief SpinBox: permet de selectionner le nombre maximum de tâches
+                *
+                */
 
                 SpinBox {
                     id: control
