@@ -103,7 +103,7 @@ width: parent.width
                 color: "transparent"
 
                Text{
-                   text:"Retirer tâches complétées"
+                   text:"Nombres de tâches"
                    color:mainWindow.sousMenuColor
                    font.pixelSize: mainWindow.sousMenufSize
                    anchors.verticalCenter: parent.verticalCenter
