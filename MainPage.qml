@@ -1,6 +1,5 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
-//import QtQuick.Controls.Material
 import QtQuick.Layouts 6.7
 import "FiltrerTaches.js" as Filtre
 import "ListeTaches.js" as Tache
@@ -150,12 +149,14 @@ Item {
                     } else {
                         tache.id = Filtre.generateRandomInt(1, 100);
                         tache.titre = newTaskAutomatic.text;
-                        tache.note = "";
+                        tache.note = "note";
                         tache.dateHeure = tache.getDateHeureNow();
                         tache.priority = 1;
 
                         gestionTaches.ajouterTache(tache.id, tache.titre, tache.note, tache.dateHeure, tache.priority);
                         dbManager.addTache(gestionTaches.getTache(tache.id));
+                        gestionTaches.listeTaches
+
                         sectionToday.newTaskAdded(tache);
                     }
                 }
@@ -190,7 +191,7 @@ Item {
             titleTacheColor: style.titleTacheColor
             noteColor: style.noteColor
             dateHeureColor: style.dateHeureColor
-            checkBoxValidatedColor: style.bulleColor
+            checkBoxValidatedColor: style.bulleColorToday
             checkBoxValidatedBorderColor: style.checkBoxValidatedBorderColor
             fontSize: style.fontSize
             sectionVisible: true
@@ -230,7 +231,7 @@ Item {
             titleTacheColor: style.titleTacheColor
             noteColor: style.noteColor
             dateHeureColor: style.dateHeureColor
-            checkBoxValidatedColor: style.bulleColor
+            checkBoxValidatedColor: style.bulleColorThisWeek
             checkBoxValidatedBorderColor: style.checkBoxValidatedBorderColor
             fontSize: style.fontSize
             sectionVisible: false
@@ -270,7 +271,7 @@ Item {
             titleTacheColor: style.titleTacheColor
             noteColor: style.noteColor
             dateHeureColor: style.dateHeureColor
-            checkBoxValidatedColor: style.bulleColor
+            checkBoxValidatedColor: style.bulleColorLater
             checkBoxValidatedBorderColor: style.checkBoxValidatedBorderColor
             fontSize: style.fontSize
             sectionVisible: false

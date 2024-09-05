@@ -8,6 +8,12 @@ import "ListeTaches.js" as EditTaches
 import "."
 
 // Time selector
+/**
+ * @brief Boîte de dialogue pour la sélection de l'heure.
+ * La boîte de dialogue affiche trois "Tumbler" pour sélectionner l'heure, les minutes,
+ * et le format AM/PM. Lorsque l'utilisateur confirme sa sélection, l'heure est mise à jour
+ * et affichée dans un champ de texte externe "Due Time".
+ */
 Dialog {
     modal: true
     anchors.centerIn:  parent
@@ -90,18 +96,17 @@ Dialog {
                     //     //focus= false
                     // }
                     id: hoursTumbler
-                        model: 12
-                        delegate: delegateComponent
-                        currentIndex: page.isEditMode ? EditTaches.getHourIndex(tache.dateHeure) : 0  // Initialize to correct hour
-                        onCurrentIndexChanged: {
-                            rect.selectedHour = currentIndex + 1
-                            rect.selectedHourAsString = rect.numberToString(rect.selectedHour)
-                            console.log(rect.selectedHour)
-                            textfieltime.text = rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
-                            console.log(textfieltime.text)
-                            // focus = false
-                        }
-
+                    model: 12
+                    delegate: delegateComponent
+                    currentIndex: page.isEditMode ? EditTaches.getHourIndex(tache.dateHeure) : 0  // Initialize to correct hour
+                    onCurrentIndexChanged: {
+                        rect.selectedHour = currentIndex + 1
+                        rect.selectedHourAsString = rect.numberToString(rect.selectedHour)
+                        console.log(rect.selectedHour)
+                        textfieltime.text = rect.selectedHourAsString + ":" + rect.selectedMinuteAsString + " " + amPmTumbler.currentItem.text
+                        console.log(textfieltime.text)
+                        // focus = false
+                    }
                 }
 
                 Tumbler {

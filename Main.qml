@@ -61,10 +61,13 @@ ApplicationWindow {
     color:theme
     title: "To-Do-List Application"
 
+    /**
+    * @brief StackView permettant la naviguation entre les pages
+    */
     StackView {
         id: stackView
         anchors.fill: parent
-        initialItem: "introductionAnim.qml"//"MainPage.qml"
+        initialItem: "MainPage.qml" //"introductionAnim.qml"
 
         pushEnter: Transition {
             NumberAnimation { property: "opacity"; from: 0; to: 1; duration: 300 }
@@ -76,7 +79,9 @@ ApplicationWindow {
         }
     }
 
-    // Loader pour charger dynamiquement des pages
+    /**
+    * @brief Loader permettant la naviguation dynamique entre les pages
+    */
     Loader {
         id: dynamicLoader
         anchors.fill: parent

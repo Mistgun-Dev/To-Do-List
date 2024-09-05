@@ -23,10 +23,29 @@ class Database : public QObject
 
 public:
 
-    // Méthode pour accéder à l'instance unique du singleton
+    /**
+     * @brief Accède à l'instance unique du singleton Database.
+     * Cette méthode retourne une référence à l'unique instance de la classe Database.
+     * Si l'instance n'existe pas encore, elle est créée.
+     * @return Référence à l'instance unique de Database.
+     */
     static Database& instance();
 
+    /**
+     * @brief Constructeur de copie supprimé.
+     * Cette méthode supprime le constructeur de copie pour éviter
+     * la duplication de l'instance unique du singleton Database.
+     * @param other L'objet Database à copier.
+     */
     Database(const Database&) = delete;
+
+    /**
+     * @brief Opérateur d'affectation supprimé.
+     * Cette méthode supprime l'opérateur d'affectation pour éviter
+     * d'affecter une nouvelle valeur à l'instance unique du singleton Database.
+     * @param other L'objet Database à affecter.
+     * @return Référence à l'instance actuelle de Database.
+     */
     Database& operator=(const Database&) = delete;
 
     /**
@@ -90,6 +109,10 @@ public:
      */
     ~Database();
 
+    /**
+     * @brief Met à jour le modèle des tâches en chargeant les données depuis la base de données.
+     * Libérer la mémoire des tâches er ferme la connexion à la base de données.
+     */
     void updateModel();
 
     QSqlDatabase m_db;  // Connexion à la base de données SQLite

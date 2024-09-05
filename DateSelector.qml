@@ -5,11 +5,21 @@ import QtQuick.Layouts 6.7
 import "."
 
 // Date Selector
+/**
+ * @brief Dialog de sélection de date.
+ * Cette Dialog permet à l'utilisateur de sélectionner une date à partir d'une grille de jours et de combobox pour le mois et l'année.
+ * Elle est modale, ce qui signifie qu'elle bloque l'interaction avec le reste de l'application jusqu'à ce qu'elle soit fermée.
+ */
 Dialog {
     modal: true
     anchors.centerIn:  parent
     standardButtons: Dialog.Ok | Dialog.Cancel
 
+    /**
+     * @brief Gestionnaire pour l'acceptation de la sélection.
+     * Vérifie si la date sélectionnée est antérieure à la date actuelle. Si c'est le cas, un message est affiché,
+     * le champ de texte est vidé, et la boîte de dialogue est fermée sans ajouter la tâche.
+     */
     onAccepted: {
         let currentDate = new Date(); // Date actuelle
         let selectedDate = grid.selectedDate; // Date sélectionnée
@@ -27,18 +37,25 @@ Dialog {
 
     contentItem: GridLayout {
         columns: 2
-
+        /**
+         * @brief ComboBox pour sélectionner le mois.
+         * Ce ComboBox permet à l'utilisateur de choisir le mois parmi les 12 mois de l'année.
+         * Le mois actuel est pré-sélectionné.
+         */
         ComboBox {
             id: monthSelector
-
             Layout.fillWidth: true
             model: ["January", "February", "Mars", "April", "May", "Jun", "July", "August", "September", "October", "November", "December"]
             currentIndex: 1
         }
 
+        /**
+         * @brief ComboBox pour sélectionner l'année.
+         * Ce ComboBox permet à l'utilisateur de choisir une année parmi les années proposées.
+         * L'année actuelle est pré-sélectionnée.
+         */
         ComboBox {
             id: yearSelector
-
             Layout.fillWidth: true
             model: ListModel {
                 ListElement { year: 2023 }
@@ -56,6 +73,10 @@ Dialog {
         GridLayout {
             columns: 2
 
+        /**
+         * @brief Affiche les jours de la semaine.
+         * Ce composant montre les noms des jours de la semaine selon la locale définie.
+         */
         DayOfWeekRow {
             locale: grid.locale
 
@@ -63,6 +84,10 @@ Dialog {
             Layout.fillWidth: true
         }
 
+        /**
+         * @brief Affiche les numéros de semaine.
+         * Ce composant montre les numéros de semaine en fonction du mois et de l'année sélectionnés.
+         */
         WeekNumberColumn {
             month: grid.month
             year: grid.year
@@ -70,6 +95,10 @@ Dialog {
             Layout.fillHeight: true
         }
 
+        /**
+         * @brief Grille des jours du mois.
+         * Ce composant affiche les jours du mois en cours, permettant à l'utilisateur de sélectionner un jour.
+         */
         MonthGrid {
             id: grid
             month: monthSelector.currentIndex

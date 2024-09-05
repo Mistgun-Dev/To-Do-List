@@ -127,6 +127,7 @@ QList<QSharedPointer<Tache>> Database::getAllTaches() {
     return m_taches;
 }
 
+
 bool Database::updateTache(Tache* tache) {
 
     QSqlQuery query;
@@ -141,10 +142,11 @@ bool Database::updateTache(Tache* tache) {
     query.bindValue(":id", tache->getId());
 
     if (query.exec()) {
+        qDebug() << "TACHE MODIFIE";
+        updateModel();
         return true;
     } else {
         qDebug() << "Erreur lors de la mise à jour de la tâche:" << query.lastError();
-        return false;
     }
 }
 

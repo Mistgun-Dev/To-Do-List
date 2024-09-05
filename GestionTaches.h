@@ -17,7 +17,6 @@ class GestionTaches : public QObject
 {
     Q_OBJECT
 
-    //Q_PROPERTY(QList<QSharedPointer<Tache>> listeTaches READ getListeTaches NOTIFY tacheAjoutee)
     Q_PROPERTY(QVariantList listeTaches READ getTachesAsVariantList NOTIFY tacheUpdate)
 
 
