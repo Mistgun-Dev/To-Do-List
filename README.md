@@ -76,4 +76,3 @@ Les contributions sont les bienvenues. Pour contribuer :
 3. Commitez vos changements (`git commit -m 'Add some NewFeature'`).
 4. Poussez sur la branche (`git push origin feature/NewFeature`).
 5. Ouvrez une Pull Request.
->>>>>>> develop
