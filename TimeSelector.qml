@@ -1,8 +1,6 @@
 import QtQuick 6.7
 import QtQuick.Controls 6.7
-//import QtQuick.Controls.Basic
-//import QtQuick.Controls.Imagine
-//import QtQuick.Controls.Universal
+import QtQuick.Controls.Universal
 import QtQuick.Layouts 6.7
 import "ListeTaches.js" as EditTaches
 import "."

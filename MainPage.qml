@@ -82,7 +82,7 @@ Item {
                         placeholderText: ""
                         font.pixelSize: style.fontSize - 3
                         color: mainWindow.boutonp
-                        selectionColor: "#008000"
+                        selectionColor: isDarkMode ? "white" : "#008000"
                         background: Rectangle {
                             color: style.textFieldAddTaskBackgroundColor
                             border.color: style.textFieldAddTaskBorderColor

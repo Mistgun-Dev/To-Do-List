@@ -161,6 +161,8 @@ Item {
     */
     property Rectangle tacheOuverte: null
 
+    property bool hideTask: false
+
     width: parent.width
     height: header.height + listView.height
 
@@ -291,6 +293,20 @@ Item {
                 height: isExpanded ? expandedHeight : collapsedHeight
                 width: parent.width - listView.spacing
                 radius: 5
+                Component.onCompleted: {
+                    if(mainWindow.hideCompletedTasks)
+                    {
+                        if(model.isCompleted){
+                            itemRect.visible = false
+                            listView.height -= itemRect.height + listView.spacing;
+                        }
+                        else
+                            itemRect.visible = true
+                    }
+                    else
+                        itemRect.visible = true
+                }
+
 
                 property bool isExpanded: false
 
@@ -332,6 +348,13 @@ Item {
                         onCheckedChanged: {
                             model.isCompleted = !model.isCompleted;
                             line.visible = !line.visible;
+
+                            if(mainWindow.hideCompletedTasks)
+                            {
+                                deleteAnimation.running = true;
+                                hideTask = true;
+                            }
+
                         }
                     }
 
@@ -378,6 +401,7 @@ Item {
                             id: dateHeureText
                             text: currentSection === "today" ? EditTaches.getHeureParse(model.dateHeure) : model.dateHeure
                             font.pixelSize: fontSize - 6
+                            font.bold: true
                             wrapMode: Text.WordWrap
                             color: isDarkMode ? "white" : bulleColor
                             elide: Text.ElideRight
@@ -426,10 +450,19 @@ Item {
                         duration: 500
                         easing.type: Easing.InOutQuad
                         onStopped: {
-                            listView.height -= itemRect.height + listView.spacing;
-                            gestionTaches.supprimerTache(model.id);
-                            listView.model.remove(model.index);
-                            EditTaches.updateTask(model.id);
+                            if(hideTask)
+                            {
+                                itemRect.visible = false
+                                listView.height -= (itemRect.height + listView.spacing);
+                                listView.model.remove(model.index);
+                                hideTask = false
+                            }
+                            else{
+                                listView.height -= (itemRect.height + listView.spacing);
+                                gestionTaches.supprimerTache(model.id);
+                                listView.model.remove(model.index);
+                                EditTaches.updateTask(model.id);
+                            }
                         }
                     }
 

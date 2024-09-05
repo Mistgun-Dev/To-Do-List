@@ -6,6 +6,8 @@ ApplicationWindow {
 
     property bool   isDarkMode: false
 
+    property bool hideCompletedTasks: false
+
     //property color  parametrage: "#DDBB3C"
     property color  parametrage: "#4CAF50"
     property color  parametrageReset: "#4CAF50"
@@ -63,7 +65,7 @@ ApplicationWindow {
     StackView {
         id: stackView
         anchors.fill: parent
-        initialItem: "introductionAnim.qml"
+        initialItem: "MainPage.qml" //"introductionAnim.qml"
 
         pushEnter: Transition {
             NumberAnimation { property: "opacity"; from: 0; to: 1; duration: 300 }

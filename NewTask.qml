@@ -172,7 +172,7 @@ Page {
             }
 
             Label {
-                text: page.isEditMode ? qsTr("Edit task") : qsTr("New task")
+                text: page.isEditMode ? qsTr("Modifier une tâche") : qsTr("Nouvelle tâche")
                 color: "white"
                 font.pixelSize: fontSizeHeader
                 font.bold: true
@@ -191,7 +191,7 @@ Page {
         spacing: 10
 
         Label {
-            text: "Title"
+            text: "Titre"
             color: textColor
              font.pixelSize: fontSizeLabel
         }
@@ -200,7 +200,7 @@ Page {
             id: textfieldtitre
             Layout.fillWidth: true
             implicitHeight: page.height* 0.08 /*40*/
-            placeholderText: "Task name"
+            placeholderText: "Nom du titre"
             text:  page.isEditMode ? tache.titre : qsTr("")
             placeholderTextColor : inputFielHolderdColor
             color : inputFieldColor
@@ -215,9 +215,9 @@ Page {
         }
 
         Label {
-            text: "Due date"
-            //color: textColor
-            color:"white"
+            text: "Date"
+            color: textColor
+            //color:"white"
             font.pixelSize: fontSizeLabel
         }
 
@@ -245,8 +245,8 @@ Page {
                 icon.width: 27  // Ajustez la taille de l'icône
                 icon.height: 27
                 background: Rectangle {
-                    color: isDarkMode ?"#E8F5E9":"#F7F7F7"
-                    border.color: "lightgreen"
+                    color: isDarkMode ? "white" :"#F7F7F7"
+                    border.color: isDarkMode ? "white" : "lightgreen"
                     radius: 10
                 }
                 padding: 4
@@ -255,7 +255,7 @@ Page {
         }
 
         Label {
-            text: "Due time"
+            text: "Heure"
             color: textColor
             font.pixelSize: fontSizeLabel
         }
@@ -286,8 +286,8 @@ Page {
                 icon.width: 27  // Ajustez la taille de l'icône
                 icon.height: 27
                 background: Rectangle {
-                    color: isDarkMode ?"#E8F5E9":"#F7F7F7"
-                    border.color: "lightgreen"
+                    color: isDarkMode ?"white" : "#F7F7F7"
+                    border.color: isDarkMode ? "white" : "lightgreen"
                     radius: 10
                 }
                 padding: 4  // Ajoutez du padding pour un meilleur affichage
@@ -309,7 +309,7 @@ Page {
 
         // Bouton "Finished Editing"
         Button {
-                text: qsTr("Finished Editing")
+                text: qsTr("Terminer l'édition")
                 palette.buttonText: "white"
                 font.pixelSize: fontSizeInput
                 background: Rectangle {
@@ -346,7 +346,7 @@ Page {
 
         // Bouton "Add task" ou "Update task" selon le mode de l'édit
         Button {
-            text: page.isEditMode ? qsTr("Update task") : qsTr("Add task")
+            text: page.isEditMode ? qsTr("Mettre à jour") : qsTr("Ajouter")
             palette.buttonText: "white"
             font.bold: true
             font.pixelSize: fontSizeInput
