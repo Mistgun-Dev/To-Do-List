@@ -36,7 +36,7 @@ Cette application est une application de bureau multiplateforme développée en 
 
 ## Installation avec l'installateur fourni
 
-1. Téléchargez l'installateur.
+1. Téléchargez l'installateur [ToDoListApp_Installer.exe](ToDoListApp_Installer.exe)
 2. Préparez un dossier où l'application va être installer.
 3. Ouvrez l'installateur.
 4. Cette fenêtre va être afficher, cliquez sur le bouton **Suivant**.
