@@ -4,6 +4,8 @@
 
 Cette application est une application de bureau multiplateforme développée en utilisant Qt et QML. Elle est conçue pour aider les utilisateurs à gérer leurs tâches quotidiennes de manière simple, intuitive et efficace.
 
+![Capture d’écran 2024-09-05 à 15 11 32](https://github.com/user-attachments/assets/27094493-059f-43e5-8802-4dd1369d9f91)
+
 ## Fonctionnalités
 
 - **Ajout et modification de tâches** : Créez ou modifiez des tâches en remplissant un formulaire avec un titre, une date, une heure, et des notes.
